@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cejtakbq0uny0"]
+
+[ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="1_lxmoa"]
+[ext_resource type="Texture2D" uid="uid://43w4c14nho0b" path="res://NZ_projectiles/Textures/Projectile2.svg" id="2_mw6lb"]
+
+[node name="Projectile" instance=ExtResource("1_lxmoa")]
+atk = 10
+speed = 170
+remove_when_static_body = false
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_mw6lb")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="2"]
+self_modulate = Color(1, 1, 1, 0)

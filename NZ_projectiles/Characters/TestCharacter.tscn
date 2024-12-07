@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjndhvlbl8lue"]
+
+[ext_resource type="Texture2D" uid="uid://4qygjbrsdyte" path="res://NZ_projectiles/Textures/icon.png" id="1_1ksen"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/TestCharacter.gd" id="1_u117e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1ed5"]
+size = Vector2(100, 100)
+
+[node name="TestCharacter" type="CharacterBody2D" groups=["Characters"]]
+z_index = -5
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_u117e")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d1ed5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_1ksen")

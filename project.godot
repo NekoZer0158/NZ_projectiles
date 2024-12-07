@@ -1,0 +1,47 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="NZ_projectiles"
+config/version="1.0"
+config/tags=PackedStringArray("showcase")
+run/main_scene="res://NZ_projectiles/Scenes/Main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/show_image=false
+config/icon="res://NZ_projectiles/Textures/icon.png"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/NZ_projectiles/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://NZ_projectiles/": "teal",
+"res://addons/": "pink"
+}
+
+[layer_names]
+
+2d_physics/layer_1="Projectiles"
+2d_physics/layer_2="Characters"
+2d_physics/layer_3="Static"
+2d_physics/layer_4="Areas"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

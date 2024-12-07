@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=4 uid="uid://8lnyvxhypgcw"]
+
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_63vyl"]
+[ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="2_1esb7"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Tile_map_layer.gd" id="3_8hdi7"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="3_8omnb"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="3_k5qc8"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_ID.gd" id="4_dik76"]
+
+[sub_resource type="Resource" id="Resource_ikcsy"]
+script = ExtResource("4_dik76")
+name_hit_extended = &"hit_extended"
+
+[node name="ID" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 896.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 128.0
+text = "Extended"
+script = ExtResource("1_63vyl")
+change_to_this_scene = "res://NZ_projectiles/Scenes/Extended.tscn"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Static"]
+tile_map_data = PackedByteArray("AAAcAAoAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA8AAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAeAAoAAAAAAAAAAAAeAAsAAAAAAAAAAAAeAAwAAAAAAAAAAAAeAA0AAAAAAAAAAAAeAA4AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAAoAAAAAAAAAAAAfAAsAAAAAAAAAAAAfAAwAAAAAAAAAAAAfAA0AAAAAAAAAAAAfAA4AAAAAAAAAAAAfAA8AAAAAAAAAAAAgAAoAAAAAAAAAAAAgAAsAAAAAAAAAAAAgAAwAAAAAAAAAAAAgAA0AAAAAAAAAAAAgAA4AAAAAAAAAAAAgAA8AAAAAAAAAAAAhAAoAAAAAAAAAAAAhAAsAAAAAAAAAAAAhAAwAAAAAAAAAAAAhAA0AAAAAAAAAAAAhAA4AAAAAAAAAAAAhAA8AAAAAAAAAAAA=")
+tile_set = ExtResource("2_1esb7")
+script = ExtResource("3_8hdi7")
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("3_8omnb")]
+z_index = 10
+position = Vector2(128, 192)
+id = 3
+r_hit_extended = SubResource("Resource_ikcsy")
+
+[node name="ProjectileExtended4" parent="Projectiles" instance=ExtResource("3_8omnb")]
+z_index = 10
+position = Vector2(64, 192)
+id = 3
+r_hit_extended = SubResource("Resource_ikcsy")
+
+[node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("3_8omnb")]
+z_index = 10
+position = Vector2(128, 320)
+id = 1
+r_hit_extended = SubResource("Resource_ikcsy")
+
+[node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("3_8omnb")]
+z_index = 10
+position = Vector2(128, 448)
+id = 2
+r_hit_extended = SubResource("Resource_ikcsy")
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="TestCharacter1" parent="Characters" instance=ExtResource("3_k5qc8")]
+position = Vector2(384, 192)
+
+[node name="TestCharacter2" parent="Characters" instance=ExtResource("3_k5qc8")]
+position = Vector2(512, 320)
+
+[node name="TestCharacter3" parent="Characters" instance=ExtResource("3_k5qc8")]
+position = Vector2(640, 448)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
+[connection signal="remove_tile_map_layer" from="Characters/TestCharacter2" to="Static/TileMapLayer" method="_remove_tile_map_layer"]

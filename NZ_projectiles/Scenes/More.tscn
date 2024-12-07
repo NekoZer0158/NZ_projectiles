@@ -1,0 +1,200 @@
+[gd_scene load_steps=32 format=3 uid="uid://fkv6xi14a6n8"]
+
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_2ctdq"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_urunl"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_reset.gd" id="3_3jyq6"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_condition_timer.gd" id="4_i8iv7"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_increase.gd" id="5_hfff0"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_ID.gd" id="6_lcnt8"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_spawn_projectile.gd" id="6_mafij"]
+[ext_resource type="PackedScene" uid="uid://pnq0dpujt47r" path="res://NZ_projectiles/Particles/ProjectileParticles.tscn" id="7_3i6oc"]
+[ext_resource type="PackedScene" uid="uid://bcpnkgwrpbcqy" path="res://NZ_projectiles/Projectiles/Projectile_extended2.tscn" id="7_bkp2j"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="7_uyhmn"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Particle_projectile.gd" id="8_opr1k"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time.gd" id="12_7ujc8"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="12_xtkpt"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="13_gaqke"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_random_range.gd" id="13_y22oh"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_position.gd" id="15_tj116"]
+[ext_resource type="PackedScene" uid="uid://b81fpa7ultf22" path="res://NZ_projectiles/Characters/TestCharacter2.tscn" id="18_tghew"]
+
+[sub_resource type="Resource" id="Resource_e2n2m"]
+script = ExtResource("3_3jyq6")
+
+[sub_resource type="Resource" id="Resource_44hdc"]
+script = ExtResource("5_hfff0")
+increase_to_this_amount = -250
+step = 50
+type_of_increase = 0
+time_for_increase = 0.0
+
+[sub_resource type="Resource" id="Resource_f1dqc"]
+script = ExtResource("4_i8iv7")
+time = 1.25
+speed_change = SubResource("Resource_44hdc")
+after_condition_speed_change = SubResource("Resource_e2n2m")
+
+[sub_resource type="Resource" id="Resource_cdttw"]
+script = ExtResource("5_hfff0")
+increase_to_this_amount = 250
+step = 50
+type_of_increase = 0
+time_for_increase = 0.0
+
+[sub_resource type="Resource" id="Resource_6jm18"]
+script = ExtResource("4_i8iv7")
+time = 1.25
+speed_change = SubResource("Resource_cdttw")
+after_condition_speed_change = SubResource("Resource_f1dqc")
+
+[sub_resource type="Resource" id="Resource_7nex2"]
+script = ExtResource("6_lcnt8")
+name_hit_extended = &"hit_extended"
+
+[sub_resource type="Resource" id="Resource_68imq"]
+script = ExtResource("6_mafij")
+spawn_this_projectile = ExtResource("7_bkp2j")
+same_scale = true
+immortality_seconds = 0.15
+
+[sub_resource type="Resource" id="Resource_fr2vd"]
+script = ExtResource("8_opr1k")
+particle_scene = ExtResource("7_3i6oc")
+
+[sub_resource type="Resource" id="Resource_7hano"]
+script = ExtResource("7_uyhmn")
+hits_before_removing = 3
+next_phase = SubResource("Resource_68imq")
+use_particle_every_hit = true
+particle_resource = SubResource("Resource_fr2vd")
+
+[sub_resource type="Resource" id="Resource_pya0y"]
+script = ExtResource("12_7ujc8")
+increase_atk_to_this = 100
+atk_step = 25
+time = 0.5
+
+[sub_resource type="Resource" id="Resource_yqa5e"]
+script = ExtResource("13_y22oh")
+min_value = -350
+max_value = -325
+
+[sub_resource type="Resource" id="Resource_gbe0s"]
+script = ExtResource("4_i8iv7")
+time = 2.0
+after_condition_speed_change = SubResource("Resource_yqa5e")
+
+[sub_resource type="Resource" id="Resource_iau8b"]
+script = ExtResource("13_gaqke")
+
+[sub_resource type="Resource" id="Resource_s3ibq"]
+script = ExtResource("15_tj116")
+name_hit_extended = &"change_position"
+
+[node name="More" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Extended" type="Button" parent="Buttons"]
+offset_left = 832.0
+offset_top = 576.0
+offset_right = 1088.0
+offset_bottom = 640.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Extended"
+script = ExtResource("1_2ctdq")
+change_to_this_scene = "res://NZ_projectiles/Scenes/Extended.tscn"
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("2_urunl")]
+position = Vector2(48, 600)
+r_speed_change = SubResource("Resource_6jm18")
+speed = 250
+life_time = 0.0
+
+[node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("2_urunl")]
+position = Vector2(192, 128)
+id = 2
+r_hit_extended = SubResource("Resource_7nex2")
+r_remove_projectile = SubResource("Resource_7hano")
+atk = 0
+
+[node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("2_urunl")]
+position = Vector2(192, 256)
+id = 2
+r_atk_change = SubResource("Resource_pya0y")
+r_speed_change = SubResource("Resource_gbe0s")
+r_remove_projectile = SubResource("Resource_iau8b")
+atk = 25
+life_time = 3.3
+
+[node name="ProjectileExtended4" parent="Projectiles" instance=ExtResource("2_urunl")]
+position = Vector2(192, 384)
+id = 2
+r_hit_extended = SubResource("Resource_s3ibq")
+r_remove_projectile = SubResource("Resource_iau8b")
+atk = 25
+speed = 250
+life_time = 1.6
+name_type = &"character_class"
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="TestCharacterBack" parent="Characters" instance=ExtResource("12_xtkpt")]
+position = Vector2(64, 128)
+hp = 1
+
+[node name="TestCharacter1" parent="Characters" instance=ExtResource("12_xtkpt")]
+position = Vector2(576, 128)
+
+[node name="TestCharacter2" parent="Characters" instance=ExtResource("12_xtkpt")]
+position = Vector2(704, 128)
+
+[node name="TestCharacter3" parent="Characters" instance=ExtResource("12_xtkpt")]
+position = Vector2(832, 128)
+
+[node name="TestCharacter4" parent="Characters" instance=ExtResource("12_xtkpt")]
+position = Vector2(448, 256)
+hp = 25
+
+[node name="TestCharacter5" parent="Characters" instance=ExtResource("12_xtkpt")]
+position = Vector2(640, 256)
+hp = 50
+
+[node name="TestCharacter6" parent="Characters" instance=ExtResource("12_xtkpt")]
+position = Vector2(832, 256)
+hp = 75
+
+[node name="TestCharacter7" parent="Characters" instance=ExtResource("18_tghew")]
+position = Vector2(448, 384)
+
+[node name="TestCharacter8" parent="Characters" instance=ExtResource("18_tghew")]
+position = Vector2(640, 384)
+
+[node name="TestCharacter9" parent="Characters" instance=ExtResource("18_tghew")]
+position = Vector2(832, 384)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="LabelExperimental" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 536.0
+offset_right = 152.0
+offset_bottom = 559.0
+text = "experimental"
+
+[connection signal="pressed" from="Buttons/Extended" to="Buttons/Extended" method="_on_pressed"]

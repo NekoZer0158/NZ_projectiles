@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcpnkgwrpbcqy"]
+
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Projectile_extended.gd" id="1_7xlh8"]
+[ext_resource type="Texture2D" uid="uid://diywdr23cdrp2" path="res://NZ_projectiles/Textures/Projectile_extended2.svg" id="2_flbfp"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_increase.gd" id="2_hkdlw"]
+
+[sub_resource type="Resource" id="Resource_h0egn"]
+script = ExtResource("2_hkdlw")
+increase_to_this_amount = -250
+step = 50
+type_of_increase = 1
+time_for_increase = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3xv1"]
+size = Vector2(16, 6)
+
+[node name="ProjectileExtended2" type="Area2D" groups=["Projectiles_extended"]]
+scale = Vector2(2, 2)
+collision_mask = 6
+script = ExtResource("1_7xlh8")
+r_speed_change = SubResource("Resource_h0egn")
+atk = 10
+speed = 200
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i3xv1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_flbfp")

@@ -1,0 +1,212 @@
+[gd_scene load_steps=15 format=3 uid="uid://mlotudq5ebwd"]
+
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_6s6dx"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Extended.gd" id="1_xo7oi"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Speed_change.gd" id="2_7diba"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Atk_change.gd" id="2_fw0ym"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Remove_projectiles.gd" id="3_75ytm"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Remove_characters.gd" id="6_bqw48"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="7_3uxkj"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Remove_projectiles_showcase.gd" id="7_77xup"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="8_ei452"]
+[ext_resource type="Texture2D" uid="uid://4qygjbrsdyte" path="res://NZ_projectiles/Textures/icon.png" id="9_8a3p0"]
+[ext_resource type="PackedScene" uid="uid://b4imirjj2ustx" path="res://NZ_projectiles/Other/Area_2d_remove_projectiles.tscn" id="11_xtq8r"]
+
+[sub_resource type="Resource" id="Resource_a2ffb"]
+script = ExtResource("8_ei452")
+add_those_degrees = 0.0
+
+[sub_resource type="Animation" id="Animation_5qmcv"]
+resource_name = "moving_sprite2D"
+length = 4.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-128, 0), Vector2(0, -128), Vector2(128, 0), Vector2(0, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0x8yw"]
+_data = {
+"moving_sprite2D": SubResource("Animation_5qmcv")
+}
+
+[node name="Extended" type="Node" node_paths=PackedStringArray("projectile", "moving_node2D")]
+script = ExtResource("1_xo7oi")
+projectile = NodePath("ProjectileExtended")
+moving_node2D = NodePath("Node2D/Sprite2D")
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 128.0
+text = "Main"
+script = ExtResource("1_6s6dx")
+change_to_this_scene = "res://NZ_projectiles/Scenes/Main.tscn"
+
+[node name="More" type="Button" parent="Buttons"]
+offset_left = 832.0
+offset_top = 576.0
+offset_right = 1088.0
+offset_bottom = 640.0
+text = "More"
+script = ExtResource("1_6s6dx")
+change_to_this_scene = "res://NZ_projectiles/Scenes/More.tscn"
+
+[node name="Remove_projectiles" type="Button" parent="Buttons" node_paths=PackedStringArray("dont_remove_this")]
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 576.0
+offset_bottom = 128.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Remove projectiles"
+script = ExtResource("3_75ytm")
+dont_remove_this = NodePath("../../ProjectileExtended")
+
+[node name="Remove_characters" type="Button" parent="Buttons"]
+offset_left = 640.0
+offset_top = 64.0
+offset_right = 832.0
+offset_bottom = 128.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Remove characters"
+script = ExtResource("6_bqw48")
+
+[node name="ID" type="Button" parent="Buttons"]
+offset_left = 896.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 128.0
+text = "ID"
+script = ExtResource("1_6s6dx")
+change_to_this_scene = "res://NZ_projectiles/Scenes/ID.tscn"
+
+[node name="Atk_change" type="Button" parent="Buttons" node_paths=PackedStringArray("markers_projectiles", "markers_characters")]
+offset_left = 64.0
+offset_top = 576.0
+offset_right = 256.0
+offset_bottom = 640.0
+text = "atk change"
+script = ExtResource("2_fw0ym")
+markers_projectiles = [NodePath("../../Markers_for_projectiles/Marker2D"), NodePath("../../Markers_for_projectiles/Marker2D3")]
+markers_characters = [NodePath("../../Markers_for_characters/Marker2D1"), NodePath("../../Markers_for_characters/Marker2D3")]
+
+[node name="Speed_change" type="Button" parent="Buttons" node_paths=PackedStringArray("markers_projectiles", "markers_characters")]
+offset_left = 320.0
+offset_top = 576.0
+offset_right = 512.0
+offset_bottom = 640.0
+text = "speed change"
+script = ExtResource("2_7diba")
+markers_projectiles = [NodePath("../../Markers_for_projectiles/Marker2D"), NodePath("../../Markers_for_projectiles/Marker2D3"), NodePath("../../Markers_for_projectiles/Marker2D5")]
+markers_characters = [NodePath("../../Markers_for_characters/Marker2D1"), NodePath("../../Markers_for_characters/Marker2D3"), NodePath("../../Markers_for_characters/Marker2D5")]
+
+[node name="Remove projectiles" type="Button" parent="Buttons" node_paths=PackedStringArray("markers_projectiles", "markers_characters")]
+offset_left = 576.0
+offset_top = 576.0
+offset_right = 768.0
+offset_bottom = 640.0
+text = "Remove projectiles"
+script = ExtResource("7_77xup")
+markers_projectiles = [NodePath("../../Markers_for_projectiles/Marker2D"), NodePath("../../Markers_for_projectiles/Marker2D3"), NodePath("../../Markers_for_projectiles/Marker2D5")]
+markers_characters = [NodePath("../../Markers_for_characters/Marker2D-1"), NodePath("../../Markers_for_characters/Marker2D0"), NodePath("../../Markers_for_characters/Marker2D1"), NodePath("../../Markers_for_characters/Marker2D3"), NodePath("../../Markers_for_characters/Marker2D5")]
+
+[node name="Markers_for_projectiles" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers_for_projectiles"]
+position = Vector2(128, 256)
+
+[node name="Marker2D2" type="Marker2D" parent="Markers_for_projectiles"]
+position = Vector2(128, 320)
+
+[node name="Marker2D3" type="Marker2D" parent="Markers_for_projectiles"]
+position = Vector2(128, 384)
+
+[node name="Marker2D4" type="Marker2D" parent="Markers_for_projectiles"]
+position = Vector2(128, 448)
+
+[node name="Marker2D5" type="Marker2D" parent="Markers_for_projectiles"]
+position = Vector2(128, 512)
+
+[node name="Markers_for_characters" type="Node" parent="."]
+
+[node name="Marker2D-1" type="Marker2D" parent="Markers_for_characters"]
+position = Vector2(384, 256)
+
+[node name="Marker2D0" type="Marker2D" parent="Markers_for_characters"]
+position = Vector2(512, 256)
+
+[node name="Marker2D1" type="Marker2D" parent="Markers_for_characters"]
+position = Vector2(640, 256)
+
+[node name="Marker2D2" type="Marker2D" parent="Markers_for_characters"]
+position = Vector2(640, 320)
+
+[node name="Marker2D3" type="Marker2D" parent="Markers_for_characters"]
+position = Vector2(640, 384)
+
+[node name="Marker2D4" type="Marker2D" parent="Markers_for_characters"]
+position = Vector2(640, 448)
+
+[node name="Marker2D5" type="Marker2D" parent="Markers_for_characters"]
+position = Vector2(640, 512)
+
+[node name="ProjectileExtended" parent="." instance=ExtResource("7_3uxkj")]
+position = Vector2(832, 448)
+scale = Vector2(1, 1)
+r_move_extended = SubResource("Resource_a2ffb")
+speed = 150
+life_time = 0.0
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(960, 320)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-128, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_8a3p0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0x8yw")
+}
+autoplay = "moving_sprite2D"
+
+[node name="Area2DRemoveProjectiles" parent="." instance=ExtResource("11_xtq8r")]
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/More" to="Buttons/More" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Remove_projectiles" to="Buttons/Remove_projectiles" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Remove_characters" to="Buttons/Remove_characters" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/ID" to="Buttons/ID" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Atk_change" to="Buttons/Atk_change" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Speed_change" to="Buttons/Speed_change" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Remove projectiles" to="Buttons/Remove projectiles" method="_on_pressed"]
