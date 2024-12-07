@@ -16,7 +16,7 @@ config/tags=PackedStringArray("showcase")
 run/main_scene="res://NZ_projectiles/Scenes/Main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/show_image=false
-config/icon="res://NZ_projectiles/Textures/icon.png"
+config/icon="res://NZ_projectiles/Textures/NZ_projectiles_icon.png"
 
 [display]
 
