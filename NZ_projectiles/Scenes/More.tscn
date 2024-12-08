@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://fkv6xi14a6n8"]
+[gd_scene load_steps=36 format=3 uid="uid://fkv6xi14a6n8"]
 
 [ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_2ctdq"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_urunl"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="13_gaqke"]
 [ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_random_range.gd" id="13_y22oh"]
 [ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_position.gd" id="15_tj116"]
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_direction.gd" id="16_7v58y"]
 [ext_resource type="PackedScene" uid="uid://b81fpa7ultf22" path="res://NZ_projectiles/Characters/TestCharacter2.tscn" id="18_tghew"]
 
 [sub_resource type="Resource" id="Resource_e2n2m"]
@@ -91,6 +92,24 @@ script = ExtResource("13_gaqke")
 script = ExtResource("15_tj116")
 name_hit_extended = &"change_position"
 
+[sub_resource type="Resource" id="Resource_gq4du"]
+script = ExtResource("16_7v58y")
+direction = Vector2(-0.75, 0.25)
+look_at_this_direction = false
+add_this_degrees = 0.0
+
+[sub_resource type="Resource" id="Resource_0cpbd"]
+script = ExtResource("16_7v58y")
+direction = Vector2(0.95, -0.1)
+look_at_this_direction = false
+add_this_degrees = -248.5
+
+[sub_resource type="Resource" id="Resource_ullv5"]
+script = ExtResource("16_7v58y")
+direction = Vector2(-0.15, -0.45)
+look_at_this_direction = false
+add_this_degrees = 45.0
+
 [node name="More" type="Node"]
 
 [node name="Buttons" type="Node" parent="."]
@@ -109,8 +128,8 @@ change_to_this_scene = "res://NZ_projectiles/Scenes/Extended.tscn"
 
 [node name="Projectiles" type="Node" parent="."]
 
-[node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("2_urunl")]
-position = Vector2(48, 600)
+[node name="ProjectileExtendedExperimental" parent="Projectiles" instance=ExtResource("2_urunl")]
+position = Vector2(48, 616)
 r_speed_change = SubResource("Resource_6jm18")
 speed = 250
 life_time = 0.0
@@ -140,6 +159,32 @@ atk = 25
 speed = 250
 life_time = 1.6
 name_type = &"character_class"
+
+[node name="ProjectileExtended5" parent="Projectiles" instance=ExtResource("2_urunl")]
+z_index = -5
+position = Vector2(192, 512)
+duplicate_resources = false
+r_speed_change = SubResource("Resource_gbe0s")
+r_move_extended = SubResource("Resource_gq4du")
+atk = 25
+life_time = 3.36
+
+[node name="ProjectileExtended6" parent="Projectiles" instance=ExtResource("2_urunl")]
+position = Vector2(192, 512)
+duplicate_resources = false
+r_speed_change = SubResource("Resource_gbe0s")
+r_move_extended = SubResource("Resource_0cpbd")
+atk = 25
+life_time = 3.36
+
+[node name="ProjectileExtended7" parent="Projectiles" instance=ExtResource("2_urunl")]
+z_index = 5
+position = Vector2(192, 512)
+duplicate_resources = false
+r_speed_change = SubResource("Resource_gbe0s")
+r_move_extended = SubResource("Resource_ullv5")
+atk = 25
+life_time = 3.36
 
 [node name="Characters" type="Node" parent="."]
 
@@ -192,9 +237,9 @@ metadata/_edit_lock_ = true
 
 [node name="LabelExperimental" type="Label" parent="."]
 offset_left = 48.0
-offset_top = 536.0
+offset_top = 568.0
 offset_right = 152.0
-offset_bottom = 559.0
+offset_bottom = 591.0
 text = "experimental"
 
 [connection signal="pressed" from="Buttons/Extended" to="Buttons/Extended" method="_on_pressed"]

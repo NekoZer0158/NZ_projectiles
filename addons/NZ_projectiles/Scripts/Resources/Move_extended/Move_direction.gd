@@ -16,7 +16,7 @@ func move_extended(projectile:Projectile,delta:float) -> void:
 		projectile.look_at(projectile.global_position+direction)
 		look_at_this_direction = false
 	if !added_degrees:
-		if add_this_degrees > 0:
+		if add_this_degrees != 0:
 			projectile.rotation_degrees += add_this_degrees
 		added_degrees = true
 	projectile.position += direction*projectile.speed*delta
