@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://fkv6xi14a6n8"]
+[gd_scene load_steps=35 format=3 uid="uid://fkv6xi14a6n8"]
 
 [ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_2ctdq"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_urunl"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time.gd" id="12_7ujc8"]
 [ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="12_xtkpt"]
 [ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="13_gaqke"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_random_range.gd" id="13_y22oh"]
 [ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_position.gd" id="15_tj116"]
 [ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_direction.gd" id="16_7v58y"]
 [ext_resource type="PackedScene" uid="uid://b81fpa7ultf22" path="res://NZ_projectiles/Characters/TestCharacter2.tscn" id="18_tghew"]
@@ -75,15 +74,17 @@ increase_atk_to_this = 100
 atk_step = 25
 time = 0.5
 
-[sub_resource type="Resource" id="Resource_yqa5e"]
-script = ExtResource("13_y22oh")
-min_value = -350
-max_value = -325
+[sub_resource type="Resource" id="Resource_5imxp"]
+script = ExtResource("5_hfff0")
+increase_to_this_amount = -335
+step = 200
+type_of_increase = 0
+time_for_increase = 0.0
 
 [sub_resource type="Resource" id="Resource_gbe0s"]
 script = ExtResource("4_i8iv7")
 time = 2.0
-after_condition_speed_change = SubResource("Resource_yqa5e")
+after_condition_speed_change = SubResource("Resource_5imxp")
 
 [sub_resource type="Resource" id="Resource_iau8b"]
 script = ExtResource("13_gaqke")
