@@ -72,7 +72,7 @@ offset_bottom = 128.0
 focus_mode = 0
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "Remove projectiles"
+text = "Free projectiles"
 script = ExtResource("3_75ytm")
 dont_remove_this = NodePath("../../ProjectileExtended")
 
@@ -84,7 +84,7 @@ offset_bottom = 128.0
 focus_mode = 0
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "Remove characters"
+text = "Free characters"
 script = ExtResource("6_bqw48")
 
 [node name="ID" type="Button" parent="Buttons"]
