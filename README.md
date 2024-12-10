@@ -15,3 +15,6 @@ You can set a resource to change projectiles speed, atk, movement, hit arguments
 
 ### Removal
 ![Gif_4](/NZ_projectiles/gifs/gif_4.gif)
+
+### Combined
+![Gif_5](/NZ_projectiles/gifs/gif_5.gif)
