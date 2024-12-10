@@ -60,6 +60,7 @@ immortality_seconds = 0.15
 [sub_resource type="Resource" id="Resource_fr2vd"]
 script = ExtResource("8_opr1k")
 particle_scene = ExtResource("7_3i6oc")
+make_particle_look_backwards = true
 
 [sub_resource type="Resource" id="Resource_7hano"]
 script = ExtResource("7_uyhmn")
@@ -135,14 +136,14 @@ r_speed_change = SubResource("Resource_6jm18")
 speed = 250
 life_time = 0.0
 
-[node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("2_urunl")]
+[node name="ProjectileExtended1" parent="Projectiles" instance=ExtResource("2_urunl")]
 position = Vector2(192, 128)
 id = 2
 r_hit_extended = SubResource("Resource_7nex2")
 r_remove_projectile = SubResource("Resource_7hano")
 atk = 0
 
-[node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("2_urunl")]
+[node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("2_urunl")]
 position = Vector2(192, 256)
 id = 2
 r_atk_change = SubResource("Resource_pya0y")
@@ -151,7 +152,7 @@ r_remove_projectile = SubResource("Resource_iau8b")
 atk = 25
 life_time = 3.3
 
-[node name="ProjectileExtended4" parent="Projectiles" instance=ExtResource("2_urunl")]
+[node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("2_urunl")]
 position = Vector2(192, 384)
 id = 2
 r_hit_extended = SubResource("Resource_s3ibq")
@@ -161,7 +162,7 @@ speed = 250
 life_time = 1.6
 name_type = &"character_class"
 
-[node name="ProjectileExtended5" parent="Projectiles" instance=ExtResource("2_urunl")]
+[node name="ProjectileExtended4" parent="Projectiles" instance=ExtResource("2_urunl")]
 z_index = -5
 position = Vector2(192, 512)
 duplicate_resources = false
@@ -170,7 +171,7 @@ r_move_extended = SubResource("Resource_gq4du")
 atk = 25
 life_time = 3.36
 
-[node name="ProjectileExtended6" parent="Projectiles" instance=ExtResource("2_urunl")]
+[node name="ProjectileExtended5" parent="Projectiles" instance=ExtResource("2_urunl")]
 position = Vector2(192, 512)
 duplicate_resources = false
 r_speed_change = SubResource("Resource_gbe0s")
@@ -178,7 +179,7 @@ r_move_extended = SubResource("Resource_0cpbd")
 atk = 25
 life_time = 3.36
 
-[node name="ProjectileExtended7" parent="Projectiles" instance=ExtResource("2_urunl")]
+[node name="ProjectileExtended6" parent="Projectiles" instance=ExtResource("2_urunl")]
 z_index = 5
 position = Vector2(192, 512)
 duplicate_resources = false

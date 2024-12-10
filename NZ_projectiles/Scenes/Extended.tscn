@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://NZ_projectiles/Scripts/Extended.gd" id="1_xo7oi"]
 [ext_resource type="Script" path="res://NZ_projectiles/Scripts/Speed_change.gd" id="2_7diba"]
 [ext_resource type="Script" path="res://NZ_projectiles/Scripts/Atk_change.gd" id="2_fw0ym"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Remove_projectiles.gd" id="3_75ytm"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Remove_characters.gd" id="6_bqw48"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Free_projectiles.gd" id="3_75ytm"]
+[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Free_characters.gd" id="6_bqw48"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="7_3uxkj"]
 [ext_resource type="Script" path="res://NZ_projectiles/Scripts/Remove_projectiles_showcase.gd" id="7_77xup"]
 [ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="8_ei452"]
@@ -64,7 +64,7 @@ text = "More"
 script = ExtResource("1_6s6dx")
 change_to_this_scene = "res://NZ_projectiles/Scenes/More.tscn"
 
-[node name="Remove_projectiles" type="Button" parent="Buttons" node_paths=PackedStringArray("dont_remove_this")]
+[node name="Free_projectiles" type="Button" parent="Buttons" node_paths=PackedStringArray("dont_remove_this")]
 offset_left = 384.0
 offset_top = 64.0
 offset_right = 576.0
@@ -76,7 +76,7 @@ text = "Free projectiles"
 script = ExtResource("3_75ytm")
 dont_remove_this = NodePath("../../ProjectileExtended")
 
-[node name="Remove_characters" type="Button" parent="Buttons"]
+[node name="Free_characters" type="Button" parent="Buttons"]
 offset_left = 640.0
 offset_top = 64.0
 offset_right = 832.0
@@ -204,8 +204,8 @@ autoplay = "moving_sprite2D"
 
 [connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/More" to="Buttons/More" method="_on_pressed"]
-[connection signal="pressed" from="Buttons/Remove_projectiles" to="Buttons/Remove_projectiles" method="_on_pressed"]
-[connection signal="pressed" from="Buttons/Remove_characters" to="Buttons/Remove_characters" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Free_projectiles" to="Buttons/Free_projectiles" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Free_characters" to="Buttons/Free_characters" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/ID" to="Buttons/ID" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Atk_change" to="Buttons/Atk_change" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Speed_change" to="Buttons/Speed_change" method="_on_pressed"]

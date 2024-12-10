@@ -14,7 +14,7 @@ var me : RP_spawn_projectile
 func remove_projectile(projectile:Projectile) -> void:
 	if spawn_this_projectile != null:
 		var spawn_this : Node2D = spawn_this_projectile.instantiate()
-		var tree_node
+		var tree_node : SceneTree
 		spawn_this.position = projectile.position
 		if immortality_seconds > 0 and spawn_this is Area2D:
 			spawn_this.monitoring = false

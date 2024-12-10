@@ -15,5 +15,5 @@ func move_extended(projectile:Projectile,delta:float) -> void:
 			projectile.rotation_degrees += add_those_degrees
 		added_degrees = true
 	if is_instance_valid(move_to_this_node2D):
-		projectile.position += projectile.transform.x*projectile.speed*delta#*projectile.global_position.direction_to(move_to_this_node2D.global_position)
+		projectile.position += projectile.transform.x*projectile.speed*delta
 		projectile.look_at(move_to_this_node2D.global_position)
