@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NZ_projectiles"
-config/version="1.0"
+config/version="1.14"
 config/tags=PackedStringArray("example")
 run/main_scene="res://NZ_projectiles/Scenes/Main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
