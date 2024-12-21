@@ -38,7 +38,7 @@ func _physics_process(delta:float):
 		move(delta)
 
 func move(delta:float) -> void:
-	position += transform.x*speed * delta
+	position += transform.x*speed*delta
 
 func set_everything() -> void:
 	# Life timer

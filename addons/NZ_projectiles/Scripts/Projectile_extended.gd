@@ -15,17 +15,20 @@ extends Projectile
 
 enum {QUEUE_FREE,FREE,ACTIVATE_REMOVE_RESOURCE}
 
+var can_move: bool = true
+
 func _ready() -> void:
 	super()
 	check_everything()
 
 func move(delta:float) -> void:
-	if r_speed_change != null:
-		speed = r_speed_change.change_speed(speed)
-	if r_move_extended == null:
-		position += transform.x*speed * delta
-	else:
-		r_move_extended.move_extended(self,delta)
+	if can_move:
+		if r_speed_change != null:
+			speed = r_speed_change.change_speed(speed)
+		if r_move_extended == null:
+			position += transform.x*speed * delta
+		else:
+			r_move_extended.move_extended(self,delta)
 
 func check_everything() -> void:
 	if duplicate_resources:
