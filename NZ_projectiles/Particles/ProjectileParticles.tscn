@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pnq0dpujt47r"]
 
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/One_shot_particle.gd" id="1_tgm28"]
+[ext_resource type="Script" uid="uid://chrdj6mvs8j3p" path="res://NZ_projectiles/Scripts/One_shot_particle.gd" id="1_tgm28"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8sc8m"]
 lifetime_randomness = 0.62

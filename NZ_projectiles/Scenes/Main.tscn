@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bee071hagdxor"]
 
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_0asq7"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_0asq7"]
 [ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="1_yfy0e"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Activate_projectile.gd" id="2_3q71x"]
+[ext_resource type="Script" uid="uid://df4a3ppscidvn" path="res://NZ_projectiles/Scripts/Activate_projectile.gd" id="2_3q71x"]
 [ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="2_fsmqh"]
 [ext_resource type="PackedScene" uid="uid://b81fpa7ultf22" path="res://NZ_projectiles/Characters/TestCharacter2.tscn" id="2_scd4e"]
 [ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="4_h00q3"]

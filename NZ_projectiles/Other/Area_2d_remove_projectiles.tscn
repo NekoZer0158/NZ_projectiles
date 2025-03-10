@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4imirjj2ustx"]
 
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Area_remove_projectiles.gd" id="1_5ngyj"]
+[ext_resource type="Script" uid="uid://dprs7dmnw351o" path="res://NZ_projectiles/Scripts/Area_remove_projectiles.gd" id="1_5ngyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vx6cp"]
 size = Vector2(26, 833)

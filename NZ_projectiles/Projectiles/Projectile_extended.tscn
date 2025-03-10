@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://doowcribc7isn"]
 
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Projectile_extended.gd" id="1_56y4e"]
+[ext_resource type="Script" uid="uid://ca862jsq8jq5c" path="res://addons/NZ_projectiles/Scripts/Projectile_extended.gd" id="1_56y4e"]
 [ext_resource type="Texture2D" uid="uid://btn8hfoopqij2" path="res://addons/NZ_projectiles/Icons/Projectile_extended.svg" id="2_weig1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3xv1"]

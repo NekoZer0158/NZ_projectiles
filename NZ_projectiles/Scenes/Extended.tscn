@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://mlotudq5ebwd"]
 
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_6s6dx"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Extended.gd" id="1_xo7oi"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Speed_change.gd" id="2_7diba"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Atk_change.gd" id="2_fw0ym"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Free_projectiles.gd" id="3_75ytm"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Free_characters.gd" id="6_bqw48"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_6s6dx"]
+[ext_resource type="Script" uid="uid://b6ir4ensqc6td" path="res://NZ_projectiles/Scripts/Extended.gd" id="1_xo7oi"]
+[ext_resource type="Script" uid="uid://xb7p1ih0uks8" path="res://NZ_projectiles/Scripts/Speed_change.gd" id="2_7diba"]
+[ext_resource type="Script" uid="uid://bu6af4284xyf0" path="res://NZ_projectiles/Scripts/Atk_change.gd" id="2_fw0ym"]
+[ext_resource type="Script" uid="uid://bpv8740c6cq0c" path="res://NZ_projectiles/Scripts/Free_projectiles.gd" id="3_75ytm"]
+[ext_resource type="Script" uid="uid://r4k0f8gyejkl" path="res://NZ_projectiles/Scripts/Free_characters.gd" id="6_bqw48"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="7_3uxkj"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Remove_projectiles_showcase.gd" id="7_77xup"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="8_ei452"]
+[ext_resource type="Script" uid="uid://ddqenaqulg2pm" path="res://NZ_projectiles/Scripts/Remove_projectiles_showcase.gd" id="7_77xup"]
+[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="8_ei452"]
 [ext_resource type="Texture2D" uid="uid://4qygjbrsdyte" path="res://NZ_projectiles/Textures/icon.png" id="9_8a3p0"]
 [ext_resource type="PackedScene" uid="uid://b4imirjj2ustx" path="res://NZ_projectiles/Other/Area_2d_remove_projectiles.tscn" id="11_xtq8r"]
 
@@ -36,7 +36,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0x8yw"]
 _data = {
-"moving_sprite2D": SubResource("Animation_5qmcv")
+&"moving_sprite2D": SubResource("Animation_5qmcv")
 }
 
 [node name="Extended" type="Node" node_paths=PackedStringArray("projectile", "moving_node2D")]

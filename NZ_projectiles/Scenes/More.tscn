@@ -1,21 +1,21 @@
 [gd_scene load_steps=35 format=3 uid="uid://fkv6xi14a6n8"]
 
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_2ctdq"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_2ctdq"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_urunl"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_reset.gd" id="3_3jyq6"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_condition_timer.gd" id="4_i8iv7"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_increase.gd" id="5_hfff0"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_ID.gd" id="6_lcnt8"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_spawn_projectile.gd" id="6_mafij"]
+[ext_resource type="Script" uid="uid://b8q2gu8rd8gim" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_reset.gd" id="3_3jyq6"]
+[ext_resource type="Script" uid="uid://4oqjcel8phhq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_condition_timer.gd" id="4_i8iv7"]
+[ext_resource type="Script" uid="uid://3lsagrcnl1eq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_increase.gd" id="5_hfff0"]
+[ext_resource type="Script" uid="uid://dlm84lgs0idvn" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_ID.gd" id="6_lcnt8"]
+[ext_resource type="Script" uid="uid://dubok7st7or6p" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_spawn_projectile.gd" id="6_mafij"]
 [ext_resource type="PackedScene" uid="uid://pnq0dpujt47r" path="res://NZ_projectiles/Particles/ProjectileParticles.tscn" id="7_3i6oc"]
 [ext_resource type="PackedScene" uid="uid://bcpnkgwrpbcqy" path="res://NZ_projectiles/Projectiles/Projectile_extended2.tscn" id="7_bkp2j"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="7_uyhmn"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Particle_projectile.gd" id="8_opr1k"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time.gd" id="12_7ujc8"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="7_uyhmn"]
+[ext_resource type="Script" uid="uid://cxp2v5xu7q61e" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Particle_projectile.gd" id="8_opr1k"]
+[ext_resource type="Script" uid="uid://ckrw43oc68dee" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time.gd" id="12_7ujc8"]
 [ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="12_xtkpt"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="13_gaqke"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_position.gd" id="15_tj116"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_direction.gd" id="16_7v58y"]
+[ext_resource type="Script" uid="uid://pva0gwyf8ta6" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="13_gaqke"]
+[ext_resource type="Script" uid="uid://1wqmrl3fc3w7" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_position.gd" id="15_tj116"]
+[ext_resource type="Script" uid="uid://i78qqsy1s5m7" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_direction.gd" id="16_7v58y"]
 [ext_resource type="PackedScene" uid="uid://b81fpa7ultf22" path="res://NZ_projectiles/Characters/TestCharacter2.tscn" id="18_tghew"]
 
 [sub_resource type="Resource" id="Resource_e2n2m"]
@@ -92,6 +92,7 @@ script = ExtResource("13_gaqke")
 
 [sub_resource type="Resource" id="Resource_s3ibq"]
 script = ExtResource("15_tj116")
+position_type = 1
 name_hit_extended = &"change_position"
 
 [sub_resource type="Resource" id="Resource_gq4du"]

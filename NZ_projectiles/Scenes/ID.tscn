@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=4 uid="uid://8lnyvxhypgcw"]
 
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_63vyl"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_63vyl"]
 [ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="2_1esb7"]
-[ext_resource type="Script" path="res://NZ_projectiles/Scripts/Tile_map_layer.gd" id="3_8hdi7"]
+[ext_resource type="Script" uid="uid://5uj8wpmv5dm0" path="res://NZ_projectiles/Scripts/Tile_map_layer.gd" id="3_8hdi7"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="3_8omnb"]
 [ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="3_k5qc8"]
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_ID.gd" id="4_dik76"]
+[ext_resource type="Script" uid="uid://dlm84lgs0idvn" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_ID.gd" id="4_dik76"]
 
 [sub_resource type="Resource" id="Resource_ikcsy"]
 script = ExtResource("4_dik76")
