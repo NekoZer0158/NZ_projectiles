@@ -2,6 +2,7 @@
 class_name Move_to_node2D_projectile
 extends Move_extended_projectile
 
+@export var look_at_this_node : bool = false
 @export_range(-360,360,0.5,"suffix:°") var add_those_degrees : float = 0
 
 var move_to_this_node2D : Node2D ## Set this through ProjectileSetter
@@ -15,5 +16,8 @@ func move_extended(projectile:Projectile,delta:float) -> void:
 			projectile.rotation_degrees += add_those_degrees
 		added_degrees = true
 	if is_instance_valid(move_to_this_node2D):
-		projectile.position += projectile.transform.x*projectile.speed*delta
-		projectile.look_at(move_to_this_node2D.global_position)
+		if look_at_this_node:
+			projectile.position += projectile.transform.x*projectile.speed*delta
+			projectile.look_at(move_to_this_node2D.global_position)
+		else:
+			projectile.position += projectile.speed*delta*projectile.global_position.direction_to(move_to_this_node2D.global_position)
