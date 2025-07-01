@@ -5,7 +5,7 @@ Plugin for Godot that adds a projectile system. There are two projectile classes
 ### 1.16
 	Added changelog
 	Changed function name from chech_if_resource_has_ready_method to check_if_resource_has_ready_method
-	Removed set(value) for min_value and max_value in AC_random_range, because it didn't work if min_value was greater than max_value
+	Removed set(value) for min_value and max_value in AC_random_range, because it didn't work if min_value was greater than 0
 	set_direction in ProjectileSetter stopped making errors every time it's used
 
 ## Projectile
