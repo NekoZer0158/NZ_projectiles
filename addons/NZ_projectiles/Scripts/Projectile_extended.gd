@@ -42,15 +42,18 @@ func check_everything() -> void:
 			r_hit_extended = r_hit_extended.duplicate(true)
 		if ProjectileChecks.check_resource_if_needed_to_duplicate(self,r_speed_change):
 			r_speed_change = r_speed_change.duplicate(true)
-	chech_if_resource_has_ready_method(r_speed_change)
-	chech_if_resource_has_ready_method(r_atk_change)
+	check_if_resource_has_ready_method(r_speed_change)
+	check_if_resource_has_ready_method(r_atk_change)
 	if r_speed_change != null:
 		r_speed_change.activate()
 
-func chech_if_resource_has_ready_method(resource:Resource) -> void:
+func check_if_resource_has_ready_method(resource:Resource) -> void:
 	if resource != null:
 		if resource.has_method("_ready"):
 			resource.call("_ready",self)
+
+func chech_if_resource_has_ready_method(resource:Resource) -> void: ## @deprecated
+	chech_if_resource_has_ready_method(resource)
 
 func hit_body(body:Node2D) -> void:
 	if r_hit_extended == null:

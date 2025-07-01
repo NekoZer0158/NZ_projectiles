@@ -1,6 +1,13 @@
 # NZ projectiles
 Plugin for Godot that adds a projectile system. There are two projectile classes, base one and extended, to which you can add more stuff, like changing speed every second or making it disappear only after interacting with 3 objects.
 
+## Changelog
+###1.16
+	Added changelog
+	Changed function name from chech_if_resource_has_ready_method to check_if_resource_has_ready_method
+	Removed set(value) for min_value and max_value in AC_random_range, because it didn't work if min_value was greater than max_value
+	set_direction in ProjectileSetter stopped making errors every time it's used
+
 ## Projectile
 ![Gif_1](/NZ_projectiles/gifs/gif_1.gif)
 

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="NZ_projectiles"
-config/version="1.15"
-config/tags=PackedStringArray("example")
+config/version="1.16"
+config/tags=PackedStringArray("example", "plugins")
 run/main_scene="res://NZ_projectiles/Scenes/Main.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/show_image=false
