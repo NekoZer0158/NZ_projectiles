@@ -2,6 +2,7 @@
 class_name Move_to_node2D_projectile
 extends Move_extended_projectile
 
+#@export var node_path : String
 @export var look_at_this_node : bool = false
 @export_range(-360,360,0.5,"suffix:°") var add_those_degrees : float = 0
 
@@ -9,6 +10,12 @@ var move_to_this_node2D : Node2D ## Set this through ProjectileSetter
 var added_degrees : bool = false
 
 const CREATE_DUPLICATE :int = 1
+
+# if this doesn't work properly, change get_tree().current_scene to the new one, if you changing main scene to another one
+#func _ready(parent_node:Projectile) -> void:
+	#if !node_path.is_empty():
+		#var scene_main_node := parent_node.get_tree().current_scene
+		#scene_main_node.get_node(node_path)
 
 func move_extended(projectile:Projectile,delta:float) -> void:
 	if !added_degrees:

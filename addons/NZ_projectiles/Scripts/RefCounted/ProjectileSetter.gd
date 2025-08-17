@@ -3,6 +3,9 @@ class_name ProjectileSetter
 extends RefCounted
 
 static func set_node_to_which_projectile_moves_to(projectile:Projectile_extended,to_this_node:Node2D,set_resource:bool=false,look_at_this_node:bool=true) -> void:
+	if !is_instance_valid(to_this_node):
+		push_error("to_this_node isn't valid")
+		return
 	if projectile.r_move_extended != null or set_resource:
 		if set_resource:
 			projectile.r_move_extended = Move_to_node2D_projectile.new()

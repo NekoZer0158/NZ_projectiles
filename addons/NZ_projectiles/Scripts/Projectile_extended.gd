@@ -43,6 +43,7 @@ func check_everything() -> void:
 		if ProjectileChecks.check_resource_if_needed_to_duplicate(self,r_speed_change):
 			r_speed_change = r_speed_change.duplicate(true)
 	check_if_resource_has_ready_method(r_speed_change)
+	check_if_resource_has_ready_method(r_move_extended)
 	check_if_resource_has_ready_method(r_atk_change)
 	if r_speed_change != null:
 		r_speed_change.activate()
