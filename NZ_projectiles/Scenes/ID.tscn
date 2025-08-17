@@ -15,11 +15,12 @@ name_hit_extended = &"hit_extended"
 
 [node name="Buttons" type="Node" parent="."]
 
-[node name="Main" type="Button" parent="Buttons"]
+[node name="Extended" type="Button" parent="Buttons"]
 offset_left = 896.0
 offset_top = 64.0
 offset_right = 1088.0
 offset_bottom = 128.0
+focus_mode = 0
 text = "Extended"
 script = ExtResource("1_63vyl")
 change_to_this_scene = "res://NZ_projectiles/Scenes/Extended.tscn"
@@ -81,5 +82,5 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Extended" to="Buttons/Extended" method="_on_pressed"]
 [connection signal="remove_tile_map_layer" from="Characters/TestCharacter2" to="Static/TileMapLayer" method="_remove_tile_map_layer"]

@@ -89,13 +89,24 @@ text = "Free characters"
 script = ExtResource("6_bqw48")
 
 [node name="ID" type="Button" parent="Buttons"]
-offset_left = 896.0
+offset_left = 1056.0
 offset_top = 64.0
-offset_right = 1088.0
+offset_right = 1120.0
 offset_bottom = 128.0
+focus_mode = 0
 text = "ID"
 script = ExtResource("1_6s6dx")
 change_to_this_scene = "res://NZ_projectiles/Scenes/ID.tscn"
+
+[node name="More_variables" type="Button" parent="Buttons"]
+offset_left = 896.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 128.0
+focus_mode = 0
+text = "More variables"
+script = ExtResource("1_6s6dx")
+change_to_this_scene = "uid://c3tpry1i4eh0c"
 
 [node name="Atk_change" type="Button" parent="Buttons" node_paths=PackedStringArray("markers_projectiles", "markers_characters")]
 offset_left = 64.0
@@ -208,6 +219,7 @@ autoplay = "moving_sprite2D"
 [connection signal="pressed" from="Buttons/Free_projectiles" to="Buttons/Free_projectiles" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Free_characters" to="Buttons/Free_characters" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/ID" to="Buttons/ID" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/More_variables" to="Buttons/More_variables" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Atk_change" to="Buttons/Atk_change" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Speed_change" to="Buttons/Speed_change" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Remove projectiles" to="Buttons/Remove projectiles" method="_on_pressed"]

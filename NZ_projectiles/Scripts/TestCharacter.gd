@@ -8,8 +8,16 @@ extends CharacterBody2D
 @export_enum("Neutral","Enemy") var type : int = 0
 
 var dont_print : bool = false
+var move_right : bool = false
+
+const SPEED : int = 325
 
 signal remove_tile_map_layer()
+
+func _physics_process(_delta: float) -> void:
+	if move_right:
+		velocity.x = SPEED
+		move_and_slide()
 
 func hit(atk:int) -> void:
 	hp -= atk
@@ -18,7 +26,14 @@ func hit(atk:int) -> void:
 		print("Type: ",type)
 		print("HP:",hp," | ATK:",atk)
 
-func hit_extended(_atk:int,projectile_id:int) -> void:
+func hit_extended_array(atk:int,array:Array) -> void:
+	hit(atk)
+	print("Array values: ",array)
+
+func hit_extended_3(_atk:int,_n0=null,_n1=null,_n2=null,_n3=null,projectile_id:int=0) -> void:
+	print(projectile_id)
+
+func hit_extended(_atk:int,projectile_id:int,some_bool_value:bool=false) -> void:
 	match projectile_id:
 		1:
 			if !dont_print:
@@ -36,3 +51,10 @@ func hit_extended(_atk:int,projectile_id:int) -> void:
 				print("-----------",name,"-----------")
 				print("Type changed to Neutral (0)")
 			type = 0
+		4:
+			if !dont_print:
+				print("-----------",name,"-----------")
+				print("Projectile ID is: ",projectile_id)
+				print("Character is now moving right")
+				print("Projectile remove_when_tilemap_layer:",some_bool_value)
+			move_right = true

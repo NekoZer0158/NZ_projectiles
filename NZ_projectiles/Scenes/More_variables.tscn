@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3tpry1i4eh0c"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_x5ker"]
+[ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="2_otrxk"]
+[ext_resource type="Script" uid="uid://5uj8wpmv5dm0" path="res://NZ_projectiles/Scripts/Tile_map_layer.gd" id="3_ojhcj"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="4_iglky"]
+[ext_resource type="Script" uid="uid://bivdjsw7mdpft" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_more_variables.gd" id="5_otrxk"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="6_id82e"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="6_ojhcj"]
+
+[sub_resource type="Resource" id="Resource_ojhcj"]
+script = ExtResource("5_otrxk")
+call_function_with_array = false
+more_variables_from_projectile = Array[StringName]([&"id", &"remove_when_tilemap_layer"])
+name_hit_extended = &"hit_extended"
+metadata/_custom_type_script = "uid://bivdjsw7mdpft"
+
+[sub_resource type="Resource" id="Resource_iglky"]
+script = ExtResource("6_ojhcj")
+hits_before_removing = 2
+use_particle_every_hit = false
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_j4spo"]
+script = ExtResource("5_otrxk")
+call_function_with_array = true
+more_variables_from_projectile = Array[StringName]([&"atk", &"speed", &"activated", &"remove_when_tilemap_layer", &"remove_when_static_body", &"name_type", &"name_hit", &"type", &"id", &"r_hit_extended"])
+name_hit_extended = &"hit_extended_array"
+metadata/_custom_type_script = "uid://bivdjsw7mdpft"
+
+[sub_resource type="Resource" id="Resource_otrxk"]
+script = ExtResource("5_otrxk")
+call_function_with_array = false
+more_variables_from_projectile = Array[StringName]([&"", &"", &"", &"", &"id"])
+name_hit_extended = &"hit_extended_3"
+metadata/_custom_type_script = "uid://bivdjsw7mdpft"
+
+[node name="ID" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Extended" type="Button" parent="Buttons"]
+offset_left = 896.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 128.0
+focus_mode = 0
+text = "Extended"
+script = ExtResource("1_x5ker")
+change_to_this_scene = "res://NZ_projectiles/Scenes/Extended.tscn"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Static"]
+tile_map_data = PackedByteArray(0, 0, 20, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("2_otrxk")
+script = ExtResource("3_ojhcj")
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("4_iglky")]
+z_index = 10
+position = Vector2(128, 192)
+id = 4
+r_hit_extended = SubResource("Resource_ojhcj")
+r_remove_projectile = SubResource("Resource_iglky")
+
+[node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("4_iglky")]
+z_index = 10
+position = Vector2(128, 320)
+r_hit_extended = SubResource("Resource_j4spo")
+atk = 50
+
+[node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("4_iglky")]
+z_index = 10
+position = Vector2(128, 448)
+id = 17
+r_hit_extended = SubResource("Resource_otrxk")
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="TestCharacter1" parent="Characters" instance=ExtResource("6_id82e")]
+position = Vector2(384, 192)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Characters/TestCharacter1"]
+position = Vector2(-3.8147e-06, -1.90735e-06)
+scale = Vector2(6.4, 6.4)
+
+[node name="TestCharacter2" parent="Characters" instance=ExtResource("6_id82e")]
+position = Vector2(512, 320)
+
+[node name="TestCharacter3" parent="Characters" instance=ExtResource("6_id82e")]
+position = Vector2(640, 448)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Extended" to="Buttons/Extended" method="_on_pressed"]
