@@ -2,6 +2,13 @@
 Plugin for Godot that adds a projectile system. There are two projectile classes, base one and extended, to which you can add more stuff, like changing speed every second or making it disappear only after interacting with 3 objects.
 
 ## Changelog
+
+### 1.17
+	New scene, where you can look at different variants of using HE_more_variables
+	Added remove_when_ignore_and_try_to_hit_anything to Projectile, which ignores any other remove_when and just tries to hit whatever it is
+	You can use up to 5 variables in HE_more_variables if call_function_with_array is set to false
+	You can put however many variables you want in HE_more_variables if call_function_with_array is set to true
+	Some experimentations in Move_to_node2D_projectile (they are commented)
 ### 1.16
 	Added changelog
 	Changed function name from chech_if_resource_has_ready_method to check_if_resource_has_ready_method

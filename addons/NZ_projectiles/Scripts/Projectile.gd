@@ -21,6 +21,7 @@ extends Area2D
 			else:
 				life_timer.paused = true
 @export_group("Remove when colliding with","remove_when_")
+@export var remove_when_ignore_and_try_to_hit_anything : bool = false
 @export var remove_when_tilemap_layer : bool = true
 @export var remove_when_static_body : bool = true
 @export_group("Variables and functions names","name_")
@@ -74,7 +75,7 @@ func _check_if_is_it_a_static_body(remove_if_it_is:bool,body:Node2D) -> bool:
 	return false
 
 func _on_area_2d_body_entered(body:Node2D):
-	if !_check_if_is_it_a_tilemap_layer(remove_when_tilemap_layer,body) and !_check_if_is_it_a_static_body(remove_when_static_body,body):
+	if remove_when_ignore_and_try_to_hit_anything or (!_check_if_is_it_a_tilemap_layer(remove_when_tilemap_layer,body) and !_check_if_is_it_a_static_body(remove_when_static_body,body)):
 		if ProjectileChecks.check_if_body_has_this_and_its_type(body,name_type,TYPE_INT):
 			if body.get(name_type) != type:
 				hit_body(body)
