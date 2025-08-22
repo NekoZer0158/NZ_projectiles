@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="NZ_projectiles"
-config/version="1.17"
+config/version="1.18"
 config/tags=PackedStringArray("example", "plugins")
-run/main_scene="res://NZ_projectiles/Scenes/Main.tscn"
+run/main_scene="uid://bee071hagdxor"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://NZ_projectiles/Textures/NZ_projectiles_icon.png"

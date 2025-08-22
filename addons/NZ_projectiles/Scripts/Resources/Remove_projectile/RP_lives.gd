@@ -3,10 +3,10 @@ class_name RP_lives
 extends Remove_projectile
 
 @export var hits_before_removing : int = 3
-@export var next_phase : Remove_projectile
+@export var next_phase : Remove_projectile ## After hits_before_removing becomes 0, the projectile will start using next_phase (example: after hitting 3 objects, the projectile will spawn another projectile)
 @export var use_particle_every_hit : bool = false
 
-const CREATE_DUPLICATE :int = 1
+const CREATE_DUPLICATE : bool = true
 
 func remove_projectile(projectile:Projectile) -> void:
 	hits_before_removing -= 1

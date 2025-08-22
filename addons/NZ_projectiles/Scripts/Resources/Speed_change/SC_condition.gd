@@ -3,6 +3,8 @@
 class_name SC_condition
 extends Speed_change_projectile
 
+## By default will be used speed_change, after condition is true will be used after_condition_speed_change
+
 @export var speed_change : Speed_change_projectile
 @export var after_condition_speed_change : Speed_change_projectile
 
@@ -31,6 +33,9 @@ func reset() -> void:
 		after_condition_speed_change.reset()
 	condition_is_true = false
 
+func activate() -> void:
+	pass
+
 func change_speed(projectile_speed:int) -> int:
 	if !condition_is_true:
 		if speed_change == null:
@@ -40,7 +45,7 @@ func change_speed(projectile_speed:int) -> int:
 			if speed_change.type_of_increase == speed_change.EVERY_CALL_OF_MOVE_FUNCTION:
 				return speed_change.change_speed(projectile_speed)
 		return speed_change.change_speed(projectile_speed)
-	if after_condition_speed_change is SC_increase:
+	elif after_condition_speed_change is SC_increase:
 		if after_condition_speed_change.type_of_increase == after_condition_speed_change.EVERY_CALL_OF_MOVE_FUNCTION:
 			return after_condition_speed_change.change_speed(projectile_speed)
 	after_condition_speed_change.activate()

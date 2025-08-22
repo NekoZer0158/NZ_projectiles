@@ -26,6 +26,18 @@ text = "Extended"
 script = ExtResource("1_0asq7")
 change_to_this_scene = "res://NZ_projectiles/Scenes/Extended.tscn"
 
+[node name="Sandbox" type="Button" parent="Buttons"]
+offset_left = 832.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 128.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Sandbox"
+script = ExtResource("1_0asq7")
+change_to_this_scene = "uid://6jd23jnetrrd"
+
 [node name="Activate" type="Button" parent="Buttons" node_paths=PackedStringArray("projectile")]
 offset_left = 352.0
 offset_top = 72.0
@@ -127,4 +139,5 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Buttons/Extended" to="Buttons/Extended" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Sandbox" to="Buttons/Sandbox" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Activate" to="Buttons/Activate" method="_on_pressed"]

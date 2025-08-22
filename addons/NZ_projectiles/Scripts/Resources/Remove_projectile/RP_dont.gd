@@ -2,5 +2,6 @@
 class_name RP_dont
 extends Remove_projectile
 
+## Makes projectile invinsible
 func remove_projectile(projectile:Projectile) -> void:
 	check_particle_resource(projectile)

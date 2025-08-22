@@ -4,13 +4,13 @@ extends Projectile
 
 @export var id : int
 @export_enum("Queue_free","Free","Activate remove resource") var when_colliding_with_remove_when_collide : int = 0
-@export var duplicate_resources : bool = true
-@export_group("Resources","r_")
-@export var r_atk_change : Atk_change_projectile
-@export var r_speed_change : Speed_change_projectile
-@export var r_move_extended : Move_extended_projectile
-@export var r_hit_extended : Hit_extended_projectile
-@export var r_remove_projectile : Remove_projectile
+@export var duplicate_resources : bool = true ## RECOMMENDED TO NOT DISABLE IT
+@export_group("Modules (Resources)","r_")
+@export var r_atk_change : Atk_change_projectile ## Changes projectile atk
+@export var r_speed_change : Speed_change_projectile ## Changes projectile speed
+@export var r_move_extended : Move_extended_projectile ## Changes projectile movement
+@export var r_hit_extended : Hit_extended_projectile ## Changes arguments for the "hit" function
+@export var r_remove_projectile : Remove_projectile ## Changes consequences for projectile when body enters it
 #@export var r_custom : Resource
 
 enum {QUEUE_FREE,FREE,ACTIVATE_REMOVE_RESOURCE}
@@ -26,7 +26,7 @@ func move(delta:float) -> void:
 		if r_speed_change != null:
 			speed = r_speed_change.change_speed(speed)
 		if r_move_extended == null:
-			position += transform.x*speed * delta
+			position += transform.x*speed*delta
 		else:
 			r_move_extended.move_extended(self,delta)
 
@@ -53,6 +53,7 @@ func check_if_resource_has_ready_method(resource:Resource) -> void:
 		if resource.has_method("_ready"):
 			resource.call("_ready",self)
 
+## Don't use it. It exists just to not break compatibility. Use check_if_resource_has_ready_method
 func chech_if_resource_has_ready_method(resource:Resource) -> void: ## @deprecated
 	chech_if_resource_has_ready_method(resource)
 

@@ -9,7 +9,7 @@ extends Move_extended_projectile
 var move_to_this_node2D : Node2D ## Set this through ProjectileSetter
 var added_degrees : bool = false
 
-const CREATE_DUPLICATE :int = 1
+const CREATE_DUPLICATE : bool = true
 
 # if this doesn't work properly, change get_tree().current_scene to the new one, if you changing main scene to another one
 #func _ready(parent_node:Projectile) -> void:

@@ -21,15 +21,18 @@ extends Area2D
 			else:
 				life_timer.paused = true
 @export_group("Remove when colliding with","remove_when_")
+## Ignores two variables below and just tries to hit anything
 @export var remove_when_ignore_and_try_to_hit_anything : bool = false
+## Removes projectile when it's touching TileMapLayer
 @export var remove_when_tilemap_layer : bool = true
+## Removes projectile when it's touching StaticBody2D
 @export var remove_when_static_body : bool = true
 @export_group("Variables and functions names","name_")
 @export var name_type : StringName = "type" ## Only hit if projectile type and body type isn't the same
 @export var name_hit : StringName = "hit" ## Name of the function that deals damage in body
 
 var life_timer : Timer
-var type : int
+var type : int ## projectile will hit bodies, only with a different type
 
 func _ready() -> void:
 	set_everything()

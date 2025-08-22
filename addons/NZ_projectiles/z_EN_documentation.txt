@@ -1,0 +1,20 @@
+Base:
+	Projectile - base class for projectiles, doesn't have module support.
+	Projectile_extended - a subclass of class Projectile, has module support, and also has an ID.
+	name_hit - the name for the function in a node in which the projectile entered.
+	(usually it's CharacterBody2D). By default it's "hit".
+	The plugin doesn't contain tools to spawn projectiles because it's assumed that you will do them
+	yourself (don't forget to set "type" for a projectile before spawning it).
+
+Modules:
+	Module - name for the resources, used by Projectile_extended.
+	You can use them only in Projectile_extended.
+	Atk_change_projectile - base for changing projectile damage.
+	Speed_change_projectile - base for changing projectile speed.
+	Move_extended_projectile - base for changing projectile movement.
+	Hit_extended_projectile - base for changing arguments for the "hit" function.
+	Remove_projectile - base for changing consequences for projectile when body enters it.
+
+In the folder "NZ_projectiles/Scenes", you can find scenes in which you can see different variants of
+how you can use projectiles. In the scene "Sandbox" you can try out different stuff with projectiles.
+I recommend checking scripts, where you can find information about some variables and functions.

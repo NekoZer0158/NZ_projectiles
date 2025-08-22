@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://6jd23jnetrrd"]
+
+[ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="1_caj0i"]
+[ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="1_pbkik"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_1apvk"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="3_1apvk"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="4_locgn"]
+[ext_resource type="PackedScene" uid="uid://b5bhs25pano2" path="res://NZ_projectiles/Static/Static.tscn" id="5_36sf7"]
+
+[node name="Sandbox" type="Node"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_pbkik")
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 832.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 128.0
+text = "Main"
+script = ExtResource("4_locgn")
+change_to_this_scene = "uid://bee071hagdxor"
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Projectile" parent="Projectiles" instance=ExtResource("1_caj0i")]
+position = Vector2(192, 256)
+
+[node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("2_1apvk")]
+position = Vector2(192, 512)
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="TestCharacterTop" parent="Characters" instance=ExtResource("3_1apvk")]
+position = Vector2(960, 256)
+
+[node name="TestCharacteBottom" parent="Characters" instance=ExtResource("3_1apvk")]
+position = Vector2(960, 512)
+
+[node name="Static" type="Node" parent="."]
+
+[node name="Static" parent="Static" instance=ExtResource("5_36sf7")]
+position = Vector2(128, 64)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]

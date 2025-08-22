@@ -3,4 +3,4 @@ class_name Move_extended_projectile
 extends Resource
 
 func move_extended(_projectile:Projectile,_delta:float) -> void:
-	push_warning("Don't use this class, use subclasses")
+	pass

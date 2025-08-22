@@ -61,6 +61,7 @@ offset_left = 832.0
 offset_top = 576.0
 offset_right = 1088.0
 offset_bottom = 640.0
+focus_mode = 0
 text = "More"
 script = ExtResource("1_6s6dx")
 change_to_this_scene = "res://NZ_projectiles/Scenes/More.tscn"
