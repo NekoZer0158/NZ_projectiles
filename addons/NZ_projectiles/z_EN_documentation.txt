@@ -1,7 +1,7 @@
 Base:
 	Projectile - base class for projectiles, doesn't have module support.
 	Projectile_extended - a subclass of class Projectile, has module support, and also has an ID.
-	name_hit - the name for the function in a node in which the projectile entered.
+	name_hit - the name for the function, that will be called, in a node in which the projectile entered.
 	(usually it's CharacterBody2D). By default it's "hit".
 	The plugin doesn't contain tools to spawn projectiles because it's assumed that you will do them
 	yourself (don't forget to set "type" for a projectile before spawning it).
