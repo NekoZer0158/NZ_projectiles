@@ -1,4 +1,5 @@
 @tool
+@abstract
 @icon("res://addons/NZ_projectiles/Icons/Speed_change/Speed_change.svg")
 class_name Speed_change_projectile
 extends Resource

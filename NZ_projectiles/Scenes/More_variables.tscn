@@ -10,15 +10,12 @@
 
 [sub_resource type="Resource" id="Resource_ojhcj"]
 script = ExtResource("5_otrxk")
-call_function_with_array = false
 more_variables_from_projectile = Array[StringName]([&"id", &"remove_when_tilemap_layer"])
-name_hit_extended = &"hit_extended"
 metadata/_custom_type_script = "uid://bivdjsw7mdpft"
 
 [sub_resource type="Resource" id="Resource_iglky"]
 script = ExtResource("6_ojhcj")
 hits_before_removing = 2
-use_particle_every_hit = false
 metadata/_custom_type_script = "uid://ba4edh5o6d02j"
 
 [sub_resource type="Resource" id="Resource_j4spo"]
@@ -30,7 +27,6 @@ metadata/_custom_type_script = "uid://bivdjsw7mdpft"
 
 [sub_resource type="Resource" id="Resource_otrxk"]
 script = ExtResource("5_otrxk")
-call_function_with_array = false
 more_variables_from_projectile = Array[StringName]([&"", &"", &"", &"", &"id"])
 name_hit_extended = &"hit_extended_3"
 metadata/_custom_type_script = "uid://bivdjsw7mdpft"
