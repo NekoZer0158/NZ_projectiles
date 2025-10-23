@@ -114,7 +114,6 @@ offset_right = 256.0
 offset_bottom = 640.0
 text = "atk change"
 script = ExtResource("2_fw0ym")
-debug = true
 markers_projectiles = [NodePath("../../Markers_for_projectiles/Marker2D"), NodePath("../../Markers_for_projectiles/Marker2D3"), NodePath("../../Markers_for_projectiles/Marker2D5")]
 markers_characters = [NodePath("../../Markers_for_characters/Marker2D1"), NodePath("../../Markers_for_characters/Marker2D3"), NodePath("../../Markers_for_characters/Marker2D5")]
 
