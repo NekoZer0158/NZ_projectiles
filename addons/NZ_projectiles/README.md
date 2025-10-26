@@ -3,6 +3,8 @@ Plugin for Godot that adds a projectile system. There are two projectile classes
 
 ## Changelog
 
+### 1.21
+	Removed clamp functions from SC_random_range
 ### 1.20
 	Added debug to Atk_change_time
 	New Atk_change module - ATC_multiplier, change atk by time by multiplying it by a certain value
