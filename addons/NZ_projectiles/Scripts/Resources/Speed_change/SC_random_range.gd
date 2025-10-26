@@ -3,12 +3,8 @@
 class_name SC_random_range
 extends Speed_change_projectile
 
-@export var min_value : int:
-	set(value):
-		min_value = clampi(value,value,max_value)
-@export var max_value : int:
-	set(value):
-		max_value = clampi(value,min_value,value)
+@export var min_value : int
+@export var max_value : int
 
 var cur_value : int
 
