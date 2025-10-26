@@ -2,7 +2,7 @@
 class_name ACT_multiplier
 extends AC_time
 
-func _on_timer_timeout(parent_node:Projectile) -> void:
+func _on_timer_timeout(parent_node:Node) -> void:
 	var new_attack : int = parent_node.atk*atk_step
 	if new_attack > increase_atk_to_this:
 		new_attack = increase_atk_to_this

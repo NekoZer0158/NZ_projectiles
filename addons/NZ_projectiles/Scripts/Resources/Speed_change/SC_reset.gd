@@ -3,10 +3,11 @@ class_name SC_reset
 extends Speed_change_projectile
 ## @experimental
 
-var cur_parent_node : Projectile
+var cur_parent_node : Node
 
-func _ready(parent_node:Projectile) -> void:
-	cur_parent_node = parent_node
+func _ready(parent_node:Node) -> void:
+	if ProjectileChecks.check_if_this_a_projectile(parent_node):
+		cur_parent_node = parent_node
 
 ## Resets SC_condition and SC_condition_timer, creating an infinite loop (shouldn't be used as r_speed_change)
 func change_speed(projectile_speed:int) -> int:

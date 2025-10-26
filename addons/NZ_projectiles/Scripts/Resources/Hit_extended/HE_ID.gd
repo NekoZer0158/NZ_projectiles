@@ -2,5 +2,5 @@
 class_name HE_ID
 extends Hit_extended_projectile
 
-func call_hit_extended_function(atk:int,body:Node2D,projectile:Projectile) -> void:
+func call_hit_extended_function(atk:int,body:Node,projectile:Node) -> void:
 	body.call(name_hit_extended,atk,projectile.id)

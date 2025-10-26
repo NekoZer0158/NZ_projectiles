@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ri8fan872x1w"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jr4p2"]
+height = 1.61
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jr4p2"]
+height = 1.61
+
+[node name="Grid" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_jr4p2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("CylinderShape3D_jr4p2")

@@ -11,12 +11,6 @@ var added_degrees : bool = false
 
 const CREATE_DUPLICATE : bool = true
 
-# if this doesn't work properly, change get_tree().current_scene to the new one, if you changing main scene to another one
-#func _ready(parent_node:Projectile) -> void:
-	#if !node_path.is_empty():
-		#var scene_main_node := parent_node.get_tree().current_scene
-		#scene_main_node.get_node(node_path)
-
 func move_extended(projectile:Projectile,delta:float) -> void:
 	if !added_degrees:
 		if add_those_degrees > 0:

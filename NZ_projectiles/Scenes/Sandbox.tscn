@@ -21,7 +21,7 @@ offset_right = 1088.0
 offset_bottom = 128.0
 text = "Main"
 script = ExtResource("4_locgn")
-change_to_this_scene = "uid://bee071hagdxor"
+change_to_this_scene = "uid://cgkd4refam0mw"
 
 [node name="Projectiles" type="Node" parent="."]
 

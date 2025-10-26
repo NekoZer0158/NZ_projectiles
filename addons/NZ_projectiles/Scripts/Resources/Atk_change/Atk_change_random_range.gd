@@ -6,5 +6,5 @@ extends Atk_change_projectile
 @export var min_value : int
 @export var max_value : int
 
-func _ready(parent_node:Projectile) -> void:
+func _ready_step_2(parent_node:Node) -> void:
 	parent_node.atk = randi_range(min_value,max_value)

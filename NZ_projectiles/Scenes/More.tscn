@@ -25,8 +25,6 @@ script = ExtResource("3_3jyq6")
 script = ExtResource("5_hfff0")
 increase_to_this_amount = -250
 step = 50
-type_of_increase = 0
-time_for_increase = 0.0
 
 [sub_resource type="Resource" id="Resource_f1dqc"]
 script = ExtResource("4_i8iv7")
@@ -38,8 +36,6 @@ after_condition_speed_change = SubResource("Resource_e2n2m")
 script = ExtResource("5_hfff0")
 increase_to_this_amount = 250
 step = 50
-type_of_increase = 0
-time_for_increase = 0.0
 
 [sub_resource type="Resource" id="Resource_6jm18"]
 script = ExtResource("4_i8iv7")
@@ -49,22 +45,19 @@ after_condition_speed_change = SubResource("Resource_f1dqc")
 
 [sub_resource type="Resource" id="Resource_7nex2"]
 script = ExtResource("6_lcnt8")
-name_hit_extended = &"hit_extended"
 
 [sub_resource type="Resource" id="Resource_68imq"]
 script = ExtResource("6_mafij")
 spawn_this_projectile = ExtResource("7_bkp2j")
-same_scale = true
 immortality_seconds = 0.15
 
 [sub_resource type="Resource" id="Resource_fr2vd"]
 script = ExtResource("8_opr1k")
 particle_scene = ExtResource("7_3i6oc")
-make_particle_look_backwards = true
+look_there = 1
 
 [sub_resource type="Resource" id="Resource_7hano"]
 script = ExtResource("7_uyhmn")
-hits_before_removing = 3
 next_phase = SubResource("Resource_68imq")
 use_particle_every_hit = true
 particle_resource = SubResource("Resource_fr2vd")
@@ -79,8 +72,6 @@ time = 0.5
 script = ExtResource("5_hfff0")
 increase_to_this_amount = -335
 step = 200
-type_of_increase = 0
-time_for_increase = 0.0
 
 [sub_resource type="Resource" id="Resource_gbe0s"]
 script = ExtResource("4_i8iv7")
@@ -92,25 +83,20 @@ script = ExtResource("13_gaqke")
 
 [sub_resource type="Resource" id="Resource_s3ibq"]
 script = ExtResource("15_tj116")
-position_type = 1
 name_hit_extended = &"change_position"
 
 [sub_resource type="Resource" id="Resource_gq4du"]
 script = ExtResource("16_7v58y")
 direction = Vector2(-0.75, 0.25)
-look_at_this_direction = false
-add_this_degrees = 0.0
 
 [sub_resource type="Resource" id="Resource_0cpbd"]
 script = ExtResource("16_7v58y")
 direction = Vector2(0.95, -0.1)
-look_at_this_direction = false
 add_this_degrees = -248.5
 
 [sub_resource type="Resource" id="Resource_ullv5"]
 script = ExtResource("16_7v58y")
 direction = Vector2(-0.15, -0.45)
-look_at_this_direction = false
 add_this_degrees = 45.0
 
 [node name="More" type="Node"]
@@ -139,14 +125,13 @@ life_time = 0.0
 
 [node name="ProjectileExtended1" parent="Projectiles" instance=ExtResource("2_urunl")]
 position = Vector2(192, 128)
-id = 2
 r_hit_extended = SubResource("Resource_7nex2")
 r_remove_projectile = SubResource("Resource_7hano")
+id = "instant_qf"
 atk = 0
 
 [node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("2_urunl")]
 position = Vector2(192, 256)
-id = 2
 r_atk_change = SubResource("Resource_pya0y")
 r_speed_change = SubResource("Resource_gbe0s")
 r_remove_projectile = SubResource("Resource_iau8b")
@@ -155,7 +140,6 @@ life_time = 3.3
 
 [node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("2_urunl")]
 position = Vector2(192, 384)
-id = 2
 r_hit_extended = SubResource("Resource_s3ibq")
 r_remove_projectile = SubResource("Resource_iau8b")
 atk = 25

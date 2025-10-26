@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://1wfte0br410b"]
+
+[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Projectile3D.gd" id="1_g8hw5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pydvm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8hw5"]
+transparency = 1
+albedo_color = Color(1, 0.87058824, 0.36078432, 0.7137255)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nmdxp"]
+
+[node name="Projectile3D" type="Area3D"]
+script = ExtResource("1_g8hw5")
+atk = 5
+speed = 14
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pydvm")
+debug_color = Color(0.74789, 0.808594, 0.0315857, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_g8hw5")
+mesh = SubResource("BoxMesh_nmdxp")

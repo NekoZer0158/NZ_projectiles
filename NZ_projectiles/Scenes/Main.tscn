@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bee071hagdxor"]
+[gd_scene load_steps=11 format=3 uid="uid://cgkd4refam0mw"]
 
 [ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_0asq7"]
 [ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="1_yfy0e"]
 [ext_resource type="Script" uid="uid://df4a3ppscidvn" path="res://NZ_projectiles/Scripts/Activate_projectile.gd" id="2_3q71x"]
 [ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="2_fsmqh"]
 [ext_resource type="PackedScene" uid="uid://b81fpa7ultf22" path="res://NZ_projectiles/Characters/TestCharacter2.tscn" id="2_scd4e"]
+[ext_resource type="Script" uid="uid://c1hmg7r6x3y8j" path="res://NZ_projectiles/Scripts/3D/Change_scene_no_UID.gd" id="3_lqrl0"]
 [ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="4_h00q3"]
 [ext_resource type="PackedScene" uid="uid://cejtakbq0uny0" path="res://NZ_projectiles/Projectiles/Projectile2.tscn" id="4_ypix7"]
 [ext_resource type="PackedScene" uid="uid://cnb4cjp1rifi7" path="res://NZ_projectiles/Projectiles/Projectile3.tscn" id="5_vmnoe"]
@@ -26,18 +27,6 @@ text = "Extended"
 script = ExtResource("1_0asq7")
 change_to_this_scene = "res://NZ_projectiles/Scenes/Extended.tscn"
 
-[node name="Sandbox" type="Button" parent="Buttons"]
-offset_left = 832.0
-offset_top = 64.0
-offset_right = 1088.0
-offset_bottom = 128.0
-focus_mode = 0
-shortcut_feedback = false
-shortcut_in_tooltip = false
-text = "Sandbox"
-script = ExtResource("1_0asq7")
-change_to_this_scene = "uid://6jd23jnetrrd"
-
 [node name="Activate" type="Button" parent="Buttons" node_paths=PackedStringArray("projectile")]
 offset_left = 352.0
 offset_top = 72.0
@@ -49,6 +38,31 @@ shortcut_in_tooltip = false
 text = "Activate"
 script = ExtResource("2_3q71x")
 projectile = NodePath("../../Projectiles/ProjectileDeactivated")
+
+[node name="3D" type="Button" parent="Buttons" node_paths=PackedStringArray("main_node")]
+offset_left = 704.0
+offset_top = 64.0
+offset_right = 768.0
+offset_bottom = 128.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "3D"
+script = ExtResource("3_lqrl0")
+scene = "res://NZ_projectiles/Scenes/3D/Main.tscn"
+main_node = NodePath("../..")
+
+[node name="Sandbox" type="Button" parent="Buttons"]
+offset_left = 832.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 128.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Sandbox"
+script = ExtResource("1_0asq7")
+change_to_this_scene = "uid://6jd23jnetrrd"
 
 [node name="Static" type="Node" parent="."]
 
@@ -139,5 +153,6 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Buttons/Extended" to="Buttons/Extended" method="_on_pressed"]
-[connection signal="pressed" from="Buttons/Sandbox" to="Buttons/Sandbox" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Activate" to="Buttons/Activate" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/3D" to="Buttons/3D" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Sandbox" to="Buttons/Sandbox" method="_on_pressed"]

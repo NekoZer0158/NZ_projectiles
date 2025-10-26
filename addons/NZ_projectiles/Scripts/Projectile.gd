@@ -4,6 +4,7 @@ extends Area2D
 
 ## Base class for every projectile
 
+@export_placeholder("There is no ID") var id : String
 @export var atk : int
 @export var speed : int
 @export var life_time : float:
@@ -35,17 +36,20 @@ var life_timer : Timer
 var type : int ## projectile will hit bodies, only with a different type
 
 func _ready() -> void:
-	set_everything()
+	_set_everything()
 
 func _physics_process(delta:float):
 	if activated:
-		move(delta)
+		_move(delta)
 
-func move(delta:float) -> void:
+func _move(delta:float) -> void:
 	position += transform.x*speed*delta
 
-func set_everything() -> void:
-	# Life timer
+func _set_everything() -> void:
+	_set_life_timer()
+	body_entered.connect(_on_area_2d_body_entered)
+
+func _set_life_timer() -> void:
 	if life_time > 0:
 		life_timer = Timer.new()
 		life_timer.timeout.connect(_on_life_timer_timeout)
@@ -53,8 +57,6 @@ func set_everything() -> void:
 		add_child(life_timer)
 		if activated:
 			life_timer.start(life_time)
-	# Area2D
-	body_entered.connect(_on_area_2d_body_entered)
 
 func remove_projectile(_colliding_with_remove_when_collide:bool=false) -> void:
 	queue_free()

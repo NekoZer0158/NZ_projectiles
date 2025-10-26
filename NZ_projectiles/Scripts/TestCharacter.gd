@@ -30,28 +30,28 @@ func hit_extended_array(atk:int,array:Array) -> void:
 	hit(atk)
 	print("Array values: ",array)
 
-func hit_extended_3(_atk:int,_n0=null,_n1=null,_n2=null,_n3=null,projectile_id:int=0) -> void:
+func hit_extended_3(_atk:int,_n0=null,_n1=null,_n2=null,_n3=null,projectile_id:String="None") -> void:
 	print(projectile_id)
 
-func hit_extended(_atk:int,projectile_id:int,some_bool_value:bool=false) -> void:
+func hit_extended(_atk:int,projectile_id:String,some_bool_value:bool=false) -> void:
 	match projectile_id:
-		1:
+		"tilemap_remove":
 			if !dont_print:
 				print("-----------",name,"-----------")
 				print("Projectile ID is: ",projectile_id)
 				print("TileMapLayer is removed")
 			remove_tile_map_layer.emit()
-		2:
+		"instant_qf":
 			if !dont_print:
 				print("-----------",name,"-----------")
 				print("Instant queue_free")
 			queue_free()
-		3:
+		"type_neutral":
 			if !dont_print:
 				print("-----------",name,"-----------")
 				print("Type changed to Neutral (0)")
 			type = 0
-		4:
+		"move_right":
 			if !dont_print:
 				print("-----------",name,"-----------")
 				print("Projectile ID is: ",projectile_id)

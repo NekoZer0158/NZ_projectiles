@@ -4,10 +4,16 @@ extends Resource
 
 @export var particle_resource : Particle_projectile
 
-func remove_projectile(projectile:Projectile) -> void:
+## DON'T EDIT THIS
+func remove_projectile(projectile:Node) -> void:
+	if ProjectileChecks.check_if_this_a_projectile(projectile):
+		_remove_projectile_step_2(projectile)
+
+## EDIT THIS
+func _remove_projectile_step_2(projectile:Node) -> void:
 	check_particle_resource(projectile)
 	projectile.queue_free()
 
-func check_particle_resource(projectile:Projectile) -> void:
+func check_particle_resource(projectile:Node) -> void:
 	if particle_resource != null:
 		particle_resource.spawn_particle(projectile,projectile.get_parent())

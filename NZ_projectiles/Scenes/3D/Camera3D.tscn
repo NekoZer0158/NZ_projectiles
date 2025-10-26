@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf1kjyne5o67n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjh85"]
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.210938, 0.210938, 0.210938, 1)
+
+[sub_resource type="Sky" id="Sky_pydvm"]
+sky_material = SubResource("ProceduralSkyMaterial_fjh85")
+
+[sub_resource type="Environment" id="Environment_0746t"]
+background_mode = 1
+sky = SubResource("Sky_pydvm")
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(-4.37114e-08, 0.771625, -0.636078, 0, 0.636078, 0.771625, 1, 3.37288e-08, -2.78039e-08, -20.494, 10.749, 11.258)
+environment = SubResource("Environment_0746t")
+current = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+spot_range = 59.144
+spot_angle = 76.3426

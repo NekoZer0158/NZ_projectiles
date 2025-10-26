@@ -16,7 +16,7 @@ extends Hit_extended_projectile
 		elif call_function_with_array or value.size() <= 5:
 			more_variables_from_projectile = value
 
-func call_hit_extended_function(atk:int,body:Node2D,projectile:Projectile) -> void:
+func call_hit_extended_function(atk:int,body:Node,projectile:Node) -> void:
 	if more_variables_from_projectile.size() > 0:
 		if call_function_with_array:
 			var array_with_values : Array = []
@@ -24,12 +24,12 @@ func call_hit_extended_function(atk:int,body:Node2D,projectile:Projectile) -> vo
 				array_with_values.append(projectile.get(i))
 			body.call(name_hit_extended,atk,array_with_values)
 		else: # TODO MAKE THIS PART BETTER (PLEASE, FORGIVE ME HOW I MADE THIS AT THIS POINT)
-			no_array_way_to_call_function_with_more_variables(atk,body,projectile)
+			_no_array_way_to_call_function_with_more_variables(atk,body,projectile)
 	else:
 		push_error("no values in more_variables_from_projectile")
 
 ## Will be changed in the future
-func no_array_way_to_call_function_with_more_variables(atk:int,body:Node2D,projectile:Projectile) -> void: ## @experimental
+func _no_array_way_to_call_function_with_more_variables(atk:int,body:Node2D,projectile:Node) -> void: ## @experimental
 	var first_variable := projectile.get(more_variables_from_projectile[0])
 	if more_variables_from_projectile.size() > 1:
 		var second_variable := projectile.get(more_variables_from_projectile[1])

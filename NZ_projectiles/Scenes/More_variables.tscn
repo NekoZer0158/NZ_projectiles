@@ -57,21 +57,22 @@ script = ExtResource("3_ojhcj")
 [node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("4_iglky")]
 z_index = 10
 position = Vector2(128, 192)
-id = 4
 r_hit_extended = SubResource("Resource_ojhcj")
 r_remove_projectile = SubResource("Resource_iglky")
+id = "move_right"
 
 [node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("4_iglky")]
 z_index = 10
 position = Vector2(128, 320)
 r_hit_extended = SubResource("Resource_j4spo")
+id = "Now ID is String"
 atk = 50
 
 [node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("4_iglky")]
 z_index = 10
 position = Vector2(128, 448)
-id = 17
 r_hit_extended = SubResource("Resource_otrxk")
+id = "The last in the array"
 
 [node name="Characters" type="Node" parent="."]
 

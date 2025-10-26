@@ -17,13 +17,13 @@ extends Atk_change_projectile
 
 var timer : Timer
 
-func _ready(parent_node:Projectile) -> void:
+func _ready_step_2(parent_node:Node) -> void:
 	timer = Timer.new()
 	parent_node.add_child(timer)
 	timer.timeout.connect(_on_timer_timeout.bind(parent_node))
 	timer.start(time)
 
-func _on_timer_timeout(parent_node:Projectile) -> void:
+func _on_timer_timeout(parent_node:Node) -> void:
 	parent_node.atk = move_toward(parent_node.atk,increase_atk_to_this,atk_step)
 	if debug:
 		print_debug(parent_node.name,": ",parent_node.atk)

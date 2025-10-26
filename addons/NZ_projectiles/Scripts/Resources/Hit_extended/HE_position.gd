@@ -6,7 +6,7 @@ extends Hit_extended_projectile
 
 enum POSITION_TYPE{Position,Global_position}
 
-func call_hit_extended_function(atk:int,body:Node2D,projectile:Projectile) -> void:
+func call_hit_extended_function(atk:int,body:Node,projectile:Node) -> void:
 	match position_type:
 		POSITION_TYPE.Position:
 			body.call(name_hit_extended,atk,projectile.position)

@@ -19,11 +19,12 @@ enum {EVERY_CALL_OF_MOVE_FUNCTION,EVERY_SECOND}
 
 var timer : Timer
 
-func _ready(parent_node:Projectile) -> void:
-	if type_of_increase == EVERY_SECOND:
-		timer = Timer.new()
-		parent_node.add_child(timer)
-		timer.timeout.connect(_on_timer_timeout.bind(parent_node))
+func _ready(parent_node:Node) -> void:
+	if ProjectileChecks.check_if_this_a_projectile(parent_node):
+		if type_of_increase == EVERY_SECOND:
+			timer = Timer.new()
+			parent_node.add_child(timer)
+			timer.timeout.connect(_on_timer_timeout.bind(parent_node))
 
 func reset() -> void:
 	stop_timer()
@@ -49,6 +50,6 @@ func increase_speed(projectile_speed:int) -> int:
 			return new_projectile_speed
 	return increase_to_this_amount
 
-func _on_timer_timeout(projectile:Projectile) -> void:
+func _on_timer_timeout(projectile:Node) -> void:
 	if is_instance_valid(projectile):
 		projectile.speed = increase_speed(projectile.speed)

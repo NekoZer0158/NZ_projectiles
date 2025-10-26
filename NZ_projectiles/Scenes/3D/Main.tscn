@@ -1,0 +1,162 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlq5tvc7qurdn"]
+
+[ext_resource type="Script" uid="uid://b0cajig2sh8y5" path="res://NZ_projectiles/Scripts/3D/Main.gd" id="1_0746t"]
+[ext_resource type="PackedScene" uid="uid://1wfte0br410b" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D.tscn" id="1_fjh85"]
+[ext_resource type="PackedScene" uid="uid://d1ehelgdwbjt2" path="res://NZ_projectiles/Characters/3D/CharacterBody.tscn" id="3_pydvm"]
+[ext_resource type="PackedScene" uid="uid://cqkkxk05p7hno" path="res://NZ_projectiles/Characters/3D/CharacterBody2.tscn" id="5_vi4b6"]
+[ext_resource type="PackedScene" uid="uid://tjn0h1vexgen" path="res://NZ_projectiles/Scenes/3D/StaticBody.tscn" id="6_q054q"]
+[ext_resource type="PackedScene" uid="uid://cf1kjyne5o67n" path="res://NZ_projectiles/Scenes/3D/Camera3D.tscn" id="7_n23j8"]
+[ext_resource type="MeshLibrary" uid="uid://de6ixhmfke3ro" path="res://NZ_projectiles/Resources/Mesh_library.tres" id="8_o5b3b"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="9_rxinh"]
+[ext_resource type="Script" uid="uid://dfprg3rqoxofu" path="res://NZ_projectiles/Scripts/3D/Activate_button.gd" id="9_uy8hi"]
+[ext_resource type="Script" uid="uid://c1hmg7r6x3y8j" path="res://NZ_projectiles/Scripts/3D/Change_scene_no_UID.gd" id="10_k12vd"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("types")]
+script = ExtResource("1_0746t")
+types = {
+NodePath("Projectiles/Projectile3D00"): 1,
+NodePath("Projectiles/Projectile3D01"): 1,
+NodePath("Projectiles/Projectile3D10"): 1,
+NodePath("Projectiles/Projectile3D20"): 4,
+NodePath("Projectiles/Projectile3D1-1"): 2
+}
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Projectile3D00" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Projectile3D01" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 5.49002)
+
+[node name="Projectile3D10" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 0)
+life_time = 1.2
+
+[node name="Projectile3D1-1" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -5.10682)
+atk = 15
+speed = 20
+life_time = 3.0
+activated = false
+
+[node name="Projectile3D20" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, 0)
+speed = 11
+life_time = 2.5
+remove_when_static_body = false
+name_type = &"character_class"
+name_hit = &"got_damage"
+
+[node name="Projectile3D21" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, 3.98886)
+speed = 11
+name_type = &"character_class"
+name_hit = &"got_damage"
+
+[node name="Projectile3D22" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, 7.31848)
+speed = 11
+name_type = &"character_class"
+name_hit = &"got_damage"
+
+[node name="Projectile3D30" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 0)
+remove_when_gridmap = false
+
+[node name="Projectile3D31" parent="Projectiles" instance=ExtResource("1_fjh85")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 7.30144)
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="CharacterBody00" parent="Characters" instance=ExtResource("3_pydvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22)
+
+[node name="CharacterBody10" parent="Characters" instance=ExtResource("3_pydvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 11.1236)
+type = 1
+
+[node name="CharacterBody11" parent="Characters" instance=ExtResource("3_pydvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 22)
+
+[node name="CharacterBody20" parent="Characters" instance=ExtResource("5_vi4b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 14.7772)
+character_class = 5
+
+[node name="StaticBodies" type="Node" parent="."]
+
+[node name="StaticBody" parent="StaticBodies" instance=ExtResource("6_q054q")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 0, 19.798)
+
+[node name="StaticBody2" parent="StaticBodies" instance=ExtResource("6_q054q")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -15, 0, 23.7941)
+
+[node name="Camera3D" parent="." instance=ExtResource("7_n23j8")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.5992, 11.412)
+light_energy = 12.929
+spot_range = 77.478
+spot_angle = 71.6157
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999834, 0.0115784, -0.0140457, 0, 0.771625, 0.636078, 0.0182027, -0.635973, 0.771497, 0, 14.4531, 40.168)
+light_energy = 8.919
+spot_range = 408.457
+spot_angle = 76.3426
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09, 0)
+mesh_library = ExtResource("8_o5b3b")
+data = {
+"cells": PackedInt32Array(65528, 9, 131072)
+}
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonProjectile" type="Button" parent="UI" node_paths=PackedStringArray("projectile")]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 576.0
+offset_right = 944.0
+offset_bottom = 628.0
+text = "Activate"
+script = ExtResource("9_uy8hi")
+projectile = NodePath("../../Projectiles/Projectile3D1-1")
+
+[node name="Extended" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 576.0
+offset_right = 1144.0
+offset_bottom = 628.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Extended"
+script = ExtResource("9_rxinh")
+change_to_this_scene = "uid://cgrn0g6uh338k"
+
+[node name="2D" type="Button" parent="UI" node_paths=PackedStringArray("main_node")]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 576.0
+offset_right = 704.0
+offset_bottom = 628.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2D"
+script = ExtResource("10_k12vd")
+scene = "res://NZ_projectiles/Scenes/Main.tscn"
+main_node = NodePath("../..")
+
+[connection signal="pressed" from="UI/Extended" to="UI/Extended" method="_on_pressed"]
+[connection signal="pressed" from="UI/2D" to="UI/2D" method="_on_pressed"]

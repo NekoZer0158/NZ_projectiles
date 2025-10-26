@@ -1,0 +1,315 @@
+[gd_scene load_steps=47 format=3 uid="uid://cgrn0g6uh338k"]
+
+[ext_resource type="Script" uid="uid://c2kvmrdphdivg" path="res://NZ_projectiles/Scripts/3D/Extended3D.gd" id="1_yvc6w"]
+[ext_resource type="PackedScene" uid="uid://4pkgrqw16gwm" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D_extended.tscn" id="2_6hgg1"]
+[ext_resource type="Script" uid="uid://dorsfv7r2fmro" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_random_range.gd" id="3_2v8wa"]
+[ext_resource type="Script" uid="uid://3lsagrcnl1eq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_increase.gd" id="4_scoi7"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="5_m6n2x"]
+[ext_resource type="Script" uid="uid://dlm84lgs0idvn" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_ID.gd" id="6_bcnsa"]
+[ext_resource type="Script" uid="uid://ckrw43oc68dee" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time.gd" id="7_6llln"]
+[ext_resource type="Script" uid="uid://4oqjcel8phhq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_condition_timer.gd" id="8_6hgg1"]
+[ext_resource type="PackedScene" uid="uid://b7kfg2p638ta3" path="res://NZ_projectiles/Particles/Particles3D.tscn" id="8_71q28"]
+[ext_resource type="Script" uid="uid://cxp2v5xu7q61e" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Particle_projectile.gd" id="9_yvc6w"]
+[ext_resource type="Script" uid="uid://pva0gwyf8ta6" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="10_u6g7m"]
+[ext_resource type="PackedScene" uid="uid://d1ehelgdwbjt2" path="res://NZ_projectiles/Characters/3D/CharacterBody.tscn" id="11_wuabt"]
+[ext_resource type="Script" uid="uid://ct1gywrr03w6w" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time_multiplier.gd" id="12_2v8wa"]
+[ext_resource type="PackedScene" uid="uid://cf1kjyne5o67n" path="res://NZ_projectiles/Scenes/3D/Camera3D.tscn" id="12_lwfql"]
+[ext_resource type="MeshLibrary" uid="uid://de6ixhmfke3ro" path="res://NZ_projectiles/Resources/Mesh_library.tres" id="13_6ftc0"]
+[ext_resource type="Script" uid="uid://bw2tlv3b8spwt" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_random_range.gd" id="13_scoi7"]
+[ext_resource type="Script" uid="uid://1wqmrl3fc3w7" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_position.gd" id="13_u6g7m"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="14_5kkym"]
+[ext_resource type="Script" uid="uid://de2k7g5f1ioud" path="res://addons/NZ_projectiles/Scripts/Resources/3D/Move_extended3D/Move_direction.gd" id="14_m6n2x"]
+[ext_resource type="Script" uid="uid://dwfmv5it8mdko" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_stop_moving.gd" id="15_71q28"]
+[ext_resource type="PackedScene" uid="uid://nevb24qwusmm" path="res://NZ_projectiles/Characters/3D/CharacterBody3.tscn" id="16_6llln"]
+[ext_resource type="PackedScene" uid="uid://d2lxh7prb88oy" path="res://NZ_projectiles/Static/Static3D.tscn" id="16_bcnsa"]
+[ext_resource type="Texture2D" uid="uid://bndafr35qiais" path="res://NZ_projectiles/Textures/NZ_projectiles_icon.png" id="18_yvc6w"]
+
+[sub_resource type="Resource" id="Resource_ot016"]
+script = ExtResource("3_2v8wa")
+min_value = -15
+max_value = 45
+metadata/_custom_type_script = "uid://dorsfv7r2fmro"
+
+[sub_resource type="Resource" id="Resource_yll07"]
+script = ExtResource("4_scoi7")
+step = 10
+type_of_increase = 1
+time_for_increase = 0.7
+metadata/_custom_type_script = "uid://3lsagrcnl1eq"
+
+[sub_resource type="Resource" id="Resource_yykhp"]
+script = ExtResource("5_m6n2x")
+hits_before_removing = 4
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_u6g7m"]
+script = ExtResource("13_scoi7")
+min_value = 11
+max_value = 20
+metadata/_custom_type_script = "uid://bw2tlv3b8spwt"
+
+[sub_resource type="Resource" id="Resource_c2d7g"]
+script = ExtResource("6_bcnsa")
+metadata/_custom_type_script = "uid://dlm84lgs0idvn"
+
+[sub_resource type="Resource" id="Resource_8v6qk"]
+script = ExtResource("5_m6n2x")
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_qlya6"]
+script = ExtResource("7_6llln")
+increase_atk_to_this = 50
+atk_step = 5
+time = 0.2
+metadata/_custom_type_script = "uid://ckrw43oc68dee"
+
+[sub_resource type="Resource" id="Resource_6hgg1"]
+script = ExtResource("4_scoi7")
+increase_to_this_amount = -14
+step = 1
+metadata/_custom_type_script = "uid://3lsagrcnl1eq"
+
+[sub_resource type="Resource" id="Resource_2v8wa"]
+script = ExtResource("8_6hgg1")
+time = 2.4
+after_condition_speed_change = SubResource("Resource_6hgg1")
+metadata/_custom_type_script = "uid://4oqjcel8phhq"
+
+[sub_resource type="Resource" id="Resource_d0iqs"]
+script = ExtResource("9_yvc6w")
+particle_scene = ExtResource("8_71q28")
+metadata/_custom_type_script = "uid://cxp2v5xu7q61e"
+
+[sub_resource type="Resource" id="Resource_h2stq"]
+script = ExtResource("10_u6g7m")
+particle_resource = SubResource("Resource_d0iqs")
+metadata/_custom_type_script = "uid://pva0gwyf8ta6"
+
+[sub_resource type="Resource" id="Resource_wuabt"]
+script = ExtResource("13_u6g7m")
+name_hit_extended = &"hit_extended_pos"
+metadata/_custom_type_script = "uid://1wqmrl3fc3w7"
+
+[sub_resource type="Resource" id="Resource_scoi7"]
+script = ExtResource("12_2v8wa")
+increase_atk_to_this = 1024
+atk_step = 2
+time = 0.25
+metadata/_custom_type_script = "uid://ct1gywrr03w6w"
+
+[sub_resource type="Resource" id="Resource_m6n2x"]
+script = ExtResource("13_scoi7")
+min_value = -14
+max_value = 25
+metadata/_custom_type_script = "uid://bw2tlv3b8spwt"
+
+[sub_resource type="Resource" id="Resource_bcnsa"]
+script = ExtResource("14_m6n2x")
+direction = Vector3(-1, 1, 0)
+look_at_this_direction = true
+add_those_degrees = Vector3(0, 0, 45)
+metadata/_custom_type_script = "uid://de2k7g5f1ioud"
+
+[sub_resource type="Resource" id="Resource_6llln"]
+script = ExtResource("6_bcnsa")
+name_hit_extended = &"show_id"
+ignore_if_there_is_no_needed_extended_function = true
+metadata/_custom_type_script = "uid://dlm84lgs0idvn"
+
+[sub_resource type="Resource" id="Resource_yvc6w"]
+script = ExtResource("15_71q28")
+metadata/_custom_type_script = "uid://dwfmv5it8mdko"
+
+[sub_resource type="Resource" id="Resource_71q28"]
+script = ExtResource("5_m6n2x")
+next_phase = SubResource("Resource_yvc6w")
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71q28"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yvc6w"]
+albedo_texture = ExtResource("18_yvc6w")
+metallic = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_u6g7m"]
+material = SubResource("StandardMaterial3D_yvc6w")
+
+[sub_resource type="Animation" id="Animation_yvc6w"]
+resource_name = "moving"
+length = 4.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Characters/CharacterBody3DMoving")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -20, 0, 5, 1, 1, -20, 0, 10, 2, 1, -25, 0, 10, 3, 1, -25, 0, 5)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6g7m"]
+_data = {
+&"moving": SubResource("Animation_yvc6w")
+}
+
+[node name="Main" type="Node" node_paths=PackedStringArray("projectile3D_extended", "follow_this_thing")]
+script = ExtResource("1_yvc6w")
+projectile3D_extended = NodePath("Projectiles/Projectile3DFollowing")
+follow_this_thing = NodePath("Characters/CharacterBody3DMoving")
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Projectile3D00" parent="Projectiles" instance=ExtResource("2_6hgg1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -15)
+r_atk_change = SubResource("Resource_ot016")
+r_speed_change = SubResource("Resource_yll07")
+r_remove_projectile = SubResource("Resource_yykhp")
+life_time = 2.0
+
+[node name="Projectile3D01" parent="Projectiles" instance=ExtResource("2_6hgg1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 5)
+r_speed_change = SubResource("Resource_u6g7m")
+r_hit_extended = SubResource("Resource_c2d7g")
+r_remove_projectile = SubResource("Resource_8v6qk")
+id = "ID_for_projectile3D"
+
+[node name="Projectile3D10" parent="Projectiles" instance=ExtResource("2_6hgg1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 0)
+r_atk_change = SubResource("Resource_qlya6")
+r_speed_change = SubResource("Resource_2v8wa")
+r_remove_projectile = SubResource("Resource_h2stq")
+atk = 1
+life_time = 5.8
+
+[node name="Projectile3D20" parent="Projectiles" instance=ExtResource("2_6hgg1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -10)
+r_hit_extended = SubResource("Resource_wuabt")
+atk = 2
+life_time = 5.0
+
+[node name="Projectile3D21" parent="Projectiles" instance=ExtResource("2_6hgg1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, 0)
+r_atk_change = SubResource("Resource_scoi7")
+r_speed_change = SubResource("Resource_m6n2x")
+r_move_extended = SubResource("Resource_bcnsa")
+atk = 2
+life_time = 10.0
+
+[node name="Projectile3D30" parent="Projectiles" instance=ExtResource("2_6hgg1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15, 0, 0)
+when_colliding_with_remove_when_collide = 2
+r_hit_extended = SubResource("Resource_6llln")
+r_remove_projectile = SubResource("Resource_71q28")
+remove_when_gridmap = false
+
+[node name="Projectile3DFollowing" parent="Projectiles" instance=ExtResource("2_6hgg1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -20, 0, 0)
+speed = 5
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="CharacterBody00" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="CharacterBody01" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="CharacterBody02" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+
+[node name="CharacterBody10" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 10)
+hp = 15
+
+[node name="CharacterBody11" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 20)
+hp = 30
+
+[node name="CharacterBody12" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
+hp = 100
+
+[node name="CharacterBody20" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2745762, -10.924148, 0.037218094)
+hp = 128
+
+[node name="CharacterBody21" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+hp = 15
+
+[node name="CharacterBody30" parent="Characters" instance=ExtResource("16_6llln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 15)
+type = 2
+
+[node name="CharacterBody31" parent="Characters" instance=ExtResource("11_wuabt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 20)
+hp = 30
+
+[node name="CharacterBody3DMoving" type="CharacterBody3D" parent="Characters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 5)
+motion_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/CharacterBody3DMoving"]
+shape = SubResource("BoxShape3D_71q28")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Characters/CharacterBody3DMoving"]
+transform = Transform3D(-0.7132504, 0.19319679, 0.67375726, 0, 0.9612617, -0.27563736, -0.7009093, -0.19659846, -0.6856203, 0, 0, 0)
+mesh = SubResource("SphereMesh_u6g7m")
+
+[node name="StaticBodies" type="Node" parent="."]
+
+[node name="Static3d" parent="StaticBodies" instance=ExtResource("16_bcnsa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 25)
+
+[node name="Camera3D" parent="." instance=ExtResource("12_lwfql")]
+transform = Transform3D(-4.37114e-08, 0.77162486, -0.63607794, 0, 0.63607794, 0.77162486, 1, 3.3728803e-08, -2.7803857e-08, -26.827051, 10.749, 11.258)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.5992, 11.412)
+light_energy = 12.929
+spot_range = 77.478
+spot_angle = 71.6157
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999834, 0.0115784, -0.0140457, 0, 0.771625, 0.636078, 0.0182027, -0.635973, 0.771497, 0, 14.4531, 40.168)
+light_energy = 8.919
+spot_range = 408.457
+spot_angle = 76.3426
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09, 0)
+mesh_library = ExtResource("13_6ftc0")
+data = {
+"cells": PackedInt32Array(65528, 4, 1179648)
+}
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Extended" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 576.0
+offset_right = 1144.0
+offset_bottom = 628.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Main"
+script = ExtResource("14_5kkym")
+change_to_this_scene = "uid://dlq5tvc7qurdn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u6g7m")
+}
+autoplay = "moving"
+speed_scale = 1.2
+
+[connection signal="pressed" from="UI/Extended" to="UI/Extended" method="_on_pressed"]

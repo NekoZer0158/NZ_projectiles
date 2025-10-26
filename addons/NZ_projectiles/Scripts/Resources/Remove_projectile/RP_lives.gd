@@ -8,7 +8,7 @@ extends Remove_projectile
 
 const CREATE_DUPLICATE : bool = true
 
-func remove_projectile(projectile:Projectile) -> void:
+func _remove_projectile_step_2(projectile:Node) -> void:
 	hits_before_removing -= 1
 	if (use_particle_every_hit and hits_before_removing > 0) or (hits_before_removing == 0 and next_phase != null):
 		check_particle_resource(projectile)

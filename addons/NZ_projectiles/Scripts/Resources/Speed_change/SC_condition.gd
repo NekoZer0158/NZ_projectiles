@@ -1,3 +1,4 @@
+@abstract
 @tool
 @icon("res://addons/NZ_projectiles/Icons/Speed_change/SC_condition.svg")
 class_name SC_condition
@@ -12,19 +13,20 @@ var condition_is_true : bool = false
 
 const CREATE_DUPLICATE : bool = true
 
-func _ready(parent_node:Projectile) -> void:
-	if speed_change != null:
-		if speed_change.has_method("_ready"):
-			speed_change = speed_change.duplicate(true)
-			speed_change._ready(parent_node)
-	#else:
-		#push_error("No speed_change")
-	if after_condition_speed_change != null:
-		if after_condition_speed_change.has_method("_ready"):
-			after_condition_speed_change = after_condition_speed_change.duplicate(true)
-			after_condition_speed_change._ready(parent_node)
-	else:
-		push_error("No after_condition_speed_change")
+func _ready(parent_node:Node) -> void:
+	if ProjectileChecks.check_if_this_a_projectile(parent_node):
+		if speed_change != null:
+			if speed_change.has_method("_ready"):
+				speed_change = speed_change.duplicate(true)
+				speed_change._ready(parent_node)
+		#else:
+			#push_error("No speed_change")
+		if after_condition_speed_change != null:
+			if after_condition_speed_change.has_method("_ready"):
+				after_condition_speed_change = after_condition_speed_change.duplicate(true)
+				after_condition_speed_change._ready(parent_node)
+		else:
+			push_error("No after_condition_speed_change")
 
 func reset() -> void:
 	if speed_change.has_method("reset"):

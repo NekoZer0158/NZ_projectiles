@@ -1,3 +1,5 @@
+Everything written below works for both 2D and 3D, with some exceptions, that will be mentioned
+
 Base:
 	Projectile - base class for projectiles, doesn't have module support.
 	Projectile_extended - a subclass of class Projectile, has module support, and also has an ID.
@@ -11,7 +13,8 @@ Modules:
 	You can use them only in Projectile_extended.
 	Atk_change_projectile - base for changing projectile damage.
 	Speed_change_projectile - base for changing projectile speed.
-	Move_extended_projectile - base for changing projectile movement.
+	Move_extended_projectile - base for changing projectile movement (ONLY 2D).
+	Move_extended_projectile3D - base for changing projectile movement (ONLY 3D).
 	Hit_extended_projectile - base for changing arguments for the "hit" function.
 	Remove_projectile - base for changing consequences for projectile when body enters it.
 
@@ -20,4 +23,5 @@ how you can use projectiles. In the scene "Sandbox" you can try out different st
 I recommend checking scripts, where you can find information about some variables and functions.
 
 If the inspector doesn't allow you to change values in modules in the inspector, just switch to other
-scene and then return
+scene and then return. Also you can save the project, then open another node, and then come back to the
+previous one.

@@ -9,15 +9,16 @@ extends SC_condition
 
 var timer : Timer
 
-func _ready(parent_node:Projectile) -> void:
-	super(parent_node)
-	if time == 0.0:
-		push_error("No time")
-		return
-	timer = Timer.new()
-	timer.timeout.connect(_on_timer_timeout)
-	timer.one_shot = true
-	parent_node.add_child(timer)
+func _ready(parent_node:Node) -> void:
+	if ProjectileChecks.check_if_this_a_projectile(parent_node):
+		super(parent_node)
+		if time == 0.0:
+			push_error("No time")
+			return
+		timer = Timer.new()
+		timer.timeout.connect(_on_timer_timeout)
+		timer.one_shot = true
+		parent_node.add_child(timer)
 
 func reset() -> void:
 	super()
