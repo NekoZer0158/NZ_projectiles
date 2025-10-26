@@ -1,5 +1,5 @@
 # NZ projectiles
-Plugin for Godot that adds a projectile system in 2D&3D. There are two projectile classes, base one and extended, to which you can add more stuff, like changing speed every second or making it disappear only after interacting with 3 objects.
+Plugin for Godot that adds a projectile system in 2D&3D. There are four projectile classes (2 each for 2D & 3D), base one and extended, to which you can add more stuff, like changing speed every second or making it disappear only after interacting with 3 objects.
 
 ## Changelog
 
