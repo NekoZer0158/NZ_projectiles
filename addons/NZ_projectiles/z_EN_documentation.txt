@@ -22,6 +22,5 @@ In the folder "NZ_projectiles/Scenes", you can find scenes in which you can see 
 how you can use projectiles. In the scene "Sandbox" you can try out different stuff with projectiles.
 I recommend checking scripts, where you can find information about some variables and functions.
 
-If the inspector doesn't allow you to change values in modules in the inspector, just switch to other
-scene and then return. Also you can save the project, then open another node, and then come back to the
-previous one.
+If the inspector doesn't allow you to change values in modules in the inspector, just save the project
+close the resource and open it again in the inspector

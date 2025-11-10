@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NZ_projectiles"
-config/version="2.0"
+config/version="2.1"
 config/tags=PackedStringArray("example", "plugins")
 run/main_scene="uid://cgkd4refam0mw"
 config/features=PackedStringArray("4.5", "GL Compatibility")
@@ -25,7 +25,7 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/NZ_projectiles/plugin.cfg")
+enabled=PackedStringArray("res://addons/NZ_projectiles/plugin.cfg", "res://addons/NZ_projectiles_emitter/plugin.cfg")
 
 [file_customization]
 

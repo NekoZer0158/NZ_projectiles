@@ -128,7 +128,7 @@ script = ExtResource("2_7diba")
 markers_projectiles = [NodePath("../../Markers_for_projectiles/Marker2D"), NodePath("../../Markers_for_projectiles/Marker2D3"), NodePath("../../Markers_for_projectiles/Marker2D5")]
 markers_characters = [NodePath("../../Markers_for_characters/Marker2D1"), NodePath("../../Markers_for_characters/Marker2D3"), NodePath("../../Markers_for_characters/Marker2D5")]
 
-[node name="Remove projectiles" type="Button" parent="Buttons" node_paths=PackedStringArray("markers_projectiles", "markers_characters")]
+[node name="Remove projectiles" type="Button" parent="Buttons" node_paths=PackedStringArray("markers_projectiles", "markers_characters", "top_marker", "bottom_marker")]
 offset_left = 576.0
 offset_top = 576.0
 offset_right = 768.0
@@ -137,6 +137,8 @@ text = "Remove projectiles"
 script = ExtResource("7_77xup")
 markers_projectiles = [NodePath("../../Markers_for_projectiles/Marker2D"), NodePath("../../Markers_for_projectiles/Marker2D3"), NodePath("../../Markers_for_projectiles/Marker2D5")]
 markers_characters = [NodePath("../../Markers_for_characters/Marker2D-1"), NodePath("../../Markers_for_characters/Marker2D0"), NodePath("../../Markers_for_characters/Marker2D1"), NodePath("../../Markers_for_characters/Marker2D3"), NodePath("../../Markers_for_characters/Marker2D5")]
+top_marker = NodePath("../../Markers_for_projectiles/Marker2D2")
+bottom_marker = NodePath("../../Markers_for_projectiles/Marker2D4")
 
 [node name="Markers_for_projectiles" type="Node" parent="."]
 

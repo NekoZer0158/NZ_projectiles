@@ -2,6 +2,8 @@ extends Button
 
 @export var markers_projectiles : Array[Marker2D]
 @export var markers_characters : Array[Marker2D]
+@export var top_marker : Marker2D
+@export var bottom_marker : Marker2D
 
 @onready var parent_parent_node := get_parent().get_parent()
 
@@ -17,7 +19,17 @@ func create_projectiles() -> void:
 			1:
 				new_projectile.r_remove_projectile = RP_lives.new()
 			2:
-				new_projectile.r_remove_projectile = RP_dont.new()
+				new_projectile.r_remove_projectile = RP_group.new()
+				new_projectile.r_remove_projectile.group_name = "Remove_those_projectiles"
+				new_projectile.add_to_group("Remove_those_projectiles")
+				var top_projectile : Projectile_extended= parent_parent_node.PROJECTILE_EXTENDED.instantiate()
+				var bottom_projectile : Projectile_extended= parent_parent_node.PROJECTILE_EXTENDED.instantiate()
+				top_projectile.speed /= 2
+				bottom_projectile.speed /= 2
+				top_projectile.add_to_group("Remove_those_projectiles")
+				bottom_projectile.add_to_group("Remove_those_projectiles")
+				top_marker.add_child(top_projectile)
+				bottom_marker.add_child(bottom_projectile)
 			3:
 				new_projectile.r_remove_projectile = RP_spawn_projectile.new()
 				new_projectile.r_remove_projectile.spawn_this_projectile = load("res://NZ_projectiles/Projectiles/Projectile.tscn")

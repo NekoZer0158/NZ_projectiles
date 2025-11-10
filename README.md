@@ -3,6 +3,10 @@ Plugin for Godot that adds a projectile system in 2D&3D. There are four projecti
 
 ## Changelog
 
+### 2.1
+	Added RP_group (Remove every projectile in the group)
+	Added PaPr_random (Random particle on every call of the function)
+	Added new plugin - NZ_projectiles_emiitter
 ### 2.0
 	Added 3D support
 	Changed ID from int to String.

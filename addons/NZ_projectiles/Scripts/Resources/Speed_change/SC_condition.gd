@@ -35,9 +35,6 @@ func reset() -> void:
 		after_condition_speed_change.reset()
 	condition_is_true = false
 
-func activate() -> void:
-	pass
-
 func change_speed(projectile_speed:int) -> int:
 	if !condition_is_true:
 		if speed_change == null:

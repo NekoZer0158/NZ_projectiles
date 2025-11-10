@@ -10,7 +10,7 @@ extends Resource
 enum WhereToLook{FORWARD,BACKWARD}
 
 func spawn_particle(projectile:Node,add_to_this_node:Node) -> void:
-	var spawn_this_particle := particle_scene.instantiate()
+	var spawn_this_particle : Node = _get_particle_instance()
 	if spawn_this_particle is CPUParticles2D or spawn_this_particle is GPUParticles2D:
 		_set_particle(spawn_this_particle,projectile,add_to_this_node)
 		match look_there:
@@ -24,6 +24,9 @@ func spawn_particle(projectile:Node,add_to_this_node:Node) -> void:
 		add_to_this_node.add_child(spawn_this_particle)
 	else:
 		push_error("Wrong scene")
+
+func _get_particle_instance() -> Node:
+	return particle_scene.instantiate()
 
 func _set_particle(particle:Node,projectile:Node,add_to_this_node:Node) -> void:
 	particle.position = projectile.position

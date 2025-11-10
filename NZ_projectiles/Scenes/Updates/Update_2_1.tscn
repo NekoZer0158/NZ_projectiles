@@ -1,0 +1,169 @@
+[gd_scene load_steps=24 format=3 uid="uid://7gie6rmfk485"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_2p7kt"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="4_4vcc5"]
+[ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="5_bwxgn"]
+[ext_resource type="Script" uid="uid://cl6s62c1w70is" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_group.gd" id="5_gm2a8"]
+[ext_resource type="Script" uid="uid://dubok7st7or6p" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_spawn_projectile.gd" id="6_4j2pj"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="6_cp888"]
+[ext_resource type="Script" uid="uid://dwfmv5it8mdko" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_stop_moving.gd" id="6_dxta1"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="7_qh0jn"]
+[ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="9_n337v"]
+[ext_resource type="PackedScene" uid="uid://pnq0dpujt47r" path="res://NZ_projectiles/Particles/ProjectileParticles.tscn" id="10_77ahh"]
+[ext_resource type="Script" uid="uid://b4ngxngeeihmm" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Particles/Random_particle.gd" id="10_oopxv"]
+[ext_resource type="PackedScene" uid="uid://c8x5cmrilhkui" path="res://NZ_projectiles/Particles/ProjectileParticles2.tscn" id="11_p7man"]
+[ext_resource type="PackedScene" uid="uid://b65bwfg6kqcne" path="res://NZ_projectiles/Particles/ProjectileParticles3.tscn" id="12_m4y2o"]
+[ext_resource type="Script" uid="uid://cj1thpmipp4kr" path="res://addons/NZ_projectiles_emitter/Scripts/PE2D_simple.gd" id="14_77ahh"]
+[ext_resource type="Script" uid="uid://cksp6jhv2lybg" path="res://NZ_projectiles/Scripts/Emitters_2_1.gd" id="14_p7man"]
+[ext_resource type="PackedScene" uid="uid://chw6csp6kqtf8" path="res://NZ_projectiles/Projectiles/Projectile4.tscn" id="15_m4y2o"]
+[ext_resource type="Script" uid="uid://di3i6hekuvhyb" path="res://addons/NZ_projectiles_emitter/Scripts/PE2D_ID.gd" id="17_j6qvq"]
+
+[sub_resource type="Resource" id="Resource_i0sp6"]
+script = ExtResource("6_4j2pj")
+spawn_this_projectile = ExtResource("9_n337v")
+metadata/_custom_type_script = "uid://dubok7st7or6p"
+
+[sub_resource type="Resource" id="Resource_dxta1"]
+script = ExtResource("5_gm2a8")
+group_name = "Update_2_1"
+remove_projectiles_from_group_this_way = 2
+remove_this_projectile_this_way = 2
+second_remove_resource = SubResource("Resource_i0sp6")
+metadata/_custom_type_script = "uid://cl6s62c1w70is"
+
+[sub_resource type="Resource" id="Resource_qh0jn"]
+script = ExtResource("6_dxta1")
+metadata/_custom_type_script = "uid://dwfmv5it8mdko"
+
+[sub_resource type="Resource" id="Resource_s3q6w"]
+script = ExtResource("5_gm2a8")
+group_name = "Other_projectiles"
+metadata/_custom_type_script = "uid://cl6s62c1w70is"
+
+[sub_resource type="Resource" id="Resource_7mjal"]
+script = ExtResource("10_oopxv")
+particle_scenes = Array[PackedScene]([ExtResource("11_p7man"), ExtResource("12_m4y2o")])
+random_amount = 1
+particle_scene = ExtResource("10_77ahh")
+metadata/_custom_type_script = "uid://b4ngxngeeihmm"
+
+[sub_resource type="Resource" id="Resource_0feam"]
+script = ExtResource("7_qh0jn")
+hits_before_removing = 2
+use_particle_every_hit = true
+particle_resource = SubResource("Resource_7mjal")
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 8.0
+offset_top = 568.0
+offset_right = 136.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Main"
+script = ExtResource("1_2p7kt")
+change_to_this_scene = "uid://cgkd4refam0mw"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Static"]
+tile_map_data = PackedByteArray(0, 0, 35, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("5_bwxgn")
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="TestCharacter1" parent="Characters" instance=ExtResource("6_cp888")]
+position = Vector2(768, 256)
+
+[node name="TestCharacter11" parent="Characters" instance=ExtResource("6_cp888")]
+position = Vector2(1024, 192)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended1" parent="Projectiles" groups=["Update_2_1"] instance=ExtResource("4_4vcc5")]
+position = Vector2(128, 256)
+r_remove_projectile = SubResource("Resource_dxta1")
+atk = 15
+
+[node name="ProjectileExtended11" parent="Projectiles" groups=["Update_2_1"] instance=ExtResource("4_4vcc5")]
+position = Vector2(64, 192)
+r_remove_projectile = SubResource("Resource_qh0jn")
+speed = 100
+
+[node name="ProjectileExtended12" parent="Projectiles" groups=["Update_2_1"] instance=ExtResource("4_4vcc5")]
+position = Vector2(128, 192)
+r_remove_projectile = SubResource("Resource_s3q6w")
+speed = 100
+
+[node name="ProjectileExtended13" parent="Projectiles" groups=["Update_2_1"] instance=ExtResource("4_4vcc5")]
+position = Vector2(192, 192)
+r_remove_projectile = SubResource("Resource_0feam")
+atk = 15
+speed = 125
+
+[node name="ProjectileExtended14" parent="Projectiles" groups=["Other_projectiles", "Update_2_1"] instance=ExtResource("4_4vcc5")]
+position = Vector2(128, 384)
+atk = 15
+speed = 125
+
+[node name="Projectile" parent="Projectiles" groups=["Other_projectiles"] instance=ExtResource("9_n337v")]
+position = Vector2(192, 384)
+
+[node name="Emitters" type="Node" parent="."]
+script = ExtResource("14_p7man")
+projectiles = Dictionary[String, PackedScene]({
+"laser_04": ExtResource("15_m4y2o")
+})
+
+[node name="PE2D_simple" type="Node2D" parent="Emitters"]
+position = Vector2(128, 448)
+script = ExtResource("14_77ahh")
+projectile_scene = ExtResource("15_m4y2o")
+instantly_emit = true
+error_if_above_node_is_null = false
+metadata/_custom_type_script = "uid://cj1thpmipp4kr"
+
+[node name="PE2D_ID" type="Node2D" parent="Emitters" node_paths=PackedStringArray("node_with_projectiles", "add_child_to_this_node")]
+position = Vector2(128, 480)
+script = ExtResource("17_j6qvq")
+node_with_projectiles = NodePath("..")
+dictionary_name_with_projectiles_and_ids = "projectiles"
+default_projectile_id = "laser_04"
+add_child_to_this_node = NodePath("..")
+instantly_emit = true
+metadata/_custom_type_script = "uid://di3i6hekuvhyb"
+
+[node name="PE2D_ID_with_timer" type="Node2D" parent="Emitters" node_paths=PackedStringArray("node_with_projectiles", "add_child_to_this_node")]
+position = Vector2(128, 512)
+script = ExtResource("17_j6qvq")
+node_with_projectiles = NodePath("..")
+dictionary_name_with_projectiles_and_ids = "projectiles"
+default_projectile_id = "laser_04"
+add_child_to_this_node = NodePath("..")
+instantly_emit = true
+metadata/_custom_type_script = "uid://di3i6hekuvhyb"
+
+[node name="Timer" type="Timer" parent="Emitters/PE2D_ID_with_timer"]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
+[connection signal="timeout" from="Emitters/PE2D_ID_with_timer/Timer" to="Emitters/PE2D_ID_with_timer" method="emit"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://chw6csp6kqtf8"]
+
+[ext_resource type="Script" uid="uid://cfa6nu6lgd8bt" path="res://addons/NZ_projectiles/Scripts/Projectile.gd" id="1_yxpk3"]
+[ext_resource type="Texture2D" uid="uid://dlpp4yad7d4f6" path="res://addons/NZ_projectiles/Icons/Projectile.svg" id="2_fy11t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwddj"]
+size = Vector2(16, 6)
+
+[node name="Projectile" type="Area2D" groups=["Projectiles"]]
+scale = Vector2(2, 2)
+collision_mask = 6
+script = ExtResource("1_yxpk3")
+id = "laser_04"
+atk = 5
+speed = 200
+life_time = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xwddj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_fy11t")

@@ -7,5 +7,6 @@ extends Resource
 func change_speed(projectile_speed:int) -> int:
 	return projectile_speed
 
+## Can be used, for example, to activate a timer
 func activate() -> void:
 	pass
