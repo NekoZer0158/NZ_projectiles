@@ -136,7 +136,6 @@ node_with_projectiles = NodePath("..")
 dictionary_name_with_projectiles_and_ids = "projectiles"
 default_projectile_id = "laser_04"
 add_child_to_this_node = NodePath("..")
-instantly_emit = true
 metadata/_custom_type_script = "uid://di3i6hekuvhyb"
 
 [node name="PE2D_ID_with_timer" type="Node2D" parent="Emitters" node_paths=PackedStringArray("node_with_projectiles", "add_child_to_this_node")]

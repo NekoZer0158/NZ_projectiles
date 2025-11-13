@@ -1,3 +1,5 @@
+@icon("res://addons/NZ_projectiles_emitter/Icons/Projectile_emitter2D_base.svg")
+@abstract
 class_name Projectile_emitter2D_base
 extends Node2D
 
@@ -11,12 +13,17 @@ func _ready() -> void:
 	if instantly_emit:
 		emit()
 
-func emit() -> void:
+func emit(_type:int=0) -> void:
 	pass
 
-func _add_projectile_instance_to_the_scene(projectile_instance:Projectile) -> void:
+func _add_projectile_instance_to_the_scene(projectile_instance:Projectile,type:int=0) -> void:
+	_set_variables_for_projectile(projectile_instance,type)
 	if is_instance_valid(add_child_to_this_node):
 		projectile_instance.position = global_position
 		add_child_to_this_node.call_deferred("add_child",projectile_instance)
 	else:
 		add_child(projectile_instance)
+
+func _set_variables_for_projectile(projectile_instance:Projectile,type:int=0) -> void:
+	projectile_instance.type = type
+	projectile_instance.rotation = rotation

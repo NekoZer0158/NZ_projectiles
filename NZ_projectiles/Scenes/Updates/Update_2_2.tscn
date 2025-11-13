@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhscp8a1eg4pv"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_eth10"]
+[ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="2_pbm52"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="3_wblnl"]
+[ext_resource type="Script" uid="uid://ccwmhxy25r4jt" path="res://NZ_projectiles/Scripts/Emitters_2_2.gd" id="4_fqxd5"]
+[ext_resource type="PackedScene" uid="uid://cjc01746qc1f6" path="res://NZ_projectiles/Projectiles/Projectile5.tscn" id="5_oahwh"]
+[ext_resource type="PackedScene" uid="uid://chw6csp6kqtf8" path="res://NZ_projectiles/Projectiles/Projectile4.tscn" id="6_kjtu7"]
+[ext_resource type="Script" uid="uid://cal2c1aug3xmk" path="res://addons/NZ_projectiles_emitter/Scripts/PE2DID_line.gd" id="8_37mpb"]
+[ext_resource type="Script" uid="uid://di3i6hekuvhyb" path="res://addons/NZ_projectiles_emitter/Scripts/PE2D_ID.gd" id="17_qgdmi"]
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 8.0
+offset_top = 568.0
+offset_right = 136.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Main"
+script = ExtResource("1_eth10")
+change_to_this_scene = "uid://cgkd4refam0mw"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Static"]
+tile_set = ExtResource("2_pbm52")
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="TestCharacter11" parent="Characters" instance=ExtResource("3_wblnl")]
+position = Vector2(768, 64)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Emitters" type="Node" parent="."]
+script = ExtResource("4_fqxd5")
+projectiles = Dictionary[String, PackedScene]({
+"laser_04": ExtResource("6_kjtu7"),
+"laser_05": ExtResource("5_oahwh")
+})
+
+[node name="PE2D_ID_with_timer" type="Node2D" parent="Emitters" node_paths=PackedStringArray("node_with_projectiles", "add_child_to_this_node")]
+position = Vector2(984.00006, 80)
+rotation = -3.0613074
+script = ExtResource("17_qgdmi")
+node_with_projectiles = NodePath("..")
+dictionary_name_with_projectiles_and_ids = "projectiles"
+default_projectile_id = "laser_04"
+add_child_to_this_node = NodePath("..")
+metadata/_custom_type_script = "uid://di3i6hekuvhyb"
+
+[node name="Timer" type="Timer" parent="Emitters/PE2D_ID_with_timer"]
+autostart = true
+
+[node name="PE2DID_line" type="Node2D" parent="Emitters" node_paths=PackedStringArray("lines", "node_with_projectiles", "add_child_to_this_node")]
+script = ExtResource("8_37mpb")
+lines = [NodePath("../../Lines/Line2D")]
+rotate_projectile_perpendicular = false
+node_with_projectiles = NodePath("..")
+dictionary_name_with_projectiles_and_ids = "projectiles"
+default_projectile_id = "laser_04"
+add_child_to_this_node = NodePath("../../Projectiles")
+metadata/_custom_type_script = "uid://cal2c1aug3xmk"
+
+[node name="Timer" type="Timer" parent="Emitters/PE2DID_line"]
+wait_time = 0.3
+autostart = true
+
+[node name="PE2DID_line_closed" type="Node2D" parent="Emitters" node_paths=PackedStringArray("lines", "node_with_projectiles", "add_child_to_this_node")]
+script = ExtResource("8_37mpb")
+lines = [NodePath("../../Lines/Line2D_closed")]
+look_reverse = false
+node_with_projectiles = NodePath("..")
+dictionary_name_with_projectiles_and_ids = "projectiles"
+default_projectile_id = "laser_04"
+add_child_to_this_node = NodePath("../../Projectiles")
+metadata/_custom_type_script = "uid://cal2c1aug3xmk"
+
+[node name="Timer" type="Timer" parent="Emitters/PE2DID_line_closed"]
+wait_time = 0.1
+autostart = true
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Lines"]
+position = Vector2(80, -184)
+points = PackedVector2Array(256, 320, 128, 384, 32, 472, 176, 544)
+
+[node name="Line2D_closed" type="Line2D" parent="Lines"]
+position = Vector2(136, 72)
+points = PackedVector2Array(704, 344, 840, 440, 720, 528, 632, 488, 512, 448, 576, 360)
+closed = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
+[connection signal="timeout" from="Emitters/PE2D_ID_with_timer/Timer" to="Emitters/PE2D_ID_with_timer" method="emit" binds= [1]]
+[connection signal="timeout" from="Emitters/PE2DID_line/Timer" to="Emitters/PE2DID_line" method="emit_by_id" binds= ["laser_05"]]
+[connection signal="timeout" from="Emitters/PE2DID_line_closed/Timer" to="Emitters/PE2DID_line_closed" method="emit_by_id" binds= ["laser_05"]]

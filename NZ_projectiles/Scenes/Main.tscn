@@ -65,6 +65,19 @@ script = ExtResource("3_lqrl0")
 scene = "res://NZ_projectiles/Scenes/Updates/Update_2_1.tscn"
 main_node = NodePath("../..")
 
+[node name="Version_2_2" type="Button" parent="Buttons" node_paths=PackedStringArray("main_node")]
+offset_left = 80.0
+offset_top = 568.0
+offset_right = 144.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.2"
+script = ExtResource("3_lqrl0")
+scene = "res://NZ_projectiles/Scenes/Updates/Update_2_2.tscn"
+main_node = NodePath("../..")
+
 [node name="Sandbox" type="Button" parent="Buttons"]
 offset_left = 832.0
 offset_top = 64.0
@@ -169,4 +182,5 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="Buttons/Activate" to="Buttons/Activate" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/3D" to="Buttons/3D" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Version_2_1" to="Buttons/Version_2_1" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Version_2_2" to="Buttons/Version_2_2" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/Sandbox" to="Buttons/Sandbox" method="_on_pressed"]

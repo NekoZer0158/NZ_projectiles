@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NZ_projectiles"
-config/version="2.1"
+config/version="2.2"
 config/tags=PackedStringArray("example", "plugins")
 run/main_scene="uid://cgkd4refam0mw"
 config/features=PackedStringArray("4.5", "GL Compatibility")
