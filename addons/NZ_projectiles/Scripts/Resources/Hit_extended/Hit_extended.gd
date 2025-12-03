@@ -2,7 +2,7 @@
 @abstract
 @icon("res://addons/NZ_projectiles/Icons/Hit_extended/Default.svg")
 class_name Hit_extended_projectile
-extends Resource 
+extends Projectile_resource 
 
 @export_group("Variables and functions names","name_")
 @export var name_hit_extended : StringName = "hit_extended" ## Look projectile class

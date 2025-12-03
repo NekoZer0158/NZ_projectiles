@@ -1,6 +1,6 @@
 @icon("res://addons/NZ_projectiles/Icons/Remove_projectile/Default.svg")
 class_name Remove_projectile
-extends Resource
+extends Projectile_resource
 
 @export var particle_resource : Particle_projectile
 

@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://ccwmhxy25r4jt" path="res://NZ_projectiles/Scripts/Emitters_2_2.gd" id="4_fqxd5"]
 [ext_resource type="PackedScene" uid="uid://cjc01746qc1f6" path="res://NZ_projectiles/Projectiles/Projectile5.tscn" id="5_oahwh"]
 [ext_resource type="PackedScene" uid="uid://chw6csp6kqtf8" path="res://NZ_projectiles/Projectiles/Projectile4.tscn" id="6_kjtu7"]
-[ext_resource type="Script" uid="uid://cal2c1aug3xmk" path="res://addons/NZ_projectiles_emitter/Scripts/PE2DID_line.gd" id="8_37mpb"]
-[ext_resource type="Script" uid="uid://di3i6hekuvhyb" path="res://addons/NZ_projectiles_emitter/Scripts/PE2D_ID.gd" id="17_qgdmi"]
+[ext_resource type="Script" uid="uid://cal2c1aug3xmk" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2DID_line.gd" id="8_37mpb"]
+[ext_resource type="Script" uid="uid://di3i6hekuvhyb" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2D_ID.gd" id="17_qgdmi"]
 
 [node name="Main" type="Node"]
 
@@ -82,7 +82,7 @@ add_child_to_this_node = NodePath("../../Projectiles")
 metadata/_custom_type_script = "uid://cal2c1aug3xmk"
 
 [node name="Timer" type="Timer" parent="Emitters/PE2DID_line_closed"]
-wait_time = 0.1
+wait_time = 0.25
 autostart = true
 
 [node name="Lines" type="Node" parent="."]

@@ -3,6 +3,13 @@ Plugin for Godot that adds a projectile system in 2D&3D. There are four projecti
 
 ## Changelog
 
+### 2.3
+	Added Update_2_3 scene
+	Added 3D emitters
+	Added RP_multiple - activate multiple Remove_projectile resources at once
+	Added RP_other and HE_other - activate a function in a different Projectile_resource
+	All projectile resoucres are a subclass of Projectile_resource instead of Resource
+	NZ_projectiles_emitter updated to 1.2
 ### 2.2
 	Added Update_2_2 scene
 	NZ_projectiles_emitter updated to 1.1

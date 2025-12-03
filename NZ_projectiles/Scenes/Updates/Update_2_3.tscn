@@ -1,0 +1,183 @@
+[gd_scene load_steps=29 format=3 uid="uid://d3wfd8u3epeut"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_isg2c"]
+[ext_resource type="PackedScene" uid="uid://cf1kjyne5o67n" path="res://NZ_projectiles/Scenes/3D/Camera3D.tscn" id="2_o5b6u"]
+[ext_resource type="PackedScene" uid="uid://d1ehelgdwbjt2" path="res://NZ_projectiles/Characters/3D/CharacterBody.tscn" id="2_ymboa"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="3_jc68a"]
+[ext_resource type="Script" uid="uid://b3uwxipiyc5f1" path="res://NZ_projectiles/Scripts/Emitters_2_3.gd" id="3_qlw01"]
+[ext_resource type="Script" uid="uid://d2gel8di8e822" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_default.gd" id="4_5tmvr"]
+[ext_resource type="Script" uid="uid://bptjt0og1tfel" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters3D/PE3D_simple.gd" id="4_dt07b"]
+[ext_resource type="PackedScene" uid="uid://4pkgrqw16gwm" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D_extended.tscn" id="4_isg2c"]
+[ext_resource type="PackedScene" uid="uid://1wfte0br410b" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D.tscn" id="5_4k4ec"]
+[ext_resource type="Script" uid="uid://bjwyi770dl25i" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_multiple.gd" id="5_5v5ld"]
+[ext_resource type="Resource" uid="uid://ckgwroschvfx3" path="res://NZ_projectiles/Resources/decrease_speed_resource.tres" id="5_7eeg8"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="5_f261r"]
+[ext_resource type="Script" uid="uid://dorsfv7r2fmro" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_random_range.gd" id="5_k5cxs"]
+[ext_resource type="Script" uid="uid://dmyxsyfrrrqb2" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_other.gd" id="5_nrutn"]
+[ext_resource type="Script" uid="uid://cl6s62c1w70is" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_group.gd" id="6_2bqkk"]
+[ext_resource type="Script" uid="uid://je1yoig8016s" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters3D/PE3D_ID.gd" id="6_kpkqn"]
+[ext_resource type="Script" uid="uid://dubok7st7or6p" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_spawn_projectile.gd" id="8_0fohh"]
+[ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="8_2bqkk"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="9_24fr1"]
+[ext_resource type="Script" uid="uid://dihvgf0noxycn" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_other.gd" id="11_uxxs4"]
+
+[sub_resource type="Resource" id="Resource_68wus"]
+script = ExtResource("5_nrutn")
+other_function_name = "give_speed_to_projectile"
+projectile_resource = ExtResource("5_7eeg8")
+name_hit_extended = &"hit"
+metadata/_custom_type_script = "uid://dmyxsyfrrrqb2"
+
+[sub_resource type="Resource" id="Resource_jc68a"]
+script = ExtResource("5_f261r")
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_0fohh"]
+script = ExtResource("6_2bqkk")
+group_name = "Remove"
+remove_this_projectile_this_way = 3
+metadata/_custom_type_script = "uid://cl6s62c1w70is"
+
+[sub_resource type="Resource" id="Resource_k5cxs"]
+script = ExtResource("8_0fohh")
+spawn_this_projectile = ExtResource("8_2bqkk")
+remove_this_projectile = false
+metadata/_custom_type_script = "uid://dubok7st7or6p"
+
+[sub_resource type="Resource" id="Resource_7eeg8"]
+script = ExtResource("5_k5cxs")
+min_value = 525
+max_value = 550
+metadata/_custom_type_script = "uid://dorsfv7r2fmro"
+
+[sub_resource type="Resource" id="Resource_nrutn"]
+script = ExtResource("11_uxxs4")
+other_function_name = "_ready_step_2"
+projectile_resource = SubResource("Resource_7eeg8")
+remove_this_projectile = false
+metadata/_custom_type_script = "uid://dihvgf0noxycn"
+
+[sub_resource type="Resource" id="Resource_cg62o"]
+script = ExtResource("5_5v5ld")
+RP_resources = Array[ExtResource("4_5tmvr")]([SubResource("Resource_jc68a"), SubResource("Resource_0fohh"), SubResource("Resource_k5cxs"), SubResource("Resource_nrutn")])
+metadata/_custom_type_script = "uid://bjwyi770dl25i"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_isg2c"]
+size = Vector3(58.879517, 11.884277, 1)
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 8.0
+offset_top = 568.0
+offset_right = 136.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Main"
+script = ExtResource("1_isg2c")
+change_to_this_scene = "uid://cgkd4refam0mw"
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="CharacterBody00" parent="Characters" instance=ExtResource("2_ymboa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 25)
+
+[node name="CharacterBody10" parent="Characters" instance=ExtResource("2_ymboa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 20)
+hp = 100
+
+[node name="TestCharacter" parent="Characters" instance=ExtResource("3_jc68a")]
+position = Vector2(256, 448)
+
+[node name="TestCharacter2_lowHP" parent="Characters" instance=ExtResource("3_jc68a")]
+position = Vector2(448, 448)
+hp = 5
+
+[node name="TestCharacter3" parent="Characters" instance=ExtResource("3_jc68a")]
+position = Vector2(640, 448)
+hp = 525
+
+[node name="TestCharacter4_lowHP" parent="Characters" instance=ExtResource("3_jc68a")]
+position = Vector2(832, 448)
+hp = 5
+
+[node name="TestCharacter5" parent="Characters" instance=ExtResource("3_jc68a")]
+position = Vector2(960, 448)
+hp = 525
+
+[node name="TestCharacter6_lowHP" parent="Characters" instance=ExtResource("3_jc68a")]
+position = Vector2(1088, 448)
+hp = 5
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("9_24fr1")]
+position = Vector2(64, 448)
+r_hit_extended = SubResource("Resource_68wus")
+r_remove_projectile = SubResource("Resource_cg62o")
+atk = 15
+speed = 100
+
+[node name="Projectile" parent="Projectiles" groups=["Remove"] instance=ExtResource("8_2bqkk")]
+position = Vector2(64, 512)
+speed = 50
+
+[node name="Camera3D" parent="." instance=ExtResource("2_o5b6u")]
+transform = Transform3D(-4.371139e-08, 0.77162486, -0.6360779, 0, 0.6360779, 0.77162486, 1, 3.3728796e-08, -2.7803848e-08, -26.827051, 10.749, 11.258)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.5992, 11.412)
+light_energy = 12.929
+spot_range = 77.478
+spot_angle = 71.6157
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.99983436, 0.011578343, -0.014045655, 0, 0.7716247, 0.6360781, 0.018202705, -0.63597274, 0.7714968, 0, 14.4531, 40.168)
+light_energy = 8.919
+spot_range = 408.457
+spot_angle = 76.3426
+
+[node name="Emitters" type="Node" parent="." node_paths=PackedStringArray("emitter_ID")]
+script = ExtResource("3_qlw01")
+projectiles3D = Dictionary[String, PackedScene]({
+"extended": ExtResource("4_isg2c")
+})
+emitter_ID = NodePath("PE3D_ID")
+
+[node name="PE3D_simple" type="Marker3D" parent="Emitters" node_paths=PackedStringArray("add_child_to_this_node")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 0)
+script = ExtResource("4_dt07b")
+projectile_scene = ExtResource("5_4k4ec")
+add_child_to_this_node = NodePath("../../Projectiles")
+instantly_emit = true
+metadata/_custom_type_script = "uid://bptjt0og1tfel"
+
+[node name="PE3D_simple2" type="Marker3D" parent="Emitters" node_paths=PackedStringArray("add_child_to_this_node")]
+transform = Transform3D(0.9103733, 0, -0.41378796, 0, 1, 0, 0.41378796, 0, 0.9103733, -19.369886, 0, 17.594475)
+script = ExtResource("4_dt07b")
+projectile_scene = ExtResource("5_4k4ec")
+add_child_to_this_node = NodePath("../../Projectiles")
+instantly_emit = true
+metadata/_custom_type_script = "uid://bptjt0og1tfel"
+
+[node name="PE3D_ID" type="Marker3D" parent="Emitters" node_paths=PackedStringArray("node_with_projectiles", "add_child_to_this_node")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, 0, 0)
+script = ExtResource("6_kpkqn")
+node_with_projectiles = NodePath("..")
+dictionary_name_with_projectiles_and_ids = "projectiles3D"
+default_projectile_id = "extended"
+add_child_to_this_node = NodePath("../../Projectiles")
+metadata/_custom_type_script = "uid://je1yoig8016s"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.503113, -0.02709961, 81.92895)
+shape = SubResource("BoxShape3D_isg2c")
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
+[connection signal="area_entered" from="Area3D" to="Emitters" method="_on_area_3d_area_entered"]

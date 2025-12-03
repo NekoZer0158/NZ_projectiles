@@ -9,6 +9,8 @@ PE2DID_line - emit projectile from any point on the line
 
 ## Changelog
 
+### 1.2
+	Added 3D emitters
 ### 1.1
 	Added PE2DID_line, with it you can emit projectile from any point on the line
 	Added new argument to emit function - type, with which you can set type to the projectile when emitting it

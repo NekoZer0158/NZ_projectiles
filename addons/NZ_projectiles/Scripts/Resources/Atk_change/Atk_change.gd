@@ -2,7 +2,7 @@
 @abstract
 @icon("res://addons/NZ_projectiles/Icons/Atk_change/Atk_change.svg")
 class_name Atk_change_projectile
-extends Resource
+extends Projectile_resource
 
 ## This function will be called at the same time as the projectile _ready function (DON'T EDIT THIS)
 func _ready(parent_node:Node) -> void: 

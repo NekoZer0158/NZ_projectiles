@@ -13,10 +13,10 @@
 [ext_resource type="Script" uid="uid://b4ngxngeeihmm" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Particles/Random_particle.gd" id="10_oopxv"]
 [ext_resource type="PackedScene" uid="uid://c8x5cmrilhkui" path="res://NZ_projectiles/Particles/ProjectileParticles2.tscn" id="11_p7man"]
 [ext_resource type="PackedScene" uid="uid://b65bwfg6kqcne" path="res://NZ_projectiles/Particles/ProjectileParticles3.tscn" id="12_m4y2o"]
-[ext_resource type="Script" uid="uid://cj1thpmipp4kr" path="res://addons/NZ_projectiles_emitter/Scripts/PE2D_simple.gd" id="14_77ahh"]
+[ext_resource type="Script" uid="uid://cj1thpmipp4kr" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2D_simple.gd" id="14_77ahh"]
 [ext_resource type="Script" uid="uid://cksp6jhv2lybg" path="res://NZ_projectiles/Scripts/Emitters_2_1.gd" id="14_p7man"]
 [ext_resource type="PackedScene" uid="uid://chw6csp6kqtf8" path="res://NZ_projectiles/Projectiles/Projectile4.tscn" id="15_m4y2o"]
-[ext_resource type="Script" uid="uid://di3i6hekuvhyb" path="res://addons/NZ_projectiles_emitter/Scripts/PE2D_ID.gd" id="17_j6qvq"]
+[ext_resource type="Script" uid="uid://di3i6hekuvhyb" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2D_ID.gd" id="17_j6qvq"]
 
 [sub_resource type="Resource" id="Resource_i0sp6"]
 script = ExtResource("6_4j2pj")

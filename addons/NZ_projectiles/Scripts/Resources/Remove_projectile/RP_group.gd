@@ -6,11 +6,11 @@ extends Remove_projectile
 
 @export var group_name : String
 @export_enum("Queue_free","Free","Activate remove resource") var remove_projectiles_from_group_this_way : int
-@export_enum("Queue_free","Free","Activate remove resource") var remove_this_projectile_this_way : int
+@export_enum("Queue_free","Free","Activate remove resource","Dont") var remove_this_projectile_this_way : int
 @export var second_remove_resource : Remove_projectile
 @export var debug : bool = false
 
-enum {QUEUE_FREE,FREE,ACTIVATE_REMOVE_RESOURCE}
+enum {QUEUE_FREE,FREE,ACTIVATE_REMOVE_RESOURCE,DONT}
 
 func _remove_projectile_step_2(projectile:Node) -> void:
 	check_particle_resource(projectile)
@@ -32,3 +32,5 @@ func _remove_projectile_step_2(projectile:Node) -> void:
 			projectile.free()
 		ACTIVATE_REMOVE_RESOURCE:
 			second_remove_resource.remove_projectile(projectile)
+		DONT:
+			pass

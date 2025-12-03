@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ckgwroschvfx3"]
+
+[ext_resource type="Script" uid="uid://7d5orfpoiux4" path="res://NZ_projectiles/Scripts/Decrease_speed_resource.gd" id="1_qc5f5"]
+
+[resource]
+script = ExtResource("1_qc5f5")
+speed = 120

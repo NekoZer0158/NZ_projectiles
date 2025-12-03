@@ -8,6 +8,7 @@ extends Remove_projectile
 @export var immortality_seconds : float = 0.25:
 	set(value):
 		immortality_seconds = clamp(value,0,abs(value))
+@export var remove_this_projectile : bool = true
 
 var me : RP_spawn_projectile
 
@@ -28,7 +29,8 @@ func _remove_projectile_step_2(projectile:Node) -> void:
 		if immortality_seconds > 0 and spawn_this is Area2D:
 			tree_node = projectile.get_tree()
 		check_particle_resource(projectile)
-		projectile.queue_free()
+		if remove_this_projectile:
+			projectile.queue_free()
 		if immortality_seconds > 0 and spawn_this is Area2D:
 			await tree_node.create_timer(immortality_seconds,false).timeout
 			if is_instance_valid(spawn_this):
