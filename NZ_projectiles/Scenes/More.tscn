@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://fkv6xi14a6n8"]
+[gd_scene load_steps=36 format=3 uid="uid://fkv6xi14a6n8"]
 
 [ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_2ctdq"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_urunl"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://pnq0dpujt47r" path="res://NZ_projectiles/Particles/ProjectileParticles.tscn" id="7_3i6oc"]
 [ext_resource type="PackedScene" uid="uid://bcpnkgwrpbcqy" path="res://NZ_projectiles/Projectiles/Projectile_extended2.tscn" id="7_bkp2j"]
 [ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="7_uyhmn"]
-[ext_resource type="Script" uid="uid://cxp2v5xu7q61e" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Particle_projectile.gd" id="8_opr1k"]
+[ext_resource type="Script" uid="uid://7ovnute2u7cf" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Random_particle.gd" id="9_te5nx"]
+[ext_resource type="PackedScene" uid="uid://c8x5cmrilhkui" path="res://NZ_projectiles/Particles/ProjectileParticles2.tscn" id="10_djdf7"]
 [ext_resource type="Script" uid="uid://ckrw43oc68dee" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time.gd" id="12_7ujc8"]
 [ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="12_xtkpt"]
 [ext_resource type="Script" uid="uid://pva0gwyf8ta6" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="13_gaqke"]
@@ -51,15 +52,17 @@ script = ExtResource("6_mafij")
 spawn_this_projectile = ExtResource("7_bkp2j")
 immortality_seconds = 0.15
 
-[sub_resource type="Resource" id="Resource_fr2vd"]
-script = ExtResource("8_opr1k")
-particle_scene = ExtResource("7_3i6oc")
+[sub_resource type="Resource" id="Resource_4b2nt"]
+script = ExtResource("9_te5nx")
+particle_scenes = Array[PackedScene]([ExtResource("7_3i6oc"), ExtResource("10_djdf7")])
+look_there = 1
+metadata/_custom_type_script = "uid://7ovnute2u7cf"
 
 [sub_resource type="Resource" id="Resource_7hano"]
 script = ExtResource("7_uyhmn")
 next_phase = SubResource("Resource_68imq")
 use_particle_every_hit = true
-particle_resource = SubResource("Resource_fr2vd")
+particle_resource = SubResource("Resource_4b2nt")
 
 [sub_resource type="Resource" id="Resource_pya0y"]
 script = ExtResource("12_7ujc8")

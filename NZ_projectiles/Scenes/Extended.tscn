@@ -50,6 +50,7 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 320.0
 offset_bottom = 128.0
+focus_mode = 0
 text = "Main"
 script = ExtResource("1_6s6dx")
 change_to_this_scene = "res://NZ_projectiles/Scenes/Main.tscn"
@@ -135,7 +136,7 @@ offset_bottom = 640.0
 text = "Remove projectiles"
 script = ExtResource("7_77xup")
 markers_projectiles = [NodePath("../../Markers_for_projectiles/Marker2D"), NodePath("../../Markers_for_projectiles/Marker2D3"), NodePath("../../Markers_for_projectiles/Marker2D5")]
-markers_characters = [NodePath("../../Markers_for_characters/Marker2D-1"), NodePath("../../Markers_for_characters/Marker2D0"), NodePath("../../Markers_for_characters/Marker2D1"), NodePath("../../Markers_for_characters/Marker2D3"), NodePath("../../Markers_for_characters/Marker2D5")]
+markers_characters = [NodePath("../../Markers_for_characters/Marker2D-1"), NodePath("../../Markers_for_characters/Marker2D0"), NodePath("../../Markers_for_characters/Marker2D1"), NodePath("../../Markers_for_characters/Marker2D3"), NodePath("../../Markers_for_characters/Marker2D5"), NodePath("../../Markers_for_characters/Marker2D6")]
 
 [node name="Markers_for_projectiles" type="Node" parent="."]
 
@@ -176,6 +177,9 @@ position = Vector2(640, 448)
 
 [node name="Marker2D5" type="Marker2D" parent="Markers_for_characters"]
 position = Vector2(640, 512)
+
+[node name="Marker2D6" type="Marker2D" parent="Markers_for_characters"]
+position = Vector2(512, 512)
 
 [node name="ProjectileExtended" parent="." instance=ExtResource("7_3uxkj")]
 position = Vector2(832, 448)

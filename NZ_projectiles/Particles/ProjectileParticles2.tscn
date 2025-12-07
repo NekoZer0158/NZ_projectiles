@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://pnq0dpujt47r"]
+[gd_scene load_steps=3 format=3 uid="uid://c8x5cmrilhkui"]
 
-[ext_resource type="Script" uid="uid://chrdj6mvs8j3p" path="res://NZ_projectiles/Scripts/One_shot_particle.gd" id="1_tgm28"]
+[ext_resource type="Script" uid="uid://chrdj6mvs8j3p" path="res://NZ_projectiles/Scripts/One_shot_particle.gd" id="1_w214g"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8sc8m"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w214g"]
 lifetime_randomness = 0.62
 particle_flag_disable_z = true
 spread = 90.0
@@ -13,7 +13,7 @@ linear_accel_min = -100.0
 linear_accel_max = -80.0
 scale_min = 4.0
 scale_max = 4.0
-color = Color(1, 0.527344, 0.527344, 1)
+color = Color(0.5254902, 0.64411765, 1, 1)
 
 [node name="ProjectileParticles" type="GPUParticles2D"]
 emitting = false
@@ -22,7 +22,7 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 randomness = 0.33
-process_material = SubResource("ParticleProcessMaterial_8sc8m")
-script = ExtResource("1_tgm28")
+process_material = SubResource("ParticleProcessMaterial_w214g")
+script = ExtResource("1_w214g")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

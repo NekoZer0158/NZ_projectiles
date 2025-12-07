@@ -3,6 +3,11 @@ Plugin for Godot that adds a projectile system. There are two projectile classes
 
 ## Changelog
 
+### 1.22
+	Added RP_group - remove every projectile in the group
+	Added RP_multiple - activate multiple Remove_projectile resources at once
+	Added PaPr_random - random particle on every call of the function
+	Updated Particle_projectile and RP_spawn_projectile
 ### 1.21
 	Removed clamp functions from SC_random_range
 ### 1.20
