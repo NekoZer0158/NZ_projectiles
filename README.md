@@ -52,3 +52,6 @@ You can set a resource to change projectiles speed, atk, movement, hit arguments
 
 ## 3D extended
 ![Gif_7](/NZ_projectiles/gifs/gif_7.gif)
+
+## Emitters example
+![Gif_8](/NZ_projectiles/gifs/gif_8.gif)
