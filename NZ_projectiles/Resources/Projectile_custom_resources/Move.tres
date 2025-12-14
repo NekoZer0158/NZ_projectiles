@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PCRU_change_var" load_steps=2 format=3 uid="uid://bve7k2ungscx"]
+
+[ext_resource type="Script" uid="uid://xcvifycb0p83" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/Usable/PCR_change_var_by_name.gd" id="1_3n4ln"]
+
+[resource]
+script = ExtResource("1_3n4ln")
+variable_name = "position:x"
+action = 1
+value = 10
+args_action_towards_value = 3
+metadata/_custom_type_script = "uid://xcvifycb0p83"

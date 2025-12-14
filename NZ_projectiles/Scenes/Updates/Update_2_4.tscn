@@ -1,0 +1,185 @@
+[gd_scene load_steps=22 format=4 uid="uid://djliupasog31t"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_h3gio"]
+[ext_resource type="PackedScene" uid="uid://dqptdlqudqpca" path="res://NZ_projectiles/Projectiles/Projectile_custom.tscn" id="3_0504q"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="3_ex5n4"]
+[ext_resource type="PackedScene" uid="uid://df8hkl141lgqo" path="res://NZ_projectiles/Static/Static2.tscn" id="3_v4gfk"]
+[ext_resource type="Script" uid="uid://bntvtohu4rbtv" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/Usable/PCR_usable.gd" id="4_ug5wv"]
+[ext_resource type="Script" uid="uid://b37itfg52f315" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/Projectile_custom_resource.gd" id="4_ugrmh"]
+[ext_resource type="Script" uid="uid://dx0l6pretefy3" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/PCR_variable.gd" id="5_t03w5"]
+[ext_resource type="Script" uid="uid://cn51slcri2shx" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/Usable/PCRU_change_var_in_resource.gd" id="7_t03w5"]
+[ext_resource type="Resource" uid="uid://bve7k2ungscx" path="res://NZ_projectiles/Resources/Projectile_custom_resources/Move.tres" id="8_qj2fp"]
+[ext_resource type="Script" uid="uid://bh3hafk3ca4dp" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/Hit/PCRH_ID.gd" id="9_c3e5r"]
+[ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="10_y5yc1"]
+[ext_resource type="Script" uid="uid://xpk3xerelfj" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/Usable/PCRU_change_var_by_projectile.gd" id="11_105q6"]
+
+[sub_resource type="Resource" id="Resource_y5yc1"]
+script = ExtResource("5_t03w5")
+variable = 15
+metadata/_custom_type_script = "uid://dx0l6pretefy3"
+
+[sub_resource type="Resource" id="Resource_qj2fp"]
+script = ExtResource("5_t03w5")
+variable = Vector2(5, 0)
+metadata/_custom_type_script = "uid://dx0l6pretefy3"
+
+[sub_resource type="Resource" id="Resource_c3e5r"]
+script = ExtResource("7_t03w5")
+resource_key = "test"
+value = 5
+action = 3
+args_action_towards_value = 6
+debug = true
+metadata/_custom_type_script = "uid://cn51slcri2shx"
+
+[sub_resource type="Resource" id="Resource_105q6"]
+script = ExtResource("5_t03w5")
+variable = -50
+metadata/_custom_type_script = "uid://dx0l6pretefy3"
+
+[sub_resource type="Resource" id="Resource_v4gfk"]
+script = ExtResource("9_c3e5r")
+use_arguments = false
+metadata/_custom_type_script = "uid://bh3hafk3ca4dp"
+
+[sub_resource type="Resource" id="Resource_mtb22"]
+script = ExtResource("5_t03w5")
+variable = 15
+metadata/_custom_type_script = "uid://dx0l6pretefy3"
+
+[sub_resource type="Resource" id="Resource_y0c1k"]
+script = ExtResource("11_105q6")
+new_variable_name = "skew"
+variable_name = "position:x"
+action = 2
+args_action_towards_value = 3
+metadata/_custom_type_script = "uid://xpk3xerelfj"
+
+[sub_resource type="Resource" id="Resource_lcl44"]
+script = ExtResource("5_t03w5")
+variable = Vector2i(15, 14)
+metadata/_custom_type_script = "uid://dx0l6pretefy3"
+
+[sub_resource type="Resource" id="Resource_a0lcv"]
+script = ExtResource("5_t03w5")
+variable = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://dx0l6pretefy3"
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 184.0
+offset_top = 568.0
+offset_right = 312.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Main"
+script = ExtResource("1_h3gio")
+change_to_this_scene = "uid://cgkd4refam0mw"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Static"]
+tile_map_data = PackedByteArray("AAAOAAUAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAIAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAA=")
+tile_set = ExtResource("10_y5yc1")
+
+[node name="Static" parent="Static" instance=ExtResource("3_v4gfk")]
+position = Vector2(704, 384)
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="TestCharacter" parent="Characters" instance=ExtResource("3_ex5n4")]
+position = Vector2(960, 128)
+
+[node name="TestCharacter2" parent="Characters" instance=ExtResource("3_ex5n4")]
+position = Vector2(448, 256)
+
+[node name="TestCharacter3" parent="Characters" instance=ExtResource("3_ex5n4")]
+position = Vector2(448, 384)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Projectile1" parent="Projectiles" instance=ExtResource("3_0504q")]
+position = Vector2(64, 128)
+id = "custom_01"
+type = 0
+atk_key = "atk"
+atk_variable_name = &"variable"
+variable_and_function_resources = Dictionary[String, ExtResource("4_ugrmh")]({
+"atk": SubResource("Resource_y5yc1"),
+"test": SubResource("Resource_qj2fp")
+})
+ready_resources = Array[ExtResource("4_ug5wv")]([SubResource("Resource_c3e5r")])
+phyisics_process_resources = Array[ExtResource("4_ug5wv")]([ExtResource("8_qj2fp")])
+remove_body_classes = Array[String](["StaticBody2D"])
+
+[node name="Projectile2_1" parent="Projectiles" instance=ExtResource("3_0504q")]
+position = Vector2(64, 256)
+id = "move_right"
+type = 0
+atk_key = "atk"
+atk_variable_name = &"variable"
+variable_and_function_resources = Dictionary[String, ExtResource("4_ugrmh")]({
+"atk": SubResource("Resource_105q6")
+})
+phyisics_process_resources = Array[ExtResource("4_ug5wv")]([ExtResource("8_qj2fp")])
+hit_resource = SubResource("Resource_v4gfk")
+name_hit = &"hit_extended"
+
+[node name="Projectile2_2" parent="Projectiles" instance=ExtResource("3_0504q")]
+position = Vector2(960, 256)
+skew = 0.87266463
+type = 0
+atk_key = "atk"
+atk_variable_name = &"variable"
+variable_and_function_resources = Dictionary[String, ExtResource("4_ugrmh")]({
+"atk": SubResource("Resource_mtb22")
+})
+phyisics_process_resources = Array[ExtResource("4_ug5wv")]([SubResource("Resource_y0c1k")])
+
+[node name="Projectile3_1" parent="Projectiles" instance=ExtResource("3_0504q")]
+position = Vector2(128, 384)
+id = "move_right"
+type = 0
+atk_key = "atk"
+atk_variable_name = &"variable"
+variable_and_function_resources = Dictionary[String, ExtResource("4_ugrmh")]({
+"atk": SubResource("Resource_lcl44")
+})
+phyisics_process_resources = Array[ExtResource("4_ug5wv")]([ExtResource("8_qj2fp")])
+hit_body_classes = Array[String](["StaticBody2D"])
+remove_body_classes = Array[String](["TileMapLayer"])
+
+[node name="Projectile3_2" parent="Projectiles" instance=ExtResource("3_0504q")]
+position = Vector2(64, 384)
+id = "move_right"
+type = 0
+atk_key = "atk"
+atk_variable_name = &"variable"
+variable_and_function_resources = Dictionary[String, ExtResource("4_ugrmh")]({
+"atk": SubResource("Resource_a0lcv")
+})
+phyisics_process_resources = Array[ExtResource("4_ug5wv")]([ExtResource("8_qj2fp")])
+hit_body_classes = Array[String](["StaticBody2D"])
+remove_body_classes = Array[String](["TileMapLayer"])
+
+[node name="Emitters" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]

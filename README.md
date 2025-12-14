@@ -3,6 +3,10 @@ Plugin for Godot that adds a projectile system in 2D&3D. There are four projecti
 
 ## Changelog
 
+### 2.4
+	Added Projectile_custom - a new projectile class (this is not a subclass for Projectile), it has much more customization than Projectile_extended. The idea is to give you an ability to make what you want without coding. EXPERIMENTAL
+	Added Projectile_custom_resource - a resource for Projectile_custom. EXPERIMENTAL
+	Added Update_2_4 scene
 ### 2.3
 	Added Update_2_3 scene
 	Added 3D emitters
