@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqptdlqudqpca"]
 
-[ext_resource type="Script" uid="uid://qtlwl47r7fc8" path="res://addons/NZ_projectiles/Scripts/Projectile_custom.gd" id="1_ad3qd"]
-[ext_resource type="Texture2D" uid="uid://bq414c6ug0hwb" path="res://addons/NZ_projectiles/Icons/Projectile_custom.svg" id="2_ad3qd"]
-[ext_resource type="Script" uid="uid://mrbqnj8jw4dj" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/Hit/PCR_hit.gd" id="2_vbbes"]
-[ext_resource type="Script" uid="uid://bt1kwpl8bu1h8" path="res://addons/NZ_projectiles/Scripts/Resources/Custom/Remove/PCR_remove.gd" id="3_2nudp"]
+[ext_resource type="Script" uid="uid://qtlwl47r7fc8" path="res://addons/NZ_projectiles_custom/Scripts/Projectile_custom.gd" id="1_ad3qd"]
+[ext_resource type="Texture2D" uid="uid://bq414c6ug0hwb" path="res://addons/NZ_projectiles_custom/Icons/Projectile_custom.svg" id="2_ad3qd"]
+[ext_resource type="Script" uid="uid://mrbqnj8jw4dj" path="res://addons/NZ_projectiles_custom/Scripts/Resources/Hit/PCR_hit.gd" id="2_vbbes"]
+[ext_resource type="Script" uid="uid://bt1kwpl8bu1h8" path="res://addons/NZ_projectiles_custom/Scripts/Resources/Remove/PCR_remove.gd" id="3_2nudp"]
 
 [sub_resource type="Resource" id="Resource_mgo70"]
 script = ExtResource("2_vbbes")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq48qy4q3asl8"]
+
+[ext_resource type="Script" uid="uid://npeaq77acoem" path="res://NZ_projectiles/Scripts/Projectiles/Projectile_custom_2_5.gd" id="1_4cayx"]
+[ext_resource type="Script" uid="uid://mrbqnj8jw4dj" path="res://addons/NZ_projectiles_custom/Scripts/Resources/Hit/PCR_hit.gd" id="2_julyj"]
+[ext_resource type="Script" uid="uid://du5cmk8ewww7l" path="res://addons/NZ_projectiles_custom/Scripts/Resources/Remove/PCRR_func.gd" id="3_4cayx"]
+[ext_resource type="Texture2D" uid="uid://bq414c6ug0hwb" path="res://addons/NZ_projectiles_custom/Icons/Projectile_custom.svg" id="4_4nm14"]
+
+[sub_resource type="Resource" id="Resource_mgo70"]
+script = ExtResource("2_julyj")
+use_arguments = false
+metadata/_custom_type_script = "uid://mrbqnj8jw4dj"
+
+[sub_resource type="Resource" id="Resource_julyj"]
+script = ExtResource("3_4cayx")
+use_args = true
+func_name = "a_func_to_test"
+metadata/_custom_type_script = "uid://du5cmk8ewww7l"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwddj"]
+size = Vector2(16, 6)
+
+[node name="Projectile" type="Area2D" groups=["Projectiles_custom"]]
+scale = Vector2(2, 2)
+collision_mask = 6
+script = ExtResource("1_4cayx")
+hit_resource = SubResource("Resource_mgo70")
+remove_resource = SubResource("Resource_julyj")
+metadata/_custom_type_script = "uid://qtlwl47r7fc8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xwddj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_4nm14")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" binds= [[123, "New in 2.5"], true, Vector2i(-500, 25)]]

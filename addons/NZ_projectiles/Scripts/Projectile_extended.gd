@@ -3,7 +3,7 @@ class_name Projectile_extended
 extends Projectile
 
 @export_enum("Queue_free","Free","Activate remove resource") var when_colliding_with_remove_when_collide : int = 0
-@export var duplicate_resources : bool = true ## RECOMMENDED TO NOT DISABLE IT
+@export var duplicate_resources : bool = true ## RECOMMEND TO NOT DISABLE IT
 @export_group("Modules (Resources)","r_")
 @export var r_atk_change : Atk_change_projectile ## Changes projectile atk
 @export var r_speed_change : Speed_change_projectile ## Changes projectile speed

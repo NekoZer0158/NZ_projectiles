@@ -1,5 +1,6 @@
-# NZ projectiles_emitter
+# NZ projectiles emitter
 Emit projectiles from plugin NZ_projectiles (For now emits only 2D projectiles)
+REQUIRES: NZ_projectiles
 
 ## Emitters
 Projectile_emitter2D_base - base for every 2D emitter

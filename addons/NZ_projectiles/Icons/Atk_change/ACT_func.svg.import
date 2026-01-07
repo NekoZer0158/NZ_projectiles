@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq414c6ug0hwb"
-path="res://.godot/imported/Projectile_custom.svg-6a66be2b8777343f465f28c2a88b3b5a.ctex"
+uid="uid://onhq4onsye77"
+path="res://.godot/imported/ACT_func.svg-2d02c6b4593bf746be2b530920b1b6b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/NZ_projectiles/Icons/Projectile_custom.svg"
-dest_files=["res://.godot/imported/Projectile_custom.svg-6a66be2b8777343f465f28c2a88b3b5a.ctex"]
+source_file="res://addons/NZ_projectiles/Icons/Atk_change/ACT_func.svg"
+dest_files=["res://.godot/imported/ACT_func.svg-2d02c6b4593bf746be2b530920b1b6b5.ctex"]
 
 [params]
 

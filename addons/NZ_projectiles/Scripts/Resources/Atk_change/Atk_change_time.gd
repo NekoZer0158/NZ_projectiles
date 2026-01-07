@@ -26,6 +26,6 @@ func _ready_step_2(parent_node:Node) -> void:
 func _on_timer_timeout(parent_node:Node) -> void:
 	parent_node.atk = move_toward(parent_node.atk,increase_atk_to_this,atk_step)
 	if debug:
-		print_debug(parent_node.name,": ",parent_node.atk)
+		print(parent_node.name,": ",parent_node.atk)
 	if parent_node.atk == increase_atk_to_this:
 		timer.stop()

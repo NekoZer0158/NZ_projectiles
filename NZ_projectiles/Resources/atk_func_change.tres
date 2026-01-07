@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bh17fn2temxex"]
+
+[ext_resource type="Script" uid="uid://pvlwutr7rwdn" path="res://NZ_projectiles/Scripts/Resources/atk_func_change.gd" id="1_em08q"]
+
+[resource]
+script = ExtResource("1_em08q")
+minus_this = 2

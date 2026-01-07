@@ -1,4 +1,4 @@
-@icon("res://addons/NZ_projectiles/Icons/Projectile_custom.svg")
+@icon("res://addons/NZ_projectiles_custom/Icons/Projectile_custom.svg")
 class_name Projectile_custom
 extends Area2D
 
@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	for i in phyisics_process_resources:
 		i.use(self,delta)
 
-func _hit_body(body:Node2D,...args) -> void:
+func _hit_body(body:Node2D,args) -> void:
 	if add_hit_args_back:
 		for i in other_hit_arg_key_and_variable_names.keys():
 			if i == "self":
@@ -63,14 +63,14 @@ func _hit_body(body:Node2D,...args) -> void:
 	hit_resource.hit(variable_and_function_resources[atk_key].get(atk_variable_name),body,self,name_hit,args)
 	_remove_projectile(args)
 
-func _remove_projectile(...args) -> void:
+func _remove_projectile(args) -> void:
 	if add_remove_args_back:
 		for i in other_remove_arg_key_and_variable_names.keys():
 			if i == "self":
 				args.push_back(get_indexed(other_remove_arg_key_and_variable_names[i]))
 			else:
 				args.push_back(variable_and_function_resources[i].get_indexed(other_remove_arg_key_and_variable_names[i]))
-	else:
+	else: # Adds arguments from other_hit_arg_key_and_variable_names before signal arguments
 		var new_args : Array = []
 		for i in other_remove_arg_key_and_variable_names.keys():
 			if i == "self":
