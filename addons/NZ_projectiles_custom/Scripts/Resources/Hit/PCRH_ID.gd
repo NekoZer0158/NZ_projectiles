@@ -1,3 +1,4 @@
+@icon("res://addons/NZ_projectiles_custom/Icons/Hit/PCRH_ID.svg")
 class_name PCRH_ID
 extends PCR_hit
 

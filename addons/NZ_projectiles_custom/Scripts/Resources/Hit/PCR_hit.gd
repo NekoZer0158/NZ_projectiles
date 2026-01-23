@@ -1,3 +1,4 @@
+@icon("res://addons/NZ_projectiles_custom/Icons/Hit/PCR_hit.svg")
 class_name PCR_hit
 extends Projectile_custom_resource
 

@@ -1,3 +1,4 @@
+@icon("res://addons/NZ_projectiles_custom/Icons/Usable/PCRU_change_var_in_resource.svg")
 class_name PCRU_change_var_in_resource
 extends PCRU_change_var_by_name
 

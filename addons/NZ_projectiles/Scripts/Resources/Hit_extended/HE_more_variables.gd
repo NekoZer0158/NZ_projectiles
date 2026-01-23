@@ -5,7 +5,8 @@ extends Hit_extended_projectile
 
 ## Call hit_extended function with more variables, getting them from a projectile
 
-@export var call_function_with_array : bool = false: ## It doesn't resize more_variables_from_projectile automatically
+## if false, the maximum amount of variables is 5, otherwise - infinite
+@export var call_function_with_array : bool = false:
 	set(value):
 		call_function_with_array = value
 @export var more_variables_from_projectile : Array[StringName]:
@@ -23,13 +24,12 @@ func call_hit_extended_function(atk:int,body:Node,projectile:Node) -> void:
 			for i in more_variables_from_projectile:
 				array_with_values.append(projectile.get(i))
 			body.call(name_hit_extended,atk,array_with_values)
-		else: # TODO MAKE THIS PART BETTER (PLEASE, FORGIVE ME HOW I MADE THIS AT THIS POINT)
+		else: # Just use array if you have more than 5 arguments
 			_no_array_way_to_call_function_with_more_variables(atk,body,projectile)
 	else:
 		push_error("no values in more_variables_from_projectile")
 
-## Will be changed in the future
-func _no_array_way_to_call_function_with_more_variables(atk:int,body:Node2D,projectile:Node) -> void: ## @experimental
+func _no_array_way_to_call_function_with_more_variables(atk:int,body:Node2D,projectile:Node) -> void:
 	var first_variable := projectile.get(more_variables_from_projectile[0])
 	if more_variables_from_projectile.size() > 1:
 		var second_variable := projectile.get(more_variables_from_projectile[1])

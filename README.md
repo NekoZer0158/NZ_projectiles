@@ -1,9 +1,19 @@
 # NZ projectiles
 Plugin for Godot that adds a projectile system in 2D&3D. There are four projectile classes (2 each for 2D & 3D), base one and extended, to which you can add more stuff, like changing speed every second or making it disappear only after interacting with 3 objects.
 Also includes two more plugins: NZ_projectiles_custom (adds a new projectile class that is much more customizable, but harder to work with) and NZ_projectiles_emitter (adds nodes with which you can emit projectiles). Both plugins require the main one - NZ_projectiles.
+Every update adds a new scene in NZ_projectiles/Scenes/Updates where you can see newly added things (even if the update doesn't say that it added a new scene).
 
 ## Changelog
 
+### 2.6
+	Add debug to SC_increase and SC_condition to have an easier time finding bugs
+	Add SC_increase_func - increase speed by calling a function in a different resource
+	Improve SC_reset and HE_other
+	Update HE_more_variables
+	Fix ACT_func
+	Update NZ_projectiles_emitter to 1.3 (check README in NZ_projectile_emitter to see what was changed)
+	Update NZ_projectiles_custom to Experimental 0.3 (E 0.3) (check README in NZ_projectiles_custom to see what was changed)
+	Check Update_2_6 scene to see new stuff (you can get this in NZ_projectiles folder via GitHub)
 ### 2.5
 	Move Projectile_custom and its resources to the separate plugin - NZ_projectiles_custom
 	Add icon for Projectile_resource

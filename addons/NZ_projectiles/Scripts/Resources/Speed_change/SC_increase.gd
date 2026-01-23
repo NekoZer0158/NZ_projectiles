@@ -14,6 +14,8 @@ extends Speed_change_projectile
 			time_for_increase = value
 		else:
 			time_for_increase = 0.0
+@export var check_if_timer_is_valid : bool = true
+@export var debug : bool = false
 
 enum {EVERY_CALL_OF_MOVE_FUNCTION,EVERY_SECOND}
 
@@ -33,10 +35,14 @@ func activate() -> void:
 	if type_of_increase == EVERY_SECOND:
 		if timer.is_stopped():
 			timer.start(time_for_increase)
+			if debug:
+				print(resource_name,": timer has started | Time: ",Time.get_time_dict_from_system())
 
 func stop_timer() -> void:
-	if is_instance_valid(timer):
+	if !check_if_timer_is_valid or is_instance_valid(timer):
 		timer.stop()
+		if debug:
+			print(resource_name,": timer has stopped | Time: ",Time.get_time_dict_from_system())
 
 func change_speed(projectile_speed:int) -> int:
 	if type_of_increase == EVERY_CALL_OF_MOVE_FUNCTION:

@@ -11,6 +11,7 @@ extends AC_time
 @export var resource_with_func : Resource
 @export var func_name : String
 @export var allow_bigger : bool = false
+@export var check_if_timer_is_valid : bool = true
 
 func _on_timer_timeout(parent_node:Node) -> void:
 	var new_atk : int = resource_with_func.call(func_name,parent_node.atk,atk_step)
@@ -20,5 +21,6 @@ func _on_timer_timeout(parent_node:Node) -> void:
 		parent_node.atk = new_atk
 	if debug:
 		print(parent_node.name," atk:",parent_node.atk)
-	if parent_node.atk == increase_atk_to_this:
-		timer.stop()
+	if parent_node.atk >= increase_atk_to_this:
+		if !check_if_timer_is_valid or is_instance_valid(timer):
+			timer.stop()

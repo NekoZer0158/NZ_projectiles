@@ -13,7 +13,7 @@ func _ready(parent_node:Node) -> void:
 	if ProjectileChecks.check_if_this_a_projectile(parent_node):
 		super(parent_node)
 		if time == 0.0:
-			push_error("No time")
+			push_error(resource_name,": time is 0")
 			return
 		timer = Timer.new()
 		timer.timeout.connect(_on_timer_timeout)
@@ -28,10 +28,14 @@ func activate() -> void:
 	if is_instance_valid(timer):
 		if timer.is_stopped() and !condition_is_true:
 			timer.start(time)
+			if debug:
+				print(resource_name,": timer has started | Time: ",Time.get_time_dict_from_system())
 
 func stop_timer() -> void:
 	if is_instance_valid(timer):
 		timer.stop()
+		if debug:
+			print(resource_name,": timer has stopped | Time: ",Time.get_time_dict_from_system())
 
 func _on_timer_timeout() -> void:
 	condition_is_true = true

@@ -1,3 +1,4 @@
+@icon("res://addons/NZ_projectiles_custom/Icons/Remove/PCR_remove.svg")
 class_name PCR_remove
 extends Projectile_custom_resource
 

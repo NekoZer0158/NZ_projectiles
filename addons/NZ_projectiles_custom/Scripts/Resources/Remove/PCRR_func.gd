@@ -1,3 +1,4 @@
+@icon("res://addons/NZ_projectiles_custom/Icons/Remove/PCRR_func.svg")
 class_name PCRR_func
 extends PCR_remove
 

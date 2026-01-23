@@ -8,6 +8,7 @@ extends Speed_change_projectile
 
 @export var speed_change : Speed_change_projectile
 @export var after_condition_speed_change : Speed_change_projectile
+@export var debug : bool = false
 
 var condition_is_true : bool = false
 
@@ -29,11 +30,14 @@ func _ready(parent_node:Node) -> void:
 			push_error("No after_condition_speed_change")
 
 func reset() -> void:
-	if speed_change.has_method("reset"):
-		speed_change.reset()
+	if speed_change != null:
+		if speed_change.has_method("reset"):
+			speed_change.reset()
 	if after_condition_speed_change.has_method("reset"):
 		after_condition_speed_change.reset()
 	condition_is_true = false
+	if debug:
+		print(resource_name,": resource was reset | Time: ",Time.get_time_dict_from_system())
 
 func change_speed(projectile_speed:int) -> int:
 	if !condition_is_true:

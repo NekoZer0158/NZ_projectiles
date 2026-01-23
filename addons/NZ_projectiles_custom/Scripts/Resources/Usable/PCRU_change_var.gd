@@ -1,4 +1,5 @@
 @abstract
+@icon("res://addons/NZ_projectiles_custom/Icons/Usable/PCRU_change_var.svg")
 class_name PCRU_change_var
 extends PCR_usable
 

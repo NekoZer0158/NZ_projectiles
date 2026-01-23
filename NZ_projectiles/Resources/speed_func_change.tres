@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dd0un07o8oiwl"]
+
+[ext_resource type="Script" uid="uid://cv7uucrh3ldus" path="res://NZ_projectiles/Scripts/Resources/speed_func_change.gd" id="1_m36sk"]
+
+[resource]
+script = ExtResource("1_m36sk")
+plus_this = 4

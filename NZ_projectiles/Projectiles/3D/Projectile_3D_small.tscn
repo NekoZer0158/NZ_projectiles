@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddilhhttw1lxp"]
+
+[ext_resource type="Script" uid="uid://c8eyvg0nwh61l" path="res://addons/NZ_projectiles/Scripts/Projectile3D.gd" id="1_bv7m8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv7m8"]
+size = Vector3(1, 1, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8hw5"]
+transparency = 1
+albedo_color = Color(1, 0.87058824, 0.36078432, 0.7137255)
+
+[sub_resource type="PrismMesh" id="PrismMesh_bv7m8"]
+size = Vector3(1, 1, 0.6)
+
+[node name="Projectile3D" type="Area3D"]
+script = ExtResource("1_bv7m8")
+atk = 5
+speed = 4
+life_time = 4.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004370898, -0.0076904297, 0)
+shape = SubResource("BoxShape3D_bv7m8")
+debug_color = Color(0.74789, 0.808594, 0.0315857, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_g8hw5")
+mesh = SubResource("PrismMesh_bv7m8")
