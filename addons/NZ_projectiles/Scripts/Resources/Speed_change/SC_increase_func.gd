@@ -1,6 +1,8 @@
 class_name SC_increase_func
 extends SC_increase
 
+## Changes speed by calling a function in a resource
+
 ## There should be a function in this resource, like this
 ##[codeblock]
 ##func change_speed(cur_speed:int,step:int) -> int:

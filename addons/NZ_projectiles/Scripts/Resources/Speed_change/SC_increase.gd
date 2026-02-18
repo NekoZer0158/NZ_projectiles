@@ -3,6 +3,8 @@
 class_name SC_increase
 extends Speed_change_projectile
 
+## Increases speed by step
+
 @export var increase_to_this_amount : int = 100
 @export var step : int = 5:
 	set(value):

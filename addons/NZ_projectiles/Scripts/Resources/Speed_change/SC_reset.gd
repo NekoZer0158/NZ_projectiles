@@ -2,6 +2,8 @@
 class_name SC_reset
 extends Speed_change_projectile
 
+## Resets a resource (it should be SC_condition)
+##
 ## @experimental
 ## Shouldn't be used as r_speed_change, this is only for [color=mediumturquoise]SC_condition[/color] and [color=mediumturquoise]SC_condition_timer[/color]
 

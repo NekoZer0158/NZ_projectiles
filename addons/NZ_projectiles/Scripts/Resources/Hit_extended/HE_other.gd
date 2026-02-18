@@ -2,6 +2,8 @@
 class_name HE_other
 extends Hit_extended_projectile
 
+## Calls other_function_name in a projectile_resource when hitting something
+
 @export var other_function_name : String
 @export var projectile_resource : Projectile_resource
 @export var use_projectile_as_arg : bool = true

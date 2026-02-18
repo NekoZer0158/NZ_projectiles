@@ -2,6 +2,8 @@
 class_name HE_position
 extends Hit_extended_projectile
 
+## Calls hit_extended function with atk and projectile position/global_position
+
 @export var position_type : POSITION_TYPE = POSITION_TYPE.Global_position
 
 enum POSITION_TYPE{Position,Global_position}

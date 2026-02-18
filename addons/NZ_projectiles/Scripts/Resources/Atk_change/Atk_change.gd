@@ -4,6 +4,8 @@
 class_name Atk_change_projectile
 extends Projectile_resource
 
+## A resource to change atk
+
 ## This function will be called at the same time as the projectile _ready function (DON'T EDIT THIS)
 func _ready(parent_node:Node) -> void: 
 	if ProjectileChecks.check_if_this_a_projectile(parent_node):

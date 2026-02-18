@@ -3,6 +3,8 @@
 class_name RP_spawn_projectile
 extends Remove_projectile
 
+## Spawns another projectile when removing itself
+
 @export var spawn_this_projectile : PackedScene
 @export var same_scale : bool = true
 @export var immortality_seconds : float = 0.25:

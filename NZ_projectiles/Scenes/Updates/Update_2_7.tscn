@@ -1,0 +1,196 @@
+[gd_scene load_steps=23 format=3 uid="uid://dpu5ln13q5ps8"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_uchi8"]
+[ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="2_ogowu"]
+[ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="3_ngclj"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="4_r3fpi"]
+[ext_resource type="Script" uid="uid://cykddj6gm6lqn" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_on_line2D.gd" id="5_iohur"]
+[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="6_p345p"]
+[ext_resource type="PackedScene" uid="uid://4pkgrqw16gwm" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D_extended.tscn" id="7_8bfsj"]
+[ext_resource type="Resource" uid="uid://dk05c3omb2ouq" path="res://NZ_projectiles/Resources/atk_func_change_2_7.tres" id="7_22qme"]
+[ext_resource type="Script" uid="uid://dic3ivh3byid6" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_func.gd" id="7_htp1c"]
+[ext_resource type="Script" uid="uid://empgpupm4c2h" path="res://addons/NZ_projectiles/Scripts/Resources/3D/Move_extended3D/Move_to_node3D.gd" id="8_1epmi"]
+[ext_resource type="PackedScene" uid="uid://d1ehelgdwbjt2" path="res://NZ_projectiles/Characters/3D/CharacterBody.tscn" id="9_6o17u"]
+[ext_resource type="Script" uid="uid://ckmpkoh5q6osc" path="res://addons/NZ_projectiles/Scripts/Resources/3D/Move_extended3D/Move_on_path3D.gd" id="12_58r53"]
+[ext_resource type="PackedScene" uid="uid://cf1kjyne5o67n" path="res://NZ_projectiles/Scenes/3D/Camera3D.tscn" id="18_ekgp8"]
+
+[sub_resource type="Resource" id="Resource_p345p"]
+script = ExtResource("5_iohur")
+line_path = NodePath("../../Lines/Line2D")
+point_zone = Vector2(4, 5)
+teleport_projectile_to_default_point = true
+cycle_movement = true
+metadata/_custom_type_script = "uid://cykddj6gm6lqn"
+
+[sub_resource type="Resource" id="Resource_58r53"]
+script = ExtResource("5_iohur")
+line_path = NodePath("../../Lines/Line2D2")
+point_zone = Vector2(4, 5)
+default_point_index = 2
+cycle_movement = true
+metadata/_custom_type_script = "uid://cykddj6gm6lqn"
+
+[sub_resource type="Resource" id="Resource_22qme"]
+script = ExtResource("7_htp1c")
+resource_with_func = ExtResource("7_22qme")
+func_name = "change_atk_2_7"
+extra_args = [Vector2(5, 2)]
+metadata/_custom_type_script = "uid://dic3ivh3byid6"
+
+[sub_resource type="Resource" id="Resource_8bfsj"]
+script = ExtResource("6_p345p")
+node2D_path = NodePath("../../Characters/TestCharacter")
+look_at_this_node = true
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[sub_resource type="Resource" id="Resource_6o17u"]
+script = ExtResource("8_1epmi")
+node3D_path = NodePath("../../Characters/CharacterBody")
+metadata/_custom_type_script = "uid://empgpupm4c2h"
+
+[sub_resource type="Resource" id="Resource_0b0hs"]
+script = ExtResource("12_58r53")
+path3d_path = NodePath("../../Lines/Path3D")
+find_cur_point_in_points = false
+cycle_movement = true
+metadata/_custom_type_script = "uid://ckmpkoh5q6osc"
+
+[sub_resource type="Resource" id="Resource_yycwo"]
+script = ExtResource("12_58r53")
+path3d_path = NodePath("../../Lines/Path3D2")
+teleport_projectile_to_default_point = true
+cycle_movement = true
+metadata/_custom_type_script = "uid://ckmpkoh5q6osc"
+
+[sub_resource type="Curve3D" id="Curve3D_22qme"]
+bake_interval = 0.7
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4.8706827, 1.7140354, -0.4593234, 0, 0, 0, 0, 0, 0, 5.7255783, -3.8339758, 2.1574504, 0, 0, 0, 0, 0, 0, 10.053862, 0.3900318, 3.5004725, 0, 0, 0, 0, 0, 0, 0.03350973, 2.6379652, 5.010687, 0, 0, 0, 0, 0, 0, 8.455849, -0.5483768, -5.208959),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_58r53"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.8492866, 1.1885242, -0.8694639, 0, 0, 0, 0, 0, 0, -1.3681211, 0.52385664, -0.41206264, 0, 0, 0, 0, 0, 0, -2.1761599, 2.0051162, -1.1556797, 0, 0, 0, 0, 0, 0, -12.380286, -6.5559316, -24.388187),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 408.0
+offset_top = 568.0
+offset_right = 536.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Main"
+script = ExtResource("1_uchi8")
+change_to_this_scene = "uid://cgkd4refam0mw"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Static"]
+tile_set = ExtResource("2_ogowu")
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="TestCharacter" parent="Characters" instance=ExtResource("3_ngclj")]
+position = Vector2(1072, 368)
+hp = 13
+
+[node name="CharacterBody" parent="Characters" instance=ExtResource("9_6o17u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.917, -1.009, -6.135)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("4_r3fpi")]
+position = Vector2(64, 64)
+r_move_extended = SubResource("Resource_p345p")
+speed = 200
+life_time = 0.0
+
+[node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("4_r3fpi")]
+position = Vector2(320, 24)
+r_move_extended = SubResource("Resource_58r53")
+speed = 130
+life_time = 0.0
+
+[node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("4_r3fpi")]
+position = Vector2(1136, 24)
+r_atk_change = SubResource("Resource_22qme")
+r_move_extended = SubResource("Resource_8bfsj")
+atk = 3
+speed = 150
+life_time = 0.0
+
+[node name="Projectile3D_extended" parent="Projectiles" instance=ExtResource("7_8bfsj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.42, -4.725, 0)
+r_move_extended = SubResource("Resource_6o17u")
+atk = 99
+
+[node name="Projectile3D_extended2" parent="Projectiles" instance=ExtResource("7_8bfsj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.4187374, -4.725, 0)
+r_move_extended = SubResource("Resource_0b0hs")
+atk = 99
+speed = 10
+
+[node name="Projectile3D_extended3" parent="Projectiles" instance=ExtResource("7_8bfsj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.9668758, -4.725, 0)
+r_move_extended = SubResource("Resource_yycwo")
+atk = 99
+speed = 10
+
+[node name="Emitters" type="Node" parent="."]
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Lines"]
+z_index = -5
+position = Vector2(32, 64)
+scale = Vector2(1.065, 0.375)
+points = PackedVector2Array(184, 136, 416, 48, 800, 96, 600, 192, 312, 200, 216, 256, 432, 328, 544, 432, 664, 288, 824, 256, 832, 152, 968, 160, 1016, 392, 440, 528, 40, 296)
+closed = true
+default_color = Color(0.42578125, 0.42578125, 0.42578125, 1)
+
+[node name="Line2D2" type="Line2D" parent="Lines"]
+z_index = -5
+position = Vector2(32, 112)
+scale = Vector2(1.065, 0.375)
+points = PackedVector2Array(7.511738, 384, 142.72299, 554.6667, 15.023472, 661.3333)
+default_color = Color(0.42578125, 0.42578125, 0.42578125, 1)
+
+[node name="Path3D" type="Path3D" parent="Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4051981, 0, 0)
+curve = SubResource("Curve3D_22qme")
+
+[node name="Path3D2" type="Path3D" parent="Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.218297, -2.3536644, 2.7512217)
+curve = SubResource("Curve3D_58r53")
+
+[node name="Camera3D" parent="." instance=ExtResource("18_ekgp8")]
+transform = Transform3D(0.99994516, 0.0104717845, -5.047685e-10, -0.009627864, 0.91935974, 0.39330015, 0.0041185543, -0.3932786, 0.91941017, 3.907, 5.071848, 8.28)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.5992, 11.412)
+light_energy = 12.929
+spot_range = 77.478
+spot_angle = 71.6157
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.99983436, 0.011578343, -0.014045655, 0, 0.7716247, 0.6360781, 0.018202705, -0.63597274, 0.7714968, 0, 14.4531, 40.168)
+light_energy = 8.919
+spot_range = 408.457
+spot_angle = 76.3426
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(0.59928906, 0, 0.8005327, 0.6516936, 0.5807598, -0.48786628, -0.46491718, 0.814075, 0.34804305, -5.697439, 3.9586535, 1.2921479)
+gizmo_extents = 0.69
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]

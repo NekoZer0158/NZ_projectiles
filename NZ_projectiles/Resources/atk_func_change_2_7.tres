@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dk05c3omb2ouq"]
+
+[ext_resource type="Script" uid="uid://criv3037t1l2d" path="res://NZ_projectiles/Scripts/Resources/atk_func_change_2_7.gd" id="1_nrow6"]
+
+[resource]
+script = ExtResource("1_nrow6")

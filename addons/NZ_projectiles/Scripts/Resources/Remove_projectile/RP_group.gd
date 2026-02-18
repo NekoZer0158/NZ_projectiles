@@ -2,7 +2,7 @@
 class_name RP_group
 extends Remove_projectile
 
-## Queue_free/free or activates a remove resource in every projectile in the same group when queue_free itself
+## Queue_free/free or activates a remove resource in every projectile in the same group when removing itself
 
 @export var group_name : String
 @export_enum("Queue_free","Free","Activate remove resource") var remove_projectiles_from_group_this_way : int

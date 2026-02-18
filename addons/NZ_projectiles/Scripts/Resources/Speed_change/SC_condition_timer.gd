@@ -3,6 +3,8 @@
 class_name SC_condition_timer
 extends SC_condition
 
+## Uses one Speed_change_projectile resource and after the timer is over it's uses the other Speed_change_projectile resource
+
 @export var time : float = 0.0:
 	set(value):
 		time = clampf(value,0,abs(value))

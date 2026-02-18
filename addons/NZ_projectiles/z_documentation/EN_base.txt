@@ -9,7 +9,7 @@ Base:
 	yourself (don't forget to set "type" for a projectile before spawning it).
 
 Modules:
-	Module - name for the resources, used by Projectile_extended.
+	Module - name for the resources, used by Projectile_extended/Projectile3D_extended.
 	You can use them only in Projectile_extended.
 	Atk_change_projectile - base for changing projectile damage.
 	Speed_change_projectile - base for changing projectile speed.

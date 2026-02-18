@@ -3,6 +3,15 @@ Plugin for Godot that adds a projectile system in 2D&3D. There are four projecti
 
 ## Changelog
 
+### 2.7
+	Add Move_projectile_on_line2D
+	Add Move_projectile_on_path3D
+	Add check_ready_function_in_resources in Projectile_extended and Projectile3D_extended to enable/disable activationg of _ready() function in modules in node's _ready() function
+	Add Atk_change_func - change atk using a function, but now without a timer
+	Now you can set node2D_path in Move_to_node2D_projectile and node3D_path in Move_to_node3D_projectile manually through inspector
+	Add small descriptions for all Remove_projectile, Move_extended_projectile, Atk_change_projectile, Hit_extended_projectile and Move_extended_projectile3D resources
+	cur_basis_axis in Move_to_node3D_projectile is now set to ProjectileEnum.BasisAxis.Z
+	Documentation is moved to the separate folder
 ### 2.6
 	Add debug to SC_increase and SC_condition to have an easier time finding bugs
 	Add SC_increase_func - increase speed by calling a function in a different resource

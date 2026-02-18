@@ -16,7 +16,7 @@ static func set_node_to_which_projectile_moves_to(projectile:Projectile_extended
 		return
 	push_error("Problem with setting r_move_extended")
 
-## basis axis = 0 (X), 1(Y), 2(Z)
+## USE ONLY FOR 3D PROJECTILE. basis axis = 0 (X), 1(Y), 2(Z)
 static func set_node_to_which_projectile3D_moves_to(projectile:Projectile3D_extended,to_this_node:Node3D,set_resource:bool=false,look_at_this_node:bool=true,basis_axis:int=0) -> void:
 	if !is_instance_valid(to_this_node):
 		push_error("to_this_node isn't valid")

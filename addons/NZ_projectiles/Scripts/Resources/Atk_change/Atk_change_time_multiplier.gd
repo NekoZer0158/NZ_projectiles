@@ -2,6 +2,8 @@
 class_name ACT_multiplier
 extends AC_time
 
+## Changes atk through time by multiplying to it atk_step
+
 func _on_timer_timeout(parent_node:Node) -> void:
 	var new_attack : int = parent_node.atk*atk_step
 	if new_attack > increase_atk_to_this:

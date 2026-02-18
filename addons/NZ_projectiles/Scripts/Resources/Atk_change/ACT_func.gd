@@ -3,7 +3,9 @@
 class_name ACT_func
 extends AC_time
 
-## There should be a function in this resource, like this
+## Changes atk using a function in a resource, function should return a value
+
+##There should be a function in this resource and it should return a value, like this
 ##[codeblock]
 ##func change_atk(atk:int,atk_step:int) -> int:
 ##	return (atk+atk_step)-1

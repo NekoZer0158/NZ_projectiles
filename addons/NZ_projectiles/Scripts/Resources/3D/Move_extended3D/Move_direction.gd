@@ -2,6 +2,8 @@
 class_name Move_direction_projectile3D
 extends Move_extended_projectile3D
 
+## Moves projectile in the direction
+
 @export var direction : Vector3: ## If you need to set this through code, use Porjectile3DSetter
 	set(value):
 		direction = Vector3(clamp(value.x,-1,1),clamp(value.y,-1,1),clamp(value.z,-1,1))

@@ -3,6 +3,8 @@
 class_name AC_random_range
 extends Atk_change_projectile
 
+## Sets atk with a random value in the range
+
 @export var min_value : int
 @export var max_value : int
 

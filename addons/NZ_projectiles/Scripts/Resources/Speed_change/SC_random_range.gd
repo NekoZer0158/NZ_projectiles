@@ -3,6 +3,8 @@
 class_name SC_random_range
 extends Speed_change_projectile
 
+## Sets speed with a random value in the range
+
 @export var min_value : int
 @export var max_value : int
 

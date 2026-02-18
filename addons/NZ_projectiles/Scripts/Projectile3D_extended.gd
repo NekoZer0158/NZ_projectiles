@@ -4,6 +4,7 @@ extends Projectile3D
 
 @export_enum("Queue_free","Free","Activate remove resource") var when_colliding_with_remove_when_collide : int = 0
 @export var duplicate_resources : bool = true ## RECOMMENDED TO NOT DISABLE IT
+@export var check_ready_function_in_resources : bool = true ## RECOMMEND TO NOT DISABLE IT
 @export_group("Modules (Resources)","r_")
 @export var r_atk_change : Atk_change_projectile ## Changes projectile atk
 @export var r_speed_change : Speed_change_projectile ## Changes projectile speed
@@ -41,9 +42,10 @@ func _check_everything() -> void:
 			r_hit_extended = r_hit_extended.duplicate(true)
 		if ProjectileChecks.check_resource_if_needed_to_duplicate(self,r_speed_change):
 			r_speed_change = r_speed_change.duplicate(true)
-	_check_if_resource_has_ready_method(r_speed_change)
-	_check_if_resource_has_ready_method(r_move_extended)
-	_check_if_resource_has_ready_method(r_atk_change)
+	if check_ready_function_in_resources:
+		_check_if_resource_has_ready_method(r_speed_change)
+		_check_if_resource_has_ready_method(r_move_extended)
+		_check_if_resource_has_ready_method(r_atk_change)
 	if r_speed_change != null:
 		r_speed_change.activate()
 

@@ -4,6 +4,8 @@
 class_name Hit_extended_projectile
 extends Projectile_resource 
 
+## Changes how hit_extended fucntion is called
+
 @export_group("Variables and functions names","name_")
 @export var name_hit_extended : StringName = "hit_extended" ## Look projectile class
 @export var ignore_if_there_is_no_needed_extended_function : bool = false

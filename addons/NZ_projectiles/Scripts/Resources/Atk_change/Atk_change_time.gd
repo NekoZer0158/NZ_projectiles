@@ -3,6 +3,8 @@
 class_name AC_time
 extends Atk_change_projectile
 
+## Changes atk through time by adding to it atk_step
+
 @export var increase_atk_to_this : int = 5
 @export var atk_step : int = 1:
 	set(value):

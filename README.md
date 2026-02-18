@@ -1,10 +1,19 @@
 # NZ projectiles
 Plugin for Godot that adds a projectile system in 2D&3D. There are four projectile classes (2 each for 2D & 3D), base one and extended, to which you can add more stuff, like changing speed every second or making it disappear only after interacting with 3 objects.
-Also includes two more plugins: NZ_projectiles_custom (adds a new projectile class that is much more customizable, but harder to work with) and NZ_projectiles_emitter (adds nodes with which you can emit projectiles). Both plugins require the main one - NZ_projectiles.
-Every update adds a new scene in NZ_projectiles/Scenes/Updates where you can see recently added things (even if the update doesn't say that it added a new scene).
+[br]Also includes two more plugins: NZ_projectiles_custom (adds a new projectile class that is much more customizable, but harder to work with) and NZ_projectiles_emitter (adds nodes with which you can emit projectiles). Both plugins require the main one - NZ_projectiles.
+[br]Every update adds a new scene in NZ_projectiles/Scenes/Updates where you can see recently added things (even if the update doesn't say that it added a new scene).
 
 ## Changelog
 
+### 2.7
+	Add Move_projectile_on_line2D
+	Add Move_projectile_on_path3D
+	Add check_ready_function_in_resources in Projectile_extended and Projectile3D_extended to enable/disable activationg of _ready() function in modules in node's _ready() function
+	Add Atk_change_func - change atk using a function, but now without a timer
+	Now you can set node2D_path in Move_to_node2D_projectile and node3D_path in Move_to_node3D_projectile manually through inspector
+	Add small descriptions for all Remove_projectile, Move_extended_projectile, Atk_change_projectile, Hit_extended_projectile and Move_extended_projectile3D resources
+	cur_basis_axis in Move_to_node3D_projectile is now set to ProjectileEnum.BasisAxis.Z
+	Documentation is moved to the separate folder
 ### 2.6
 	Add debug to SC_increase and SC_condition to have an easier time finding bugs
 	Add SC_increase_func - increase speed by calling a function in a different resource
@@ -69,6 +78,9 @@ You can set a resource to change projectiles speed, atk, movement, hit arguments
 
 ## 3D extended
 ![Gif_7](/NZ_projectiles/gifs/gif_7.gif)
+
+## Movement on Line2D and Path3D
+![Gif_9](/NZ_projectiles/gifs/gif_9.gif)
 
 ## Emitters example
 ![Gif_8](/NZ_projectiles/gifs/gif_8.gif)

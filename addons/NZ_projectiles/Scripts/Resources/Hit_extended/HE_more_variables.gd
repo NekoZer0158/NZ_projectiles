@@ -3,7 +3,7 @@
 class_name HE_more_variables
 extends Hit_extended_projectile
 
-## Call hit_extended function with more variables, getting them from a projectile
+## Calls hit_extended function with more variables, getting them from a projectile
 
 ## if false, the maximum amount of variables is 5, otherwise - infinite
 @export var call_function_with_array : bool = false:
