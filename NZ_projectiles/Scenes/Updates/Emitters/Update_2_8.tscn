@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://ircikrws364i"]
+
+[ext_resource type="Script" uid="uid://cxabokh4sab0u" path="res://NZ_projectiles/Scripts/Updates from 2.8/Projectiles_update_2_8.gd" id="1_r5t3f"]
+[ext_resource type="PackedScene" uid="uid://cejtakbq0uny0" path="res://NZ_projectiles/Projectiles/Projectile2.tscn" id="2_5j4pa"]
+[ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="3_dvial"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="4_b0gbg"]
+[ext_resource type="Script" uid="uid://bf107h1lnivwe" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2DID_vslider.gd" id="12_igagb"]
+[ext_resource type="Script" uid="uid://lqohucerexck" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2DID_hslider.gd" id="13_sst3v"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_r5t3f")
+projectiles = Dictionary[String, PackedScene]({
+"2": ExtResource("2_5j4pa"),
+"default": ExtResource("3_dvial")
+})
+metadata/_edit_vertical_guides_ = [-168.0]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Projectiles Symphony" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.8 Projectiles Symphony"
+script = ExtResource("4_b0gbg")
+change_to_this_scene = "uid://o735bio7pmd2"
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Emitters" type="Node" parent="."]
+
+[node name="PE2DID_vslider" type="Node2D" parent="Emitters" node_paths=PackedStringArray("vslider", "node_with_projectiles")]
+script = ExtResource("12_igagb")
+vslider = NodePath("../../Sliders/VSlider")
+shoot_from = 5
+dragger_default_id = "default"
+slider_default_id = "default"
+slider_shoot_direction = 1
+ticks_default_id = "2"
+ticks_shoot_direction = 2
+node_with_projectiles = NodePath("../..")
+dictionary_name_with_projectiles_and_ids = "projectiles"
+error_if_there_is_no_id = false
+error_if_above_node_is_null = false
+new_life_time = 1.5
+metadata/_custom_type_script = "uid://bf107h1lnivwe"
+
+[node name="Timer" type="Timer" parent="Emitters/PE2DID_vslider"]
+wait_time = 0.75
+autostart = true
+
+[node name="PE2DID_hslider" type="Node2D" parent="Emitters" node_paths=PackedStringArray("hslider", "node_with_projectiles", "add_child_to_this_node")]
+script = ExtResource("13_sst3v")
+hslider = NodePath("../../Sliders/HSlider")
+shoot_from = 2
+slider_default_id = "default"
+ticks_default_id = "default"
+node_with_projectiles = NodePath("../..")
+dictionary_name_with_projectiles_and_ids = "projectiles"
+add_child_to_this_node = NodePath("../../Projectiles")
+metadata/_custom_type_script = "uid://lqohucerexck"
+
+[node name="Timer" type="Timer" parent="Emitters/PE2DID_hslider"]
+wait_time = 0.45
+autostart = true
+
+[node name="Sliders" type="Node" parent="."]
+
+[node name="VSlider" type="VSlider" parent="Sliders"]
+offset_left = 96.0
+offset_top = 224.0
+offset_right = 160.0
+offset_bottom = 400.0
+focus_mode = 0
+value = 75.0
+tick_count = 4
+ticks_on_borders = true
+ticks_position = 2
+
+[node name="HSlider" type="HSlider" parent="Sliders"]
+offset_left = 416.0
+offset_top = 40.0
+offset_right = 976.0
+offset_bottom = 64.0
+value = 27.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Projectiles Symphony" to="Buttons/Projectiles Symphony" method="_on_pressed"]
+[connection signal="timeout" from="Emitters/PE2DID_vslider/Timer" to="Emitters/PE2DID_vslider" method="emit"]
+[connection signal="timeout" from="Emitters/PE2DID_hslider/Timer" to="Emitters/PE2DID_hslider" method="emit_slider" binds= ["default"]]

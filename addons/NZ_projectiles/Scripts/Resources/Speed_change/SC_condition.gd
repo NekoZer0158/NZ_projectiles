@@ -8,14 +8,18 @@ extends Speed_change_projectile
 
 @export var speed_change : Speed_change_projectile
 @export var after_condition_speed_change : Speed_change_projectile
+@export var extra_resource : Projectile_resource_extra
 @export var debug : bool = false
 
 var condition_is_true : bool = false
+var _extra_was_used : bool = false
 
 const CREATE_DUPLICATE : bool = true
 
 func _ready(parent_node:Node) -> void:
 	if ProjectileChecks.check_if_this_a_projectile(parent_node):
+		if extra_resource != null:
+			extra_resource.projectile = parent_node
 		if speed_change != null:
 			if speed_change.has_method("_ready"):
 				speed_change = speed_change.duplicate(true)
@@ -30,6 +34,7 @@ func _ready(parent_node:Node) -> void:
 			push_error("No after_condition_speed_change")
 
 func reset() -> void:
+	_extra_was_used = false
 	if speed_change != null:
 		if speed_change.has_method("reset"):
 			speed_change.reset()
@@ -48,7 +53,10 @@ func change_speed(projectile_speed:int) -> int:
 			if speed_change.type_of_increase == speed_change.EVERY_CALL_OF_MOVE_FUNCTION:
 				return speed_change.change_speed(projectile_speed)
 		return speed_change.change_speed(projectile_speed)
-	elif after_condition_speed_change is SC_increase:
+	if extra_resource != null and !_extra_was_used:
+		extra_resource.use_extra()
+		_extra_was_used = true
+	if after_condition_speed_change is SC_increase:
 		if after_condition_speed_change.type_of_increase == after_condition_speed_change.EVERY_CALL_OF_MOVE_FUNCTION:
 			return after_condition_speed_change.change_speed(projectile_speed)
 	after_condition_speed_change.activate()

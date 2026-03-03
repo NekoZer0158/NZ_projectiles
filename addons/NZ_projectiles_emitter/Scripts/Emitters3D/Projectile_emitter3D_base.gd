@@ -4,8 +4,8 @@ class_name Projectile_emitter3D_base
 extends Marker3D
 
 @export var add_child_to_this_node : Node
-@export var instantly_emit : bool = false
 @export var error_if_above_node_is_null : bool = true
+@export var instantly_emit : bool = false
 @export var debug : bool = false
 @export_group("Replacers","rep_")
 @export var rep_atk_change : Atk_change_projectile

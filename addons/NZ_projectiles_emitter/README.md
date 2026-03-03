@@ -15,6 +15,11 @@ REQUIRES: NZ_projectiles
 	PE3DID_line - emit any projectile from the 2D line in 3D space (experimental)
 
 ## Changelog
+### 1.4 (Projectiles Symphony)
+	Updates now have names.
+	Add PE2DID_slider, PE2DID_Hslider and PE2DID_Vslider to emit projectiles from VSlider and HSlider (experimental).
+	Add new_life_time in Projectile_emitter2D_base to change projectile's life time before emitting.
+	Fix _check_replacers in Projectile_emitter2D_base.
 ### 1.3
 	Add PE3DID_line, emit any projectile from the 2D line in 3D space
 	Add replacers to Projectile_emitter3D_base and Projectile_emitter2D_base, with them you can replace a certain module in a projectile with a different one

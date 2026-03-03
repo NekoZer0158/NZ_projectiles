@@ -2,7 +2,7 @@
 class_name Move_projectile_on_path3D
 extends Move_extended_projectile3D
 
-## Moves projectile on [color=mediumturquoise]Path3D[/color]. Supports changing [color=mediumturquoise]Path3D[/color] position and scale.
+## Moves projectile on [Path3D]. Supports changing [Path3D] position and scale.
 
 @export_node_path("Path3D") var path3d_path : NodePath
 @export var cur_basis_axis : ProjectileEnum.BasisAxis = ProjectileEnum.BasisAxis.Z

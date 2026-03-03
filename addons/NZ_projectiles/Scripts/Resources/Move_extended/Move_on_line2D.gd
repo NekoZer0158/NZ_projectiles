@@ -2,7 +2,7 @@
 class_name Move_projectile_on_line2D
 extends Move_extended_projectile
 
-## Moves projectile on [color=mediumturquoise]Line2D[/color]. Supports changing line position and scale.
+## Moves projectile on [Line2D]. Supports changing line position and scale.
 
 @export_node_path("Line2D") var line_path : NodePath
 @export var find_cur_point_in_points : bool = true

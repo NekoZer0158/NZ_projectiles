@@ -1,3 +1,4 @@
+@icon("res://addons/NZ_projectiles/Icons/Speed_change/SC_increase_func.svg")
 class_name SC_increase_func
 extends SC_increase
 

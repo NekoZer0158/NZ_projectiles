@@ -25,4 +25,5 @@ func _on_timer_timeout(parent_node:Node) -> void:
 		print(parent_node.name," atk:",parent_node.atk)
 	if parent_node.atk >= increase_atk_to_this:
 		if !check_if_timer_is_valid or is_instance_valid(timer):
+			_check_and_use_extra_resource()
 			timer.stop()

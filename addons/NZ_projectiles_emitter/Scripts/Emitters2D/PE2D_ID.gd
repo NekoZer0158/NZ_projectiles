@@ -10,6 +10,8 @@ extends Projectile_emitter2D_base
 func _ready() -> void:
 	if !is_instance_valid(node_with_projectiles):
 		push_error("node_with_projectiles isn't valid")
+	if dictionary_name_with_projectiles_and_ids.is_empty():
+		push_error("dictionary_name_with_projectiles_and_ids is empty")
 	super()
 
 func emit(type:int=0) -> void:
@@ -24,5 +26,5 @@ func emit_by_id(id:String,type:int=0) -> void:
 		_add_projectile_instance_to_the_scene(projectile_instance,type)
 	else:
 		if error_if_there_is_no_id:
-			push_error("There is no ID: ",id," in dictionary_name_with_projectiles_and_ids")
+			push_error("There is no id: ",id," in dictionary with projectiles")
 		emit()

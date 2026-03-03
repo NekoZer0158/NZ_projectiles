@@ -66,9 +66,9 @@ offset_bottom = 632.0
 focus_mode = 0
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "Main"
+text = "2.1-2.7"
 script = ExtResource("1_2p7kt")
-change_to_this_scene = "uid://cgkd4refam0mw"
+change_to_this_scene = "uid://one1xhw0mnk6"
 
 [node name="Static" type="Node" parent="."]
 

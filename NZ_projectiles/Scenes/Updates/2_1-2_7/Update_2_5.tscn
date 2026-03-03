@@ -25,16 +25,16 @@ metadata/_custom_type_script = "uid://d2rkhvkq7owkp"
 [node name="Buttons" type="Node" parent="."]
 
 [node name="Main" type="Button" parent="Buttons"]
-offset_left = 184.0
+offset_left = 232.0
 offset_top = 568.0
-offset_right = 312.0
+offset_right = 360.0
 offset_bottom = 632.0
 focus_mode = 0
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "Main"
+text = "2.1-2.7"
 script = ExtResource("1_eaq04")
-change_to_this_scene = "uid://cgkd4refam0mw"
+change_to_this_scene = "uid://one1xhw0mnk6"
 
 [node name="Static" type="Node" parent="."]
 

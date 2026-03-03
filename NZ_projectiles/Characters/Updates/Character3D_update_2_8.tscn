@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://u8qyy2oxbeaj"]
+
+[ext_resource type="Script" uid="uid://0tiwf4v53gwa" path="res://NZ_projectiles/Scripts/Updates from 2.8/Character_body3D_after_2_8.gd" id="1_jp48v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8bap0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxf22"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8bap0"]
+
+[node name="CharacterBody" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_jp48v")
+type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8bap0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_uxf22")
+mesh = SubResource("CapsuleMesh_8bap0")

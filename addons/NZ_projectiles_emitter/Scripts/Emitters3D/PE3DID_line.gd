@@ -2,14 +2,14 @@
 class_name PE3DID_line
 extends PE3D_ID
 
-## Set centered in [color=mediumturquoise]Sprite3D[/color] to [color=red]false[/color], otherwise it will not work as intented [br]
+## Set centered in [Sprite3D] to [color=red]false[/color], otherwise it will not work as intented [br]
 ## [color=cyan]Can be changed and it will work[/color]: flip_h, flip_v, pixel_size, position, scale  [br]
-## [color=red]Don't change[/color] rotation in [color=mediumturquoise]Sprite3D[/color] (will be added later)
+## [color=red]Don't change[/color] rotation in [Sprite3D] (will be added later)
 ## @experimental
 
-## The size should be the same as lines2D;[br][color=mediumturquoise]Line2D[/color] and [color=mediumturquoise]Sprite3D[/color] with the same index should relate to each other (sprite should show this exact line)
+## The size should be the same as lines2D;[br][Line2D] and [Sprite3D] with the same index should relate to each other (sprite should show this exact line)
 @export var sprites3D : Array[Sprite3D]
-## The size should be the same as sprites3D;[br][color=mediumturquoise]Line2D[/color] and [color=mediumturquoise]Sprite3D[/color] with the same index should relate to each other (sprite should show this exact line)
+## The size should be the same as sprites3D;[br][Line2D] and [Sprite3D] with the same index should relate to each other (sprite should show this exact line)
 @export var lines2D : Array[Line2D]
 
 ## Will use this node rotation for every projectile

@@ -3,6 +3,17 @@ Plugin for Godot that adds a projectile system in 2D&3D. There are four projecti
 
 ## Changelog
 
+### 2.8 (Projectiles Symphony)
+	Updates now have names.
+	There is now a separate showcase scene for emitters, 2D & 3D projectiles for 2.8 update (and will be for every future update).
+	Add Projectile_resource_extra - use to call it in other projectile modules.
+	Add PR_extra_changer - replace any module in Projectile_extended or Projectile3D_extended.
+	Add PR_extras - change multiple modules at once.
+	Update SC_condition and Hit_extended_projectile to include Projectile_resource_extra that will be activated after fulfilling the condition.
+	Update AC_time to include Projectile_resource_extra that will be activated after atk is reached the required value.
+	Update Hit_extended_projectile to include Projectile_resource_extra that will be activated after attacking anything.
+	Update Move_to_node2D and Move_to_node3D, now you can set it to move away from Node2D, multiply to scale when the projectile doesn't look at Node2D or if there is no Node2D to switch to default movement.
+	Add icons to SC_increase_func and ProjectileEnum.
 ### 2.7
 	Add Move_projectile_on_line2D
 	Add Move_projectile_on_path3D

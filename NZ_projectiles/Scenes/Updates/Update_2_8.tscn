@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://o735bio7pmd2"]
+
+[ext_resource type="Script" uid="uid://cxabokh4sab0u" path="res://NZ_projectiles/Scripts/Updates from 2.8/Projectiles_update_2_8.gd" id="1_0ek43"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_6uhjk"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="3_q7bhx"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0ek43")
+projectiles = Dictionary[String, PackedScene]({
+"default": ExtResource("2_6uhjk")
+})
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Main"
+script = ExtResource("3_q7bhx")
+change_to_this_scene = "uid://cgkd4refam0mw"
+
+[node name="2D" type="Button" parent="Buttons"]
+offset_left = 128.0
+offset_top = 192.0
+offset_right = 384.0
+offset_bottom = 448.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2D"
+script = ExtResource("3_q7bhx")
+change_to_this_scene = "uid://crue7xrk0xg8u"
+
+[node name="Emitters" type="Button" parent="Buttons"]
+offset_left = 448.0
+offset_top = 192.0
+offset_right = 704.0
+offset_bottom = 448.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Emitters"
+script = ExtResource("3_q7bhx")
+change_to_this_scene = "uid://ircikrws364i"
+
+[node name="3D" type="Button" parent="Buttons"]
+offset_left = 768.0
+offset_top = 192.0
+offset_right = 1024.0
+offset_bottom = 448.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "3D"
+script = ExtResource("3_q7bhx")
+change_to_this_scene = "uid://dbqxtqj8llnot"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/2D" to="Buttons/2D" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Emitters" to="Buttons/Emitters" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/3D" to="Buttons/3D" method="_on_pressed"]

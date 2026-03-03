@@ -1,0 +1,254 @@
+[gd_scene load_steps=41 format=3 uid="uid://crue7xrk0xg8u"]
+
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_8ow5a"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="3_gxwfo"]
+[ext_resource type="PackedScene" uid="uid://cokfi3jckyis8" path="res://NZ_projectiles/Characters/Updates/Character_update_2_8.tscn" id="4_en576"]
+[ext_resource type="Script" uid="uid://3lsagrcnl1eq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_increase.gd" id="5_cvkp6"]
+[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="6_h0n6q"]
+[ext_resource type="Script" uid="uid://ce6usakdbr7gw" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_changer.gd" id="7_jkyb1"]
+[ext_resource type="Script" uid="uid://4oqjcel8phhq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_condition_timer.gd" id="8_ngmlo"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="9_8ow5a"]
+[ext_resource type="Script" uid="uid://cbkra8u1up5ia" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra.gd" id="9_en576"]
+[ext_resource type="Script" uid="uid://ct1gywrr03w6w" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time_multiplier.gd" id="9_gxwfo"]
+[ext_resource type="Script" uid="uid://cedxloixedjnh" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extras.gd" id="10_cvkp6"]
+[ext_resource type="Script" uid="uid://ckrw43oc68dee" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_time.gd" id="10_h0n6q"]
+[ext_resource type="Script" uid="uid://pva0gwyf8ta6" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="13_cvkp6"]
+[ext_resource type="Script" uid="uid://dlw3lnht5uydk" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_speed.gd" id="13_h0n6q"]
+[ext_resource type="Script" uid="uid://dorsfv7r2fmro" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_random_range.gd" id="13_jkyb1"]
+[ext_resource type="Script" uid="uid://bw2tlv3b8spwt" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_random_range.gd" id="14_ngmlo"]
+
+[sub_resource type="Resource" id="Resource_0b38q"]
+script = ExtResource("5_cvkp6")
+increase_to_this_amount = -250
+step = 50
+type_of_increase = 1
+time_for_increase = 0.25
+metadata/_custom_type_script = "uid://3lsagrcnl1eq"
+
+[sub_resource type="Resource" id="Resource_g8417"]
+script = ExtResource("6_h0n6q")
+node2D_path = NodePath("../../Characters/Character")
+multiply_scale_when_dont_look = true
+move_away = true
+default_movement_if_no_node2D = true
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[sub_resource type="Resource" id="Resource_851ue"]
+script = ExtResource("7_jkyb1")
+new_resource = SubResource("Resource_g8417")
+change_this = 2
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_2mthe"]
+script = ExtResource("5_cvkp6")
+increase_to_this_amount = 150
+metadata/_custom_type_script = "uid://3lsagrcnl1eq"
+
+[sub_resource type="Resource" id="Resource_22iqy"]
+script = ExtResource("8_ngmlo")
+time = 2.0
+speed_change = SubResource("Resource_2mthe")
+after_condition_speed_change = SubResource("Resource_0b38q")
+extra_resource = SubResource("Resource_851ue")
+metadata/_custom_type_script = "uid://4oqjcel8phhq"
+
+[sub_resource type="Resource" id="Resource_gxwfo"]
+script = ExtResource("9_8ow5a")
+hits_before_removing = 2
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_cvkp6"]
+script = ExtResource("10_h0n6q")
+increase_atk_to_this = 1
+atk_step = 1000
+time = 0.8
+debug = true
+metadata/_custom_type_script = "uid://ckrw43oc68dee"
+
+[sub_resource type="Resource" id="Resource_ngmlo"]
+script = ExtResource("7_jkyb1")
+new_resource = SubResource("Resource_cvkp6")
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_ttl16"]
+script = ExtResource("5_cvkp6")
+increase_to_this_amount = -250
+step = 1
+check_if_timer_is_valid = false
+metadata/_custom_type_script = "uid://3lsagrcnl1eq"
+
+[sub_resource type="Resource" id="Resource_jsvgs"]
+script = ExtResource("7_jkyb1")
+new_resource = SubResource("Resource_ttl16")
+change_this = 1
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_en576"]
+script = ExtResource("10_cvkp6")
+extras = Array[ExtResource("9_en576")]([SubResource("Resource_ngmlo"), SubResource("Resource_jsvgs")])
+metadata/_custom_type_script = "uid://cedxloixedjnh"
+
+[sub_resource type="Resource" id="Resource_jkyb1"]
+script = ExtResource("9_gxwfo")
+increase_atk_to_this = 7000
+atk_step = 5
+time = 0.16
+extra_resource = SubResource("Resource_en576")
+metadata/_custom_type_script = "uid://ct1gywrr03w6w"
+
+[sub_resource type="Resource" id="Resource_h0n6q"]
+script = ExtResource("9_8ow5a")
+hits_before_removing = 2
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_l383g"]
+script = ExtResource("13_jkyb1")
+min_value = 6
+max_value = 7
+metadata/_custom_type_script = "uid://dorsfv7r2fmro"
+
+[sub_resource type="Resource" id="Resource_22u8m"]
+script = ExtResource("7_jkyb1")
+new_resource = SubResource("Resource_l383g")
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_aif58"]
+script = ExtResource("9_8ow5a")
+hits_before_removing = 2
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_xg7x3"]
+script = ExtResource("7_jkyb1")
+new_resource = SubResource("Resource_aif58")
+change_this = 4
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_5icgr"]
+script = ExtResource("6_h0n6q")
+node2D_path = NodePath("../../Characters/Character3")
+look_at_this_node = true
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[sub_resource type="Resource" id="Resource_wmykg"]
+script = ExtResource("7_jkyb1")
+new_resource = SubResource("Resource_5icgr")
+change_this = 2
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_2gm84"]
+script = ExtResource("14_ngmlo")
+min_value = 50
+max_value = 70
+metadata/_custom_type_script = "uid://bw2tlv3b8spwt"
+
+[sub_resource type="Resource" id="Resource_ad4j1"]
+script = ExtResource("7_jkyb1")
+new_resource = SubResource("Resource_2gm84")
+change_this = 1
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_nln3j"]
+script = ExtResource("10_cvkp6")
+extras = Array[ExtResource("9_en576")]([SubResource("Resource_22u8m"), SubResource("Resource_xg7x3"), SubResource("Resource_wmykg"), SubResource("Resource_ad4j1")])
+metadata/_custom_type_script = "uid://cedxloixedjnh"
+
+[sub_resource type="Resource" id="Resource_guwtb"]
+script = ExtResource("13_h0n6q")
+extra_resource = SubResource("Resource_nln3j")
+name_hit_extended = &"hit_extended_speed"
+metadata/_custom_type_script = "uid://dlw3lnht5uydk"
+
+[sub_resource type="Resource" id="Resource_3l0au"]
+script = ExtResource("13_cvkp6")
+metadata/_custom_type_script = "uid://pva0gwyf8ta6"
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Projectiles Symphony" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.8 Projectiles Symphony"
+script = ExtResource("3_gxwfo")
+change_to_this_scene = "uid://o735bio7pmd2"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Character" parent="Characters" instance=ExtResource("4_en576")]
+position = Vector2(256, 64)
+hp = 50
+type = 1
+speed = Vector2(0, 250)
+
+[node name="Timer" type="Timer" parent="Characters/Character"]
+wait_time = 1.6
+autostart = true
+
+[node name="Character2" parent="Characters" instance=ExtResource("4_en576")]
+position = Vector2(64, 256)
+hp = 50
+type = 1
+speed = Vector2(0, 0)
+
+[node name="Character3" parent="Characters" instance=ExtResource("4_en576")]
+position = Vector2(64, 448)
+hp = 2
+type = 1
+speed = Vector2(0, 0)
+
+[node name="Character4" parent="Characters" instance=ExtResource("4_en576")]
+position = Vector2(960, 448)
+hp = 5000
+type = 1
+speed = Vector2(0, 0)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Boomerang" parent="Projectiles" instance=ExtResource("2_8ow5a")]
+position = Vector2(383.99997, 128)
+rotation = 0.43633232
+r_speed_change = SubResource("Resource_22iqy")
+r_remove_projectile = SubResource("Resource_gxwfo")
+atk = 50
+speed = 25
+life_time = 0.0
+
+[node name="Powerful_to_weak" parent="Projectiles" instance=ExtResource("2_8ow5a")]
+position = Vector2(320, 448)
+r_atk_change = SubResource("Resource_jkyb1")
+r_remove_projectile = SubResource("Resource_h0n6q")
+atk = 5
+speed = 150
+life_time = 0.0
+
+[node name="Bounce" parent="Projectiles" instance=ExtResource("2_8ow5a")]
+position = Vector2(384, 480)
+r_hit_extended = SubResource("Resource_guwtb")
+r_remove_projectile = SubResource("Resource_3l0au")
+atk = 0
+speed = 150
+life_time = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Projectiles Symphony" to="Buttons/Projectiles Symphony" method="_on_pressed"]
+[connection signal="timeout" from="Characters/Character/Timer" to="Characters/Character" method="_reverse_speed"]

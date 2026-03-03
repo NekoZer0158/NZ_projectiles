@@ -5,7 +5,7 @@ extends Speed_change_projectile
 ## Resets a resource (it should be SC_condition)
 ##
 ## @experimental
-## Shouldn't be used as r_speed_change, this is only for [color=mediumturquoise]SC_condition[/color] and [color=mediumturquoise]SC_condition_timer[/color]
+## Shouldn't be used as r_speed_change, this is only for [SC_condition] and [SC_condition_timer]
 
 ## Amount of times reset can be activated
 @export var reset_limit : int = -1
