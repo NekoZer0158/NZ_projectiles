@@ -33,7 +33,8 @@ func use_extra() -> void:
 				projectile.r_remove_projectile = new_resource.duplicate(true)
 			else:
 				projectile.r_remove_projectile = new_resource
-	if new_resource.has_method("_ready"):
-		new_resource._ready(projectile)
+	if new_resource != null:
+		if new_resource.has_method("_ready"):
+			new_resource._ready(projectile)
 	if projectile.r_speed_change != null and projectile.r_speed_change == new_resource:
 		projectile.r_speed_change.activate()

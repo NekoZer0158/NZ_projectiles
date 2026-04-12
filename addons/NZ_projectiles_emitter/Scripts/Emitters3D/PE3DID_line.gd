@@ -45,6 +45,7 @@ func _add_projectile_instance_to_the_scene(projectile_instance:Projectile3D,type
 		add_child_to_this_node.call_deferred("add_child",projectile_instance)
 	else:
 		add_child(projectile_instance)
+	projectile_was_emitted.emit(projectile_instance)
 
 ## @experimental
 # TODO rotation

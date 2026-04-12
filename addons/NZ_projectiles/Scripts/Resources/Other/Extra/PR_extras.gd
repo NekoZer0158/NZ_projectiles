@@ -6,5 +6,6 @@ extends Projectile_resource_extra
 
 func use_extra() -> void:
 	for i in extras:
-		i.projectile = projectile
-		i.use_extra()
+		if i != null:
+			i.projectile = projectile
+			i.use_extra()

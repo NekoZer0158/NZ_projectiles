@@ -36,20 +36,22 @@ const TICK_BOTH_EDGES_SIZE : float = 16
 const TICK_EDGE_SIZE : float = 8
 
 func emit(type:int=0) -> void:
-	if shoot_from & 1:
-		emit_dragger(dragger_default_id,type)
-	if shoot_from & 2:
-		emit_slider(slider_default_id,type)
-	if shoot_from & 4:
-		emit_ticks(ticks_default_id,type)
+	if can_emit:
+		if shoot_from & 1:
+			emit_dragger(dragger_default_id,type)
+		if shoot_from & 2:
+			emit_slider(slider_default_id,type)
+		if shoot_from & 4:
+			emit_ticks(ticks_default_id,type)
 
 func emit_by_id(id:String,type:int=0) -> void:
-	if shoot_from & 1:
-		emit_dragger(id,type)
-	if shoot_from & 2:
-		emit_slider(id,type)
-	if shoot_from & 4:
-		emit_ticks(id,type)
+	if can_emit:
+		if shoot_from & 1:
+			emit_dragger(id,type)
+		if shoot_from & 2:
+			emit_slider(id,type)
+		if shoot_from & 4:
+			emit_ticks(id,type)
 
 func _check_and_instantiate_by_id(id:String,default_id:String,default_id_name:String) -> Projectile:
 	var projectile_instance : Projectile
@@ -70,28 +72,31 @@ func _check_and_instantiate_by_id(id:String,default_id:String,default_id_name:St
 	return projectile_instance
 
 func emit_dragger(id:String,type:int=0) -> void:
-	var projectile_instance : Projectile = _check_and_instantiate_by_id(id,dragger_default_id,"dragger_default_id")
-	if projectile_instance != null:
-		_set_position_for_projectile(SliderThing.DRAGGER,projectile_instance)
-		_set_rotation_for_projectile(SliderThing.DRAGGER,projectile_instance)
-		_add_projectile_instance_to_the_scene(projectile_instance,type)
+	if can_emit:
+		var projectile_instance : Projectile = _check_and_instantiate_by_id(id,dragger_default_id,"dragger_default_id")
+		if projectile_instance != null:
+			_set_position_for_projectile(SliderThing.DRAGGER,projectile_instance)
+			_set_rotation_for_projectile(SliderThing.DRAGGER,projectile_instance)
+			_add_projectile_instance_to_the_scene(projectile_instance,type)
 
 func emit_slider(id:String,type:int=0) -> void:
-	var projectile_instance : Projectile = _check_and_instantiate_by_id(id,slider_default_id,"slider_default_id")
-	if projectile_instance != null:
-		_set_position_for_projectile(SliderThing.SLIDER,projectile_instance)
-		_set_rotation_for_projectile(SliderThing.SLIDER,projectile_instance)
-		_add_projectile_instance_to_the_scene(projectile_instance,type)
+	if can_emit:
+		var projectile_instance : Projectile = _check_and_instantiate_by_id(id,slider_default_id,"slider_default_id")
+		if projectile_instance != null:
+			_set_position_for_projectile(SliderThing.SLIDER,projectile_instance)
+			_set_rotation_for_projectile(SliderThing.SLIDER,projectile_instance)
+			_add_projectile_instance_to_the_scene(projectile_instance,type)
 
 func emit_ticks(id:String,type:int=0) -> void:
-	if !_ticks_positions.is_empty():
-		var projectile_instance : Projectile = _check_and_instantiate_by_id(id,ticks_default_id,"ticks_default_id")
-		if projectile_instance != null:
-			_set_position_for_projectile(SliderThing.TICKS,projectile_instance,randi_range(0,_ticks_positions.size()-1))
-			_set_rotation_for_projectile(SliderThing.TICKS,projectile_instance)
-			_add_projectile_instance_to_the_scene(projectile_instance,type)
-	else:
-		push_error("_ticks_positions is empty. Check if tick_count is above 0 in the slider")
+	if can_emit:
+		if !_ticks_positions.is_empty():
+			var projectile_instance : Projectile = _check_and_instantiate_by_id(id,ticks_default_id,"ticks_default_id")
+			if projectile_instance != null:
+				_set_position_for_projectile(SliderThing.TICKS,projectile_instance,randi_range(0,_ticks_positions.size()-1))
+				_set_rotation_for_projectile(SliderThing.TICKS,projectile_instance)
+				_add_projectile_instance_to_the_scene(projectile_instance,type)
+		else:
+			push_error("_ticks_positions is empty. Check if tick_count is above 0 in the slider")
 
 func _set_rotation_for_projectile(thing:SliderThing,projectile:Projectile) -> void:
 	var _cur_slider : Slider = _get_cur_slider()
@@ -150,6 +155,7 @@ func _add_projectile_instance_to_the_scene(projectile_instance:Projectile,type:i
 		add_child_to_this_node.call_deferred("add_child",projectile_instance)
 	else:
 		add_child(projectile_instance)
+	projectile_was_emitted.emit(projectile_instance)
 
 func _calculate_dragger_pos(slider:Slider,cur_slider_is_vslider:bool) -> void:
 	if cur_slider_is_vslider:

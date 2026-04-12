@@ -25,6 +25,8 @@ var _cur_point : Vector2
 var _cur_point_id : int
 var _moving_backwards : bool = false
 
+const CREATE_DUPLICATE : bool = true
+
 func _ready(parent_node:Node) -> void:
 	if parent_node.has_node(line_path):
 		set_line(parent_node.get_node(line_path))
@@ -34,7 +36,8 @@ func _ready(parent_node:Node) -> void:
 
 func set_line(new_line:Line2D) -> void:
 	_cur_line = new_line
-	_cur_line.tree_exited.connect(_set_cur_line_to_null)
+	if !_cur_line.is_connected("tree_exited",_set_cur_line_to_null):
+		_cur_line.tree_exited.connect(_set_cur_line_to_null)
 	_cur_point = _cur_line.points[default_point_index]
 	if debug:
 		print("new line was set: ",_cur_line.name)

@@ -1,0 +1,152 @@
+[gd_scene load_steps=15 format=3 uid="uid://du14qa6fhl8mn"]
+
+[ext_resource type="Script" uid="uid://cxabokh4sab0u" path="res://NZ_projectiles/Scripts/Updates from 2.8/Projectiles_update_2_8.gd" id="1_qhil3"]
+[ext_resource type="PackedScene" uid="uid://cejtakbq0uny0" path="res://NZ_projectiles/Projectiles/Projectile2.tscn" id="2_pmdd6"]
+[ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="3_vn1na"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="4_t36se"]
+[ext_resource type="PackedScene" uid="uid://grpc7u4k0kdy" path="res://NZ_projectiles/Characters/Updates/Character3D_update_2_9.tscn" id="6_m2mif"]
+[ext_resource type="Script" uid="uid://cj1thpmipp4kr" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2D_simple.gd" id="6_qhil3"]
+[ext_resource type="Script" uid="uid://d4i3cngvvryd7" path="res://addons/NZ_projectiles_emitter/Scripts/Other/Emitter_ammo.gd" id="7_pmdd6"]
+[ext_resource type="PackedScene" uid="uid://dp2r8kon8uuq7" path="res://NZ_projectiles/Characters/Updates/Character_update_2_9.tscn" id="7_vn1na"]
+[ext_resource type="Script" uid="uid://cykddj6gm6lqn" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_on_line2D.gd" id="8_hykel"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="8_r6kff"]
+[ext_resource type="Script" uid="uid://bptjt0og1tfel" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters3D/PE3D_simple.gd" id="9_t36se"]
+[ext_resource type="PackedScene" uid="uid://1wfte0br410b" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D.tscn" id="10_fc6w5"]
+[ext_resource type="PackedScene" uid="uid://cf1kjyne5o67n" path="res://NZ_projectiles/Scenes/3D/Camera3D.tscn" id="12_hykel"]
+
+[sub_resource type="Resource" id="Resource_r6kff"]
+script = ExtResource("8_hykel")
+line_path = NodePath("../../Lines/Line2D")
+teleport_projectile_to_default_point = true
+cycle_movement = true
+metadata/_custom_type_script = "uid://cykddj6gm6lqn"
+
+[node name="Main" type="Node"]
+script = ExtResource("1_qhil3")
+projectiles = Dictionary[String, PackedScene]({
+"2": ExtResource("2_pmdd6"),
+"default": ExtResource("3_vn1na")
+})
+metadata/_edit_vertical_guides_ = [-168.0]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Mega Projectiles" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.9 Mega Projectiles"
+script = ExtResource("4_t36se")
+change_to_this_scene = "uid://cywea5purluwt"
+
+[node name="Emit" type="Button" parent="Buttons"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 128.0
+text = "Emit"
+
+[node name="Emit3D" type="Button" parent="Buttons"]
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 192.0
+offset_bottom = 384.0
+text = "Emit 3D"
+
+[node name="Reload" type="Button" parent="Buttons"]
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 128.0
+text = "Reload"
+
+[node name="Reload3D" type="Button" parent="Buttons"]
+offset_left = 256.0
+offset_top = 320.0
+offset_right = 384.0
+offset_bottom = 384.0
+text = "Reload 3D"
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Character" parent="Characters" instance=ExtResource("7_vn1na")]
+position = Vector2(704, 192)
+hp = 100
+
+[node name="CharacterBody" parent="Characters" instance=ExtResource("6_m2mif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 12)
+hp = 50
+change_color = false
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Lines"]
+visible = false
+points = PackedVector2Array(512, 88, 704, 104, 704, 192, 704, 288, 496, 288, 424, 152)
+closed = true
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Emitters" type="Node" parent="."]
+
+[node name="PE2D_simple" type="Node2D" parent="Emitters" node_paths=PackedStringArray("add_child_to_this_node")]
+position = Vector2(512, 192)
+script = ExtResource("6_qhil3")
+projectile_scene = ExtResource("8_r6kff")
+add_child_to_this_node = NodePath("../../Projectiles")
+new_life_time = 5.0
+rep_move_extended = SubResource("Resource_r6kff")
+metadata/_custom_type_script = "uid://cj1thpmipp4kr"
+
+[node name="Emitter_ammo" type="Node" parent="Emitters/PE2D_simple"]
+script = ExtResource("7_pmdd6")
+cur_ammo_in_magazine = 10
+max_ammo_in_magazine = -1
+all_ammo = -1
+debug = true
+use_variable_as_key = false
+custom_key_name = "Ammo 2D"
+metadata/_custom_type_script = "uid://d4i3cngvvryd7"
+
+[node name="PE3D_simple" type="Marker3D" parent="Emitters" node_paths=PackedStringArray("add_child_to_this_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 12)
+script = ExtResource("9_t36se")
+projectile_scene = ExtResource("10_fc6w5")
+add_child_to_this_node = NodePath("../../Projectiles")
+new_life_time = 1.25
+metadata/_custom_type_script = "uid://bptjt0og1tfel"
+
+[node name="Emitter_ammo" type="Node" parent="Emitters/PE3D_simple"]
+script = ExtResource("7_pmdd6")
+all_ammo = 45
+ammo_per_shot = 3
+debug = true
+lose_ammo_in_magazine_when_reloading = true
+metadata/_custom_type_script = "uid://d4i3cngvvryd7"
+
+[node name="Camera3D" parent="." instance=ExtResource("12_hykel")]
+transform = Transform3D(0.99994516, 0.010471785, -1.814151e-10, -0.008335118, 0.7959161, 0.6053496, 0.006339091, -0.60531646, 0.7959597, 5.3022256, 8.200921, 20.849752)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.5992, 11.412)
+light_energy = 12.929
+spot_range = 77.478
+spot_angle = 71.6157
+metadata/_edit_lock_ = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.99983436, 0.011578343, -0.014045655, 0, 0.7716247, 0.6360781, 0.018202705, -0.63597274, 0.7714968, 0, 14.4531, 40.168)
+light_energy = 8.919
+spot_range = 408.457
+spot_angle = 76.3426
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Mega Projectiles" to="Buttons/Mega Projectiles" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Emit" to="Emitters/PE2D_simple" method="emit"]
+[connection signal="pressed" from="Buttons/Emit3D" to="Emitters/PE3D_simple" method="emit" binds= [0]]
+[connection signal="pressed" from="Buttons/Reload" to="Emitters/PE2D_simple/Emitter_ammo" method="reload"]
+[connection signal="pressed" from="Buttons/Reload3D" to="Emitters/PE3D_simple" method="use_related_node" binds= ["Emitter_ammo", "reload"]]

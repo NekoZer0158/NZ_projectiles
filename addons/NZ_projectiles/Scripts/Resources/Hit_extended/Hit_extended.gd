@@ -1,5 +1,4 @@
 @tool
-@abstract
 @icon("res://addons/NZ_projectiles/Icons/Hit_extended/Default.svg")
 class_name Hit_extended_projectile
 extends Projectile_resource 

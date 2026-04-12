@@ -18,9 +18,13 @@ extends Node2D
 #@export var object_pool_node : Node ## If it's not set then projectiles will queue_free(). Only works for [Projectile_extended] and [Projectile3D_extended]
 #@export var object_pool_add_func_name : String
 
+var can_emit : bool = true
+var related_nodes : Dictionary ## This is for nodes, that have some connections to the emitter, like [Emitter_ammo], that adds ammo system and reloading.[br]All related nodes should be manually added through the nodes themselves. 
 # If all resources are null, then it will ignore checking them at all, remember that if you want to add module at a runtime
 var _check_replacers : bool = true
-var _spawned_projectiles : int = 0 # Only counts projectiles if object_pool_node != null
+var _spawned_projectiles : int = 0 #Only counts projectiles if object_pool_node != null
+
+signal projectile_was_emitted(projectile:Projectile)
 
 func _ready() -> void:
 	if error_if_above_node_is_null and !is_instance_valid(add_child_to_this_node):
@@ -50,6 +54,10 @@ func _check_and_if_needed_replace_modules_in_projectiles(projectile_instance:Pro
 func emit(_type:int=0) -> void:
 	pass
 
+func use_related_node(node_key:String,func_name:String) -> void:
+	if node_key in related_nodes:
+		related_nodes[node_key].call(func_name)
+
 func _add_projectile_instance_to_the_scene(projectile_instance:Projectile,type:int=0) -> void:
 	_set_variables_for_projectile(projectile_instance,type)
 	if is_instance_valid(add_child_to_this_node):
@@ -59,6 +67,7 @@ func _add_projectile_instance_to_the_scene(projectile_instance:Projectile,type:i
 		add_child_to_this_node.call_deferred("add_child",projectile_instance)
 	else:
 		add_child(projectile_instance)
+	projectile_was_emitted.emit(projectile_instance)
 
 func _set_variables_for_projectile(projectile_instance:Projectile,type:int=0,change_rotation:bool=true) -> void:
 	projectile_instance.type = type

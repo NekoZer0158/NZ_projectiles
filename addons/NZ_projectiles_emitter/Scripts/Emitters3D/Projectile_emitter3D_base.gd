@@ -6,6 +6,7 @@ extends Marker3D
 @export var add_child_to_this_node : Node
 @export var error_if_above_node_is_null : bool = true
 @export var instantly_emit : bool = false
+@export var new_life_time : float = -1.0
 @export var debug : bool = false
 @export_group("Replacers","rep_")
 @export var rep_atk_change : Atk_change_projectile
@@ -14,8 +15,12 @@ extends Marker3D
 @export var rep_hit_extended : Hit_extended_projectile
 @export var rep_remove_projectile : Remove_projectile
 
+var can_emit : bool = true
+var related_nodes : Dictionary
 # If all resources are null, then it will ignore checking them at all, remember that if you want to add module at a runtime
 var _check_replacers : bool = true
+
+signal projectile_was_emitted(projectile:Projectile3D)
 
 func _ready() -> void:
 	if error_if_above_node_is_null and !is_instance_valid(add_child_to_this_node):
@@ -40,17 +45,26 @@ func _check_and_if_needed_replace_modules_in_projectiles(projectile_instance:Pro
 func emit(_type:int=0) -> void:
 	pass
 
+func use_related_node(node_name:String,func_name:String) -> void:
+	if node_name in related_nodes:
+		related_nodes[node_name].call(func_name)
+
 func _add_projectile_instance_to_the_scene(projectile_instance:Projectile3D,type:int=0) -> void:
 	_set_variables_for_projectile(projectile_instance,type)
 	if is_instance_valid(add_child_to_this_node):
 		projectile_instance.position = global_position
+		if new_life_time > -1.0:
+			projectile_instance.life_time = new_life_time
 		add_child_to_this_node.call_deferred("add_child",projectile_instance)
 	else:
 		add_child(projectile_instance)
+	projectile_was_emitted.emit(projectile_instance)
 
 func _set_variables_for_projectile(projectile_instance:Projectile3D,type:int=0) -> void:
 	projectile_instance.type = type
 	projectile_instance.rotation = rotation
+	if new_life_time > -1.0:
+		projectile_instance.life_time = new_life_time
 	if _check_replacers and projectile_instance is Projectile3D_extended:
 		_check_and_if_needed_replace_modules_in_projectiles(projectile_instance)
 	if debug:

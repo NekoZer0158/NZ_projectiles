@@ -1,5 +1,5 @@
 # NZ projectiles emitter
-Emit projectiles from plugin NZ_projectiles.
+Emit projectiles from the plugin NZ_projectiles.
 REQUIRES: NZ_projectiles
 
 ## Emitters
@@ -8,6 +8,9 @@ REQUIRES: NZ_projectiles
 	PE2D_simple - the simplest projectile emitter, just put the scene with a projectile and emit or set instantly_emit to true
 	PE2D_ID - get projectile by ID from the dictionary in the specific node and emit it
 	PE2DID_line - emit projectile from any point on the line (experimental)
+	PE2DID_slider - emit projectile from any point of slider/any tick/dragger of a Slider
+	PE2DID_Hslider - emit projectile from any point of slider/any tick/dragger of a VSlider
+	PE2DID_Vslider - emit projectile from any point of slider/any tick/dragger of a HSlider
 ### 3D
 	Projectil_emitter3D_Base - base for every 3D emitter
 	PE3D_simple - the simplest projectile emitter, just put the scene with a projectile and emit or set instantly_emit to true
@@ -15,6 +18,11 @@ REQUIRES: NZ_projectiles
 	PE3DID_line - emit any projectile from the 2D line in 3D space (experimental)
 
 ## Changelog
+### 1.5 (Mega Projectiles)
+	Add can_emit - if is set to false then you can't use emit().
+	Add signal projectile_was_emitted.
+	Add Emitter_ammo - a node that adds ammo system and reloading, needs to be added as a child to Projectile_emitter2D_base or Projectile_emitter3D_base or any of their subclasses.
+	Add new_life_time to Projectile_emitter3D_base.
 ### 1.4 (Projectiles Symphony)
 	Updates now have names.
 	Add PE2DID_slider, PE2DID_Hslider and PE2DID_Vslider to emit projectiles from VSlider and HSlider (experimental).

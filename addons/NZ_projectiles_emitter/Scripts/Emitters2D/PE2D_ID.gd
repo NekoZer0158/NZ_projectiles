@@ -15,16 +15,18 @@ func _ready() -> void:
 	super()
 
 func emit(type:int=0) -> void:
-	var projectile_instance : Projectile = node_with_projectiles.get(dictionary_name_with_projectiles_and_ids)[default_projectile_id].instantiate()
-	_add_projectile_instance_to_the_scene(projectile_instance,type)
+	if can_emit:
+		var projectile_instance : Projectile = node_with_projectiles.get(dictionary_name_with_projectiles_and_ids)[default_projectile_id].instantiate()
+		_add_projectile_instance_to_the_scene(projectile_instance,type)
 
 func emit_by_id(id:String,type:int=0) -> void:
-	var dictionary_with_projectiles_and_ids : Dictionary[String,PackedScene] = node_with_projectiles.get(dictionary_name_with_projectiles_and_ids)
-	var projectile_instance : Projectile
-	if dictionary_with_projectiles_and_ids.has(id):
-		projectile_instance  = dictionary_with_projectiles_and_ids[id].instantiate()
-		_add_projectile_instance_to_the_scene(projectile_instance,type)
-	else:
-		if error_if_there_is_no_id:
-			push_error("There is no id: ",id," in dictionary with projectiles")
-		emit()
+	if can_emit:
+		var dictionary_with_projectiles_and_ids : Dictionary[String,PackedScene] = node_with_projectiles.get(dictionary_name_with_projectiles_and_ids)
+		var projectile_instance : Projectile
+		if dictionary_with_projectiles_and_ids.has(id):
+			projectile_instance  = dictionary_with_projectiles_and_ids[id].instantiate()
+			_add_projectile_instance_to_the_scene(projectile_instance,type)
+		else:
+			if error_if_there_is_no_id:
+				push_error("There is no id: ",id," in dictionary with projectiles")
+			emit()

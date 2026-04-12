@@ -1,4 +1,4 @@
-![Banner](/NZ_projectiles/Textures/Updates/Banners/Projectiles_symphony.png)
+![Banner](/NZ_projectiles/Textures/Updates/Banners/Mega_projectiles.png)
 # NZ projectiles
 Plugin for Godot that adds a projectile system in 2D&3D. There are four projectile classes (2 each for 2D & 3D), base one and extended, to which you can add more stuff, like changing speed every second or making it disappear only after interacting with 3 objects. <br>
 Also includes two more plugins: NZ_projectiles_custom (adds a new projectile class that is much more customizable, but harder to work with) and NZ_projectiles_emitter (adds nodes with which you can emit projectiles). Both plugins require the main one - NZ_projectiles. <br>
@@ -6,6 +6,13 @@ Every update adds a new scene in NZ_projectiles/Scenes/Updates where you can see
 
 ## Changelog
 
+### 2.9 (Mega Projectiles)
+	Add PR_extra_change_var - change any variable in a projectile.
+	Update Move_to_node2D_projectile, now includes reach_distance, extra_resource, and when extra_resource will be activated
+	Hit_extended_projectile is now not an abstact class. This is made to use Projectile_resource_extra without giving more arguments.
+	Change Hit_extended_projectile and HE_other icons.
+	Now if Move_projectile_on_line2D is used then the projectile will use a duplicate of it.
+	Update NZ_projectiels_emitter to 1.5.
 ### 2.8 (Projectiles Symphony)
 	Updates now have names.
 	There is now a separate showcase scene for emitters, 2D & 3D projectiles for 2.8 update (and will be for every future update).

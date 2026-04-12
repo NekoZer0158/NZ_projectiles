@@ -1,0 +1,210 @@
+[gd_scene load_steps=31 format=3 uid="uid://dkb7wrfrt21xn"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_h2h64"]
+[ext_resource type="PackedScene" uid="uid://dp2r8kon8uuq7" path="res://NZ_projectiles/Characters/Updates/Character_update_2_9.tscn" id="2_vu634"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="3_bufa1"]
+[ext_resource type="Script" uid="uid://bdvvoxg8o2voy" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_change_var.gd" id="3_iq0iq"]
+[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="4_8i7j0"]
+[ext_resource type="Script" uid="uid://ce6usakdbr7gw" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_changer.gd" id="4_dui1d"]
+[ext_resource type="Script" uid="uid://cs5x44ycw8pc" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/Hit_extended.gd" id="4_vu634"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="6_vu634"]
+[ext_resource type="Script" uid="uid://cbkra8u1up5ia" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra.gd" id="9_5u32r"]
+[ext_resource type="Script" uid="uid://3lsagrcnl1eq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_increase.gd" id="9_ai4j1"]
+[ext_resource type="Script" uid="uid://cedxloixedjnh" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extras.gd" id="10_ai4j1"]
+
+[sub_resource type="Resource" id="Resource_ai4j1"]
+script = ExtResource("4_8i7j0")
+node2D_path = NodePath("../../Characters/Character2")
+look_at_this_node = true
+move_away = true
+after_reaching_node2D_movement = 2
+reach_distance = 150.0
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[sub_resource type="Resource" id="Resource_5u32r"]
+script = ExtResource("4_dui1d")
+new_resource = SubResource("Resource_ai4j1")
+change_this = 2
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_m53al"]
+script = ExtResource("4_8i7j0")
+node2D_path = NodePath("../../Characters/Character")
+look_at_this_node = true
+extra_resource = SubResource("Resource_5u32r")
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[sub_resource type="Resource" id="Resource_vn1na"]
+script = ExtResource("3_iq0iq")
+variable_name = "speed"
+new_value = -250
+metadata/_custom_type_script = "uid://bdvvoxg8o2voy"
+
+[sub_resource type="Resource" id="Resource_dui1d"]
+script = ExtResource("4_vu634")
+extra_resource = SubResource("Resource_vn1na")
+name_hit_extended = &"hit"
+metadata/_custom_type_script = "uid://cs5x44ycw8pc"
+
+[sub_resource type="Resource" id="Resource_8i7j0"]
+script = ExtResource("6_vu634")
+hits_before_removing = 2
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_hx6yx"]
+script = ExtResource("4_8i7j0")
+node2D_path = NodePath("../../Characters/Character2")
+look_at_this_node = true
+move_away = true
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[sub_resource type="Resource" id="Resource_5m0rc"]
+script = ExtResource("4_dui1d")
+new_resource = SubResource("Resource_hx6yx")
+change_this = 2
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_6uxge"]
+script = ExtResource("4_8i7j0")
+node2D_path = NodePath("../../Characters/Character")
+look_at_this_node = true
+extra_resource = SubResource("Resource_5m0rc")
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[sub_resource type="Resource" id="Resource_nrqu5"]
+script = ExtResource("6_vu634")
+hits_before_removing = 2
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_p8a3g"]
+script = ExtResource("4_dui1d")
+new_resource = SubResource("Resource_nrqu5")
+change_this = 4
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_kd332"]
+script = ExtResource("4_vu634")
+extra_resource = SubResource("Resource_p8a3g")
+metadata/_custom_type_script = "uid://cs5x44ycw8pc"
+
+[sub_resource type="Resource" id="Resource_3tesh"]
+script = ExtResource("3_iq0iq")
+variable_name = "rotation_degrees"
+new_value = -90.0
+metadata/_custom_type_script = "uid://bdvvoxg8o2voy"
+
+[sub_resource type="Resource" id="Resource_bufa1"]
+script = ExtResource("4_dui1d")
+change_this = 2
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_xnksw"]
+script = ExtResource("3_iq0iq")
+variable_name = "speed"
+new_value = 0.0
+metadata/_custom_type_script = "uid://bdvvoxg8o2voy"
+
+[sub_resource type="Resource" id="Resource_e2fm1"]
+script = ExtResource("9_ai4j1")
+increase_to_this_amount = 250
+check_if_timer_is_valid = false
+metadata/_custom_type_script = "uid://3lsagrcnl1eq"
+
+[sub_resource type="Resource" id="Resource_uhd8h"]
+script = ExtResource("4_dui1d")
+new_resource = SubResource("Resource_e2fm1")
+change_this = 1
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_h2h64"]
+script = ExtResource("10_ai4j1")
+extras = Array[ExtResource("9_5u32r")]([SubResource("Resource_3tesh"), SubResource("Resource_bufa1"), SubResource("Resource_xnksw"), SubResource("Resource_uhd8h"), null])
+metadata/_custom_type_script = "uid://cedxloixedjnh"
+
+[sub_resource type="Resource" id="Resource_mrwb8"]
+script = ExtResource("4_8i7j0")
+node2D_path = NodePath("../../Other/Marker2D")
+look_at_this_node = true
+after_reaching_node2D_movement = 2
+reach_distance = 2.0
+extra_resource = SubResource("Resource_h2h64")
+extra_resource_usage = 1
+extra_timer_path = NodePath("Timer")
+extra_time = 1.0
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Mega Projectiles" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.9 Mega Projectiles"
+script = ExtResource("1_h2h64")
+change_to_this_scene = "uid://cywea5purluwt"
+
+[node name="Other" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Other"]
+position = Vector2(176, 448)
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Character" parent="Characters" instance=ExtResource("2_vu634")]
+position = Vector2(704, 208)
+
+[node name="Character3" parent="Characters" instance=ExtResource("2_vu634")]
+position = Vector2(960, 376)
+
+[node name="Character4" parent="Characters" instance=ExtResource("2_vu634")]
+position = Vector2(1080, 432)
+
+[node name="Character2" parent="Characters" instance=ExtResource("2_vu634")]
+position = Vector2(176, 88)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended" parent="Projectiles" instance=ExtResource("3_bufa1")]
+position = Vector2(320, 320)
+r_move_extended = SubResource("Resource_m53al")
+r_hit_extended = SubResource("Resource_dui1d")
+r_remove_projectile = SubResource("Resource_8i7j0")
+atk = 15
+life_time = 3.5
+
+[node name="ProjectileExtended2" parent="Projectiles" instance=ExtResource("3_bufa1")]
+position = Vector2(272, 296)
+r_move_extended = SubResource("Resource_6uxge")
+r_hit_extended = SubResource("Resource_kd332")
+atk = 15
+life_time = 3.5
+
+[node name="ProjectileExtended3" parent="Projectiles" instance=ExtResource("3_bufa1")]
+position = Vector2(600, 536)
+r_move_extended = SubResource("Resource_mrwb8")
+atk = 15
+speed = 175
+
+[node name="Timer" type="Timer" parent="Projectiles/ProjectileExtended3"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Mega Projectiles" to="Buttons/Mega Projectiles" method="_on_pressed"]

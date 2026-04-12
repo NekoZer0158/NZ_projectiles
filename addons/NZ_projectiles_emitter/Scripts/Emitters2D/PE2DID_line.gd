@@ -26,6 +26,7 @@ func _add_projectile_instance_to_the_scene(projectile_instance:Projectile,type:i
 		add_child_to_this_node.call_deferred("add_child",projectile_instance)
 	else:
 		add_child(projectile_instance)
+	projectile_was_emitted.emit(projectile_instance)
 
 static func _get_random_position_in_line_and_points(line:Line2D,look_reverse_local:bool=false,debug_local:bool=false) -> Array:
 	if line.points.size() >= 2:
