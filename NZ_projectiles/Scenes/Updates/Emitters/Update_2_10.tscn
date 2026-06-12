@@ -1,0 +1,213 @@
+[gd_scene load_steps=17 format=3 uid="uid://64woaiikndmu"]
+
+[ext_resource type="Script" uid="uid://cxabokh4sab0u" path="res://NZ_projectiles/Scripts/Updates from 2.8/Projectiles_update_2_8.gd" id="1_an447"]
+[ext_resource type="PackedScene" uid="uid://cejtakbq0uny0" path="res://NZ_projectiles/Projectiles/Projectile2.tscn" id="2_yslts"]
+[ext_resource type="PackedScene" uid="uid://cm68hrp0k6l61" path="res://NZ_projectiles/Projectiles/Projectile.tscn" id="3_k1knx"]
+[ext_resource type="PackedScene" uid="uid://1wfte0br410b" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D.tscn" id="4_3ke5f"]
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="4_as6pf"]
+[ext_resource type="PackedScene" uid="uid://4pkgrqw16gwm" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D_extended.tscn" id="5_7tbve"]
+[ext_resource type="Script" uid="uid://di3i6hekuvhyb" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2D_ID.gd" id="5_pe8q4"]
+[ext_resource type="Script" uid="uid://ccuulr61ul068" path="res://addons/NZ_projectiles_emitter/Scripts/Other/Spread_shot/Emitter2D_spread_shot.gd" id="6_5rvna"]
+[ext_resource type="Script" uid="uid://je1yoig8016s" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters3D/PE3D_ID.gd" id="7_j0tkm"]
+[ext_resource type="PackedScene" uid="uid://x0fi043fioen" path="res://NZ_projectiles/Characters/Updates/Character3D_update_2_10.tscn" id="7_yslts"]
+[ext_resource type="Script" uid="uid://b7ks2mnhnwmfa" path="res://addons/NZ_projectiles_emitter/Scripts/Other/Spread_shot/Emitter3D_spread_shot.gd" id="8_nd3sk"]
+[ext_resource type="Script" uid="uid://cp733q8h821u7" path="res://addons/NZ_projectiles_emitter/Scripts/Other/Emitter_toggle.gd" id="9_an447"]
+[ext_resource type="Script" uid="uid://d4i3cngvvryd7" path="res://addons/NZ_projectiles_emitter/Scripts/Other/Emitter_ammo.gd" id="10_j7gml"]
+[ext_resource type="PackedScene" uid="uid://cf1kjyne5o67n" path="res://NZ_projectiles/Scenes/3D/Camera3D.tscn" id="13_14s54"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5rvna"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7gml"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_an447")
+projectiles = Dictionary[String, PackedScene]({
+"2": ExtResource("2_yslts"),
+"3D": ExtResource("4_3ke5f"),
+"3D_extended": ExtResource("5_7tbve"),
+"default": ExtResource("3_k1knx")
+})
+metadata/_edit_vertical_guides_ = [-168.0]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="2_10" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.10"
+script = ExtResource("4_as6pf")
+change_to_this_scene = "uid://cetu571cw0pru"
+
+[node name="Emit" type="Button" parent="Buttons"]
+offset_left = 64.0
+offset_top = 168.0
+offset_right = 192.0
+offset_bottom = 216.0
+text = "Emit"
+
+[node name="Toggle" type="Button" parent="Buttons"]
+offset_left = 64.0
+offset_top = 232.0
+offset_right = 192.0
+offset_bottom = 280.0
+toggle_mode = true
+button_pressed = true
+text = "Toggle"
+
+[node name="Emit3D" type="Button" parent="Buttons"]
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 192.0
+offset_bottom = 384.0
+text = "Emit 3D"
+
+[node name="Toggle3D_ID" type="Button" parent="Buttons"]
+offset_left = 64.0
+offset_top = 464.0
+offset_right = 192.0
+offset_bottom = 528.0
+toggle_mode = true
+text = "Toggle ID 3D"
+
+[node name="Reload3D" type="Button" parent="Buttons"]
+offset_left = 64.0
+offset_top = 392.0
+offset_right = 192.0
+offset_bottom = 456.0
+text = "Reload 3D"
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="CharacterBody" parent="Characters" instance=ExtResource("7_yslts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.058959, 0, 15.661199)
+hp = 1
+change_color = true
+type = 1
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Emitters" type="Node" parent="."]
+
+[node name="PE2D_ID_spread_shot" type="Node2D" parent="Emitters" node_paths=PackedStringArray("node_with_projectiles", "add_child_to_this_node")]
+position = Vector2(456, 192)
+script = ExtResource("5_pe8q4")
+node_with_projectiles = NodePath("../..")
+getting_method = 1
+function_name = "get_this_projectile"
+default_projectile_id = "default"
+error_if_there_is_no_id = false
+add_child_to_this_node = NodePath("../../Projectiles")
+new_life_time = 1.15
+metadata/_custom_type_script = "uid://di3i6hekuvhyb"
+
+[node name="Emitter_spread_shot" type="Node" parent="Emitters/PE2D_ID_spread_shot"]
+script = ExtResource("6_5rvna")
+min_angle = -25.0
+max_angle = 10.0
+min_amount = 10
+max_amount = 25
+metadata/_custom_type_script = "uid://ccuulr61ul068"
+
+[node name="Sprite2D" type="Sprite2D" parent="Emitters/PE2D_ID_spread_shot"]
+position = Vector2(-8.000008, -4.7683716e-07)
+scale = Vector2(16.000015, 15.999999)
+texture = SubResource("CanvasTexture_5rvna")
+
+[node name="PE2D_ID_toggle" type="Node2D" parent="Emitters" node_paths=PackedStringArray("node_with_projectiles", "add_child_to_this_node")]
+position = Vector2(456, 256)
+script = ExtResource("5_pe8q4")
+node_with_projectiles = NodePath("../..")
+getting_method = 1
+function_name = "get_this_projectile"
+default_projectile_id = "2"
+error_if_there_is_no_id = false
+add_child_to_this_node = NodePath("../../Projectiles")
+new_life_time = 1.55
+metadata/_custom_type_script = "uid://di3i6hekuvhyb"
+
+[node name="Emitter_toggle" type="Node" parent="Emitters/PE2D_ID_toggle"]
+script = ExtResource("9_an447")
+toggled = true
+metadata/_custom_type_script = "uid://cp733q8h821u7"
+
+[node name="Timer" type="Timer" parent="Emitters/PE2D_ID_toggle/Emitter_toggle"]
+wait_time = 0.08
+
+[node name="Sprite2D" type="Sprite2D" parent="Emitters/PE2D_ID_toggle"]
+modulate = Color(1, 0.259475, 0.19224644, 1)
+position = Vector2(-8, 0)
+scale = Vector2(16.000015, 15.999999)
+texture = SubResource("CanvasTexture_5rvna")
+
+[node name="PE3D_ID_spread_shot_ammo_and_toggle" type="Marker3D" parent="Emitters" node_paths=PackedStringArray("node_with_projectiles", "add_child_to_this_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1838908, 0, 15.661199)
+script = ExtResource("7_j0tkm")
+node_with_projectiles = NodePath("../..")
+dictionary_name_with_projectiles_and_ids = "projectiles"
+default_projectile_id = "3D"
+add_child_to_this_node = NodePath("../../Projectiles")
+new_life_time = 0.9
+metadata/_custom_type_script = "uid://je1yoig8016s"
+metadata/_edit_group_ = true
+
+[node name="Emitter3D_spread_shot" type="Node" parent="Emitters/PE3D_ID_spread_shot_ammo_and_toggle"]
+script = ExtResource("8_nd3sk")
+change_pos = true
+min_add_pos = Vector3(0, -1, 0)
+max_add_pos = Vector3(-5, 1, 0)
+x_min_angle = -90.0
+x_max_angle = 90.0
+y_change_angle = false
+z_min_angle = -4.0
+z_max_angle = 4.0
+use_variable_as_key = false
+custom_key_name = "Spread_shot"
+metadata/_custom_type_script = "uid://b7ks2mnhnwmfa"
+
+[node name="Emitter_ammo" type="Node" parent="Emitters/PE3D_ID_spread_shot_ammo_and_toggle"]
+script = ExtResource("10_j7gml")
+cur_ammo_in_magazine = 0
+max_ammo_in_magazine = 20
+all_ammo = -1
+ammo_per_shot = 5
+metadata/_custom_type_script = "uid://d4i3cngvvryd7"
+
+[node name="Emitter_toggle" type="Node" parent="Emitters/PE3D_ID_spread_shot_ammo_and_toggle"]
+script = ExtResource("9_an447")
+func_name_to_call = "emit_by_id"
+metadata/_custom_type_script = "uid://cp733q8h821u7"
+
+[node name="Timer" type="Timer" parent="Emitters/PE3D_ID_spread_shot_ammo_and_toggle/Emitter_toggle"]
+wait_time = 0.25
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Emitters/PE3D_ID_spread_shot_ammo_and_toggle"]
+mesh = SubResource("BoxMesh_j7gml")
+
+[node name="Camera3D" parent="." instance=ExtResource("13_14s54")]
+transform = Transform3D(0.99994516, 0.010471785, -1.814151e-10, -0.008335118, 0.7959161, 0.6053496, 0.006339091, -0.60531646, 0.7959597, 5.3022256, 8.200921, 20.849752)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.5992, 11.412)
+light_energy = 12.929
+spot_range = 77.478
+spot_angle = 71.6157
+metadata/_edit_lock_ = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.99983436, 0.011578343, -0.014045655, 0, 0.7716247, 0.6360781, 0.018202705, -0.63597274, 0.7714968, 0, 14.4531, 40.168)
+light_energy = 8.919
+spot_range = 408.457
+spot_angle = 76.3426
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/2_10" to="Buttons/2_10" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/Emit" to="Emitters/PE2D_ID_spread_shot" method="emit"]
+[connection signal="toggled" from="Buttons/Toggle" to="Emitters/PE2D_ID_toggle/Emitter_toggle" method="change_toggle_mode"]
+[connection signal="pressed" from="Buttons/Emit3D" to="Emitters/PE3D_ID_spread_shot_ammo_and_toggle" method="emit" binds= [1]]
+[connection signal="toggled" from="Buttons/Toggle3D_ID" to="Emitters/PE3D_ID_spread_shot_ammo_and_toggle/Emitter_toggle" method="change_toggle_mode" binds= ["3D_extended"]]
+[connection signal="pressed" from="Buttons/Reload3D" to="Emitters/PE3D_ID_spread_shot_ammo_and_toggle" method="use_related_node" binds= ["Emitter_ammo", "reload"]]

@@ -7,6 +7,7 @@ extends Node2D
 @export var error_if_above_node_is_null : bool = true
 @export var instantly_emit : bool = false
 @export var new_life_time : float = -1.0
+#@export var toggle_timer : Timer ## Required for the node to be toggled, also it's shouldn't be one_shot
 @export var debug : bool = false
 @export_group("Replacers","rep_")
 @export var rep_atk_change : Atk_change_projectile
@@ -14,15 +15,13 @@ extends Node2D
 @export var rep_move_extended : Move_extended_projectile
 @export var rep_hit_extended : Hit_extended_projectile
 @export var rep_remove_projectile : Remove_projectile
-#@export_group("Object pool","object_pool_")
-#@export var object_pool_node : Node ## If it's not set then projectiles will queue_free(). Only works for [Projectile_extended] and [Projectile3D_extended]
-#@export var object_pool_add_func_name : String
 
 var can_emit : bool = true
+var add_projectile_instance_to_scene : bool = true ## If set to false then the projectile will be created and setted while being not added to the scene but signal projectile_was_emitted will still be emitted.
 var related_nodes : Dictionary ## This is for nodes, that have some connections to the emitter, like [Emitter_ammo], that adds ammo system and reloading.[br]All related nodes should be manually added through the nodes themselves. 
 # If all resources are null, then it will ignore checking them at all, remember that if you want to add module at a runtime
 var _check_replacers : bool = true
-var _spawned_projectiles : int = 0 #Only counts projectiles if object_pool_node != null
+var _spawned_projectiles : int = 0 ## @deprecated
 
 signal projectile_was_emitted(projectile:Projectile)
 
@@ -31,13 +30,10 @@ func _ready() -> void:
 		push_error("add_child_to_this_node isn't valid")
 	if rep_atk_change == null and rep_speed_change == null and rep_move_extended == null and rep_hit_extended == null and rep_remove_projectile == null:
 		_check_replacers = false
-	#if object_pool_node != null:
-		#if object_pool_add_func_name.is_empty():
-			#push_error("object_pool_func_name is empty")
-		#if object_pool_get_func_name.is_empty():
-			#push_error("object_pool_get_func_name is empty")
 	if instantly_emit:
 		emit()
+	if debug:
+		print("related_nodes: ",related_nodes)
 
 func _check_and_if_needed_replace_modules_in_projectiles(projectile_instance:Projectile_extended) -> void:
 	if rep_atk_change != null:
@@ -58,15 +54,18 @@ func use_related_node(node_key:String,func_name:String) -> void:
 	if node_key in related_nodes:
 		related_nodes[node_key].call(func_name)
 
+func _add_projectile_as_child(projectile_instance:Projectile,change_position:bool=true) -> void:
+	if is_instance_valid(add_child_to_this_node):
+		if change_position:
+			projectile_instance.position = global_position
+		if add_projectile_instance_to_scene:
+			add_child_to_this_node.call_deferred(&"add_child",projectile_instance)
+	elif add_projectile_instance_to_scene:
+		add_child(projectile_instance)
+
 func _add_projectile_instance_to_the_scene(projectile_instance:Projectile,type:int=0) -> void:
 	_set_variables_for_projectile(projectile_instance,type)
-	if is_instance_valid(add_child_to_this_node):
-		projectile_instance.position = global_position
-		if new_life_time > -1.0:
-			projectile_instance.life_time = new_life_time
-		add_child_to_this_node.call_deferred("add_child",projectile_instance)
-	else:
-		add_child(projectile_instance)
+	_add_projectile_as_child(projectile_instance)
 	projectile_was_emitted.emit(projectile_instance)
 
 func _set_variables_for_projectile(projectile_instance:Projectile,type:int=0,change_rotation:bool=true) -> void:

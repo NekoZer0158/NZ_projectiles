@@ -3,13 +3,28 @@ Plugin for Godot that adds a projectile system in 2D&3D. There are four projecti
 
 ## Changelog
 
+### 2.10 (Neo Projectiles)
+	Update Move_to_node3D_projectile, now includes reach_distance, extra_resource, and when extra_resource will be activated.
+	extra_timer_path can only be set to Timer in Move_to_node2D_projectile.
+	Change use_extra() in Projectile_resource_extra, now it requires a projectile node as an argument and the projectile variable in Projectile_resource_extra is now deprecated.
+	Add add_to_position in RP_spawn_projectile to change spawned projectile position.
+	Add instant_look and look_speed in Move_projectile_on_line2D, Move_projectile_on_path3D, Move_to_node2D_projectile and Move_to_node3D_projectile
+	Add find_shortest_way_to_angle() in Move_extended_projectile and Move_extended_projectile3D
+	Improve PR_extra_change_var, now you can select what to do with a new value, replace the old value, add to it or subtract from it.
+	In Move_projectile_on_path3D and Move_projectile_on_line2D clamp() was changed to clampi() and wrap() to wrapi().
+	In Move_direction_projectile3D,Move_direction_projectile and RP_spawn_projectile clamp() was changed to clampf().
+	type is now export_storage
+	Add more comments.
+	Some fixes in comments.
+	Update documentation
+	Update NZ_projectiles_emitter to 1.6.
 ### 2.9 (Mega Projectiles)
 	Add PR_extra_change_var - change any variable in a projectile.
 	Update Move_to_node2D_projectile, now includes reach_distance, extra_resource, and when extra_resource will be activated
 	Hit_extended_projectile is now not an abstact class. This is made to use extra_resource without giving more arguments.
 	Change Hit_extended_projectile and HE_other icons.
 	Now if Move_projectile_on_line2D is used then the projectile will use a duplicate of it.
-	Update NZ_projectiels_emitter to 1.5.
+	Update NZ_projectiles_emitter to 1.5.
 ### 2.8 (Projectiles Symphony)
 	Updates now have names.
 	There is now a separate showcase scene for emitters, 2D & 3D projectiles for 2.8 update (and will be for every future update).

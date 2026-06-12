@@ -1,0 +1,160 @@
+[gd_scene load_steps=22 format=4 uid="uid://b8st6rsasdpay"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_ebjkj"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_2o8rq"]
+[ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="2_4rnjm"]
+[ext_resource type="PackedScene" uid="uid://bao0sfa1hw6g5" path="res://NZ_projectiles/Characters/Updates/Character_update_2_10.tscn" id="2_r1h0g"]
+[ext_resource type="Script" uid="uid://cykddj6gm6lqn" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_on_line2D.gd" id="3_6nnak"]
+[ext_resource type="Script" uid="uid://cbkra8u1up5ia" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra.gd" id="4_e446x"]
+[ext_resource type="Script" uid="uid://dubok7st7or6p" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_spawn_projectile.gd" id="4_ktqw2"]
+[ext_resource type="Script" uid="uid://bdvvoxg8o2voy" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_change_var.gd" id="5_r1h0g"]
+[ext_resource type="Script" uid="uid://cedxloixedjnh" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extras.gd" id="5_u7y8i"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="7_pbxre"]
+[ext_resource type="Script" uid="uid://ce6usakdbr7gw" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_changer.gd" id="8_eue0p"]
+[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="12_pbxre"]
+
+[sub_resource type="Resource" id="Resource_ktqw2"]
+script = ExtResource("3_6nnak")
+line_path = NodePath("../../Lines/Line2D")
+find_cur_point_in_points = false
+point_zone = Vector2(15, 15)
+teleport_projectile_to_default_point = true
+cycle_movement = true
+instant_look = false
+look_speed = 8.0
+metadata/_custom_type_script = "uid://cykddj6gm6lqn"
+
+[sub_resource type="Resource" id="Resource_c36ia"]
+script = ExtResource("5_r1h0g")
+variable_name = "when_colliding_with_remove_when_collide"
+new_value = 2
+metadata/_custom_type_script = "uid://bdvvoxg8o2voy"
+
+[sub_resource type="Resource" id="Resource_4rnjm"]
+script = ExtResource("5_r1h0g")
+variable_name = "atk"
+new_value = 100
+metadata/_custom_type_script = "uid://bdvvoxg8o2voy"
+
+[sub_resource type="Resource" id="Resource_u5wti"]
+script = ExtResource("5_r1h0g")
+variable_name = "rotation_degrees"
+new_value = 60.0
+what_to_do_with_value = 2
+metadata/_custom_type_script = "uid://bdvvoxg8o2voy"
+
+[sub_resource type="Resource" id="Resource_pbxre"]
+script = ExtResource("7_pbxre")
+hits_before_removing = 8
+extra_resource = SubResource("Resource_u5wti")
+extra_resource_usage_amount = 6
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_ebjkj"]
+script = ExtResource("8_eue0p")
+new_resource = SubResource("Resource_pbxre")
+change_this = 4
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_e446x"]
+script = ExtResource("5_u7y8i")
+extras = Array[ExtResource("4_e446x")]([SubResource("Resource_c36ia"), SubResource("Resource_4rnjm"), SubResource("Resource_ebjkj")])
+metadata/_custom_type_script = "uid://cedxloixedjnh"
+
+[sub_resource type="Resource" id="Resource_meerx"]
+script = ExtResource("4_ktqw2")
+spawn_this_projectile = ExtResource("2_2o8rq")
+immortality_seconds = 0.1
+add_to_position = Vector3(255, 0, 0)
+extra_resource_for_spawned_projectile = SubResource("Resource_e446x")
+metadata/_custom_type_script = "uid://dubok7st7or6p"
+
+[sub_resource type="Resource" id="Resource_bri7c"]
+script = ExtResource("12_pbxre")
+node2D_path = NodePath("../../Characters/Character4")
+look_at_this_node = true
+instant_look = false
+look_speed = 2.0
+metadata/_custom_type_script = "uid://c44wrg5ysonbv"
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="2_10" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.10"
+script = ExtResource("1_ebjkj")
+change_to_this_scene = "uid://cetu571cw0pru"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Static"]
+tile_map_data = PackedByteArray("AAAiAAwAAAAAAAAAAAAiAAsAAAAAAAAAAAAiAAoAAAAAAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAAAAAAAAAAbAAEAAAAAAAAAAAAcAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAALABIAAAAAAAAAAAAPABAAAAAAAAAAAAAPABEAAAAAAAAAAAAPABIAAAAAAAAAAAA=")
+tile_set = ExtResource("2_4rnjm")
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Lines"]
+modulate = Color(1, 1, 1, 0.36078432)
+position = Vector2(208, 160)
+points = PackedVector2Array(200, -24, 416, -80, 464, 56, 696, 8, 688, 152, 568, 312, 432, 200, 248, 280, 368, 120, 112, 280, -8, 272, 200, 152, 96, 64)
+closed = true
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Character" parent="Characters" instance=ExtResource("2_r1h0g")]
+position = Vector2(576, 576)
+
+[node name="Character2" parent="Characters" instance=ExtResource("2_r1h0g")]
+position = Vector2(704, 576)
+
+[node name="Character3" parent="Characters" instance=ExtResource("2_r1h0g")]
+position = Vector2(1024, 576)
+hp = 100
+
+[node name="Character4" parent="Characters" instance=ExtResource("2_r1h0g")]
+position = Vector2(768, 320)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended_on_line" parent="Projectiles" instance=ExtResource("2_2o8rq")]
+position = Vector2(128, 320)
+r_move_extended = SubResource("Resource_ktqw2")
+speed = 150
+life_time = 0.0
+
+[node name="ProjectileExtended_spawn_projectile" parent="Projectiles" instance=ExtResource("2_2o8rq")]
+position = Vector2(320, 576)
+r_remove_projectile = SubResource("Resource_meerx")
+speed = 150
+life_time = 0.0
+remove_when_tilemap_layer = false
+
+[node name="ProjectileExtended_move_to_node" parent="Projectiles" instance=ExtResource("2_2o8rq")]
+position = Vector2(168, 320)
+rotation = 2.8099802
+r_move_extended = SubResource("Resource_bri7c")
+speed = 150
+life_time = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/2_10" to="Buttons/2_10" method="_on_pressed"]

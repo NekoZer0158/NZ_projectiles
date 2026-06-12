@@ -2,7 +2,7 @@
 class_name RP_multiple
 extends Remove_projectile
 
-## Activates other Remove_projectile resources when removing itself
+## Activates other Remove_projectile resources
 
 @export var RP_resources : Array[Remove_projectile]
 @export var push_error_if_resource_is_null : bool = true

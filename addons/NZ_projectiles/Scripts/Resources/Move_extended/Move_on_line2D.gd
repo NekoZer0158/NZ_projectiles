@@ -5,11 +5,11 @@ extends Move_extended_projectile
 ## Moves projectile on [Line2D]. Supports changing line position and scale.
 
 @export_node_path("Line2D") var line_path : NodePath
-@export var find_cur_point_in_points : bool = true
+@export var find_cur_point_in_points : bool = true ## Will first try to find current point, in case you decide to change it's position in the array.
 @export var point_zone : Vector2 = Vector2(5,5)
 @export var teleport_projectile_to_default_point : bool = false ## works only once when spawning projectile
 @export var default_point_index : int = 0
-@export var cycle_movement : bool = false:
+@export var cycle_movement : bool = false:## If set to false then the projectile will stop at the last point of the [Line2D] (doesn't matter if it's closed or not)[br]If set to true then it will go to the first point and then through all points again if the [Line2D] is closed. If not closed then the projectile will go back and forward between the first and the last points going through all points
 	set(value):
 		if cycle_movement != value and value:
 			if _cur_line != null:
@@ -17,6 +17,8 @@ extends Move_extended_projectile
 					_get_next_point_id(_cur_line.closed)
 					_stop_moving = false
 		cycle_movement = value
+@export var instant_look : bool = true ## If set to true then the projectile will instantly look at the new point, if false then it's angle will be changed by look_speed until it's looking at the point
+@export_range(0,360,0.001,"suffix:°") var look_speed : float = 0.0
 @export var debug : bool = false
 
 var _stop_moving : bool = false
@@ -78,17 +80,24 @@ func _get_next_point_id(line_closed:bool=true) -> int:
 func _clamp_or_wrap_cur_point_id(line_closed:bool=true) -> int:
 	if !line_closed:
 		if _moving_backwards:
-			return clamp(_cur_point_id-1,0,_cur_line.points.size()-1)
-		return clamp(_cur_point_id+1,0,_cur_line.points.size()-1)
+			return clampi(_cur_point_id-1,0,_cur_line.points.size()-1)
+		return clampi(_cur_point_id+1,0,_cur_line.points.size()-1)
 	if cycle_movement:
-		return wrap(_cur_point_id+1,0,_cur_line.points.size())
-	return clamp(_cur_point_id+1,0,_cur_line.points.size()-1)
+		return wrapi(_cur_point_id+1,0,_cur_line.points.size())
+	return clampi(_cur_point_id+1,0,_cur_line.points.size()-1)
 
 func move_extended(projectile:Projectile,delta:float) -> void:
 	if _stop_moving:
 		return
 	var _cur_point_global_position := _cur_point*_cur_line.scale+_cur_line.global_position
-	projectile.look_at(_cur_point_global_position)
+	if instant_look:
+		projectile.look_at(_cur_point_global_position)
+	else:
+		projectile.rotation = move_toward(projectile.rotation,find_shortest_way_to_angle(projectile,projectile.global_position.angle_to_point(_cur_point_global_position)),deg_to_rad(look_speed))
+		if abs(projectile.rotation-PI_2)<0.07 or projectile.rotation>=PI_2:
+			projectile.rotation = 0
+		if debug:
+			print("projectile_rotation_degrees: ",projectile.rotation_degrees)
 	projectile.position += projectile.transform.x*projectile.speed*delta
 	if debug:
 		print(_cur_point_id,": ",abs(projectile.global_position-_cur_point_global_position)," ",point_zone)

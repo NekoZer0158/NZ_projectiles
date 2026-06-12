@@ -24,6 +24,18 @@ vertical_scroll_mode = 0
 layout_mode = 2
 metadata/_edit_lock_ = true
 
+[node name="Version_2_10" type="Button" parent="ScrollContainer/HBoxContainer" node_paths=PackedStringArray("main_node")]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.10 (Neo Projectiles)"
+script = ExtResource("3_lqrl0")
+scene = "res://NZ_projectiles/Scenes/Updates/Update_2_10.tscn"
+main_node = NodePath("../../..")
+metadata/_edit_lock_ = true
+
 [node name="Version_2_9" type="Button" parent="ScrollContainer/HBoxContainer" node_paths=PackedStringArray("main_node")]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
@@ -197,6 +209,7 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Version_2_10" to="ScrollContainer/HBoxContainer/Version_2_10" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/HBoxContainer/Version_2_9" to="ScrollContainer/HBoxContainer/Version_2_9" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/HBoxContainer/Version_2_8" to="ScrollContainer/HBoxContainer/Version_2_8" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/HBoxContainer/Version_2_1-2_7" to="ScrollContainer/HBoxContainer/Version_2_1-2_7" method="_on_pressed"]

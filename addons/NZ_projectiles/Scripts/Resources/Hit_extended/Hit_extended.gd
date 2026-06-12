@@ -19,8 +19,8 @@ func hit_extended(atk:int,body:Node,projectile:Node) -> bool: ## DON'T EDIT THIS
 
 func _use_extra_resource(projectile:Node) -> void:
 	if extra_resource != null:
-		extra_resource.projectile = projectile
-		extra_resource.use_extra()
+		#extra_resource.projectile = projectile
+		extra_resource.use_extra(projectile)
 
 func call_hit_extended_function(atk:int,body:Node2D,projectile:Node) -> void: ## EDIT THIS
 	body.call(name_hit_extended,atk)

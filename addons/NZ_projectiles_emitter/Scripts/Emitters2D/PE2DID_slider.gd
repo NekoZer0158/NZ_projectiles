@@ -4,12 +4,12 @@ class_name PE2DID_slider
 extends PE2D_ID
 
 ## @experimental
-## Recommned to not change position or rotation during runtime. Ignores scale and pivot_offest for now.
+## Recommend to not change position or rotation during runtime. Ignores scale and pivot_offest for now.
 
 @export var autoconnect_drag_ended : bool = true ## Automatically connects drag_ended to _on_slider_drag_ended() (see [PE2DID_Hslider] and [PE2DID_Vslider])
 @export_flags("Dragger:1","Slider:2","Ticks:4") var shoot_from : int ## Used when calling emit(). Recommend to not change this value during runtime.
 @export var use_default_id_if_no_other_default_id_was_found : bool = false
-@export_group("Dagger","dragger_")
+@export_group("Dragger","dragger_")
 @export var dragger_default_id : String
 @export var dragger_shoot_direction : ShootDirection ## Will set rotation_degrees for the projectile
 @export var dragger_add_vector2 : Vector2
@@ -55,20 +55,28 @@ func emit_by_id(id:String,type:int=0) -> void:
 
 func _check_and_instantiate_by_id(id:String,default_id:String,default_id_name:String) -> Projectile:
 	var projectile_instance : Projectile
-	var dictionary_with_projectiles := node_with_projectiles.get(dictionary_name_with_projectiles_and_ids)
-	if dictionary_with_projectiles.has(id):
-		projectile_instance = dictionary_with_projectiles[id].instantiate()
-	elif dictionary_with_projectiles.has(default_id):
-		projectile_instance = dictionary_with_projectiles[default_id].instantiate()
-	else:
-		if use_default_id_if_no_other_default_id_was_found:
-			if dictionary_with_projectiles.has(default_projectile_id):
-				projectile_instance = dictionary_with_projectiles[default_projectile_id].instantiate()
+	match getting_method:
+		GettingMethod.VARIABLE:
+			var dictionary_with_projectiles := node_with_projectiles.get(dictionary_name_with_projectiles_and_ids)
+			if dictionary_with_projectiles.has(id):
+				projectile_instance = dictionary_with_projectiles[id].instantiate()
+			elif dictionary_with_projectiles.has(default_id):
+				projectile_instance = dictionary_with_projectiles[default_id].instantiate()
 			else:
-				push_error("There is no default_projectile_id: ",default_projectile_id," in dictionary with projectiles")
-		if error_if_there_is_no_id:
-			push_error("There is no id: ",id," or ",default_id_name,": ",default_id," in dictionary with projectiles")
-		return null
+				if use_default_id_if_no_other_default_id_was_found:
+					if dictionary_with_projectiles.has(default_projectile_id):
+						projectile_instance = dictionary_with_projectiles[default_projectile_id].instantiate()
+					else:
+						push_error("There is no default_projectile_id: ",default_projectile_id," in dictionary with projectiles")
+				if error_if_there_is_no_id:
+					push_error("There is no id: ",id," or ",default_id_name,": ",default_id," in dictionary with projectiles")
+				return null
+		GettingMethod.FUNCTION:
+			projectile_instance = node_with_projectiles.call(function_name,id)
+			if projectile_instance == null:
+				projectile_instance = node_with_projectiles.call(function_name,default_id)
+				if projectile_instance == null and use_default_id_if_no_other_default_id_was_found:
+					projectile_instance = node_with_projectiles.call(function_name,default_projectile_id)
 	return projectile_instance
 
 func emit_dragger(id:String,type:int=0) -> void:
@@ -151,10 +159,7 @@ func _set_position_for_projectile(thing:SliderThing,projectile:Projectile,tick_i
 
 func _add_projectile_instance_to_the_scene(projectile_instance:Projectile,type:int=0) -> void:
 	_set_variables_for_projectile(projectile_instance,type,false)
-	if is_instance_valid(add_child_to_this_node):
-		add_child_to_this_node.call_deferred("add_child",projectile_instance)
-	else:
-		add_child(projectile_instance)
+	_add_projectile_as_child(projectile_instance,false)
 	projectile_was_emitted.emit(projectile_instance)
 
 func _calculate_dragger_pos(slider:Slider,cur_slider_is_vslider:bool) -> void:

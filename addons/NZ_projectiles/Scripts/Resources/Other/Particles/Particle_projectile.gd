@@ -3,9 +3,8 @@ class_name Particle_projectile
 extends Resource
 
 @export var particle_scene : PackedScene
-## ONLY IN 2D
-@export var look_there : WhereToLook
-@export var spawn_even_if_this_is_not_a_projectile : bool = false
+@export var look_there : WhereToLook ## ONLY IN 2D
+@export var spawn_even_if_this_is_not_a_projectile : bool = false ## Will still check at first if it is [CPUParticles2D], [GPUParticles2D], [CPUParticles3D] or [GPUParticles3D] and if it's none of this then will just add instance of the given scene
 
 enum WhereToLook{FORWARD,BACKWARD}
 

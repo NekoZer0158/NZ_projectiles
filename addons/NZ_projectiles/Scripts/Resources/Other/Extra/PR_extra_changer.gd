@@ -6,35 +6,35 @@ extends Projectile_resource_extra
 @export var change_this : ProjectileEnum.ProjectileModuleNames
 @export var duplicate_resource : bool = false
 
-func use_extra() -> void:
+func use_extra(cur_projectile:Node) -> void:
 	match change_this:
 		ProjectileEnum.ProjectileModuleNames.ATK_CHANGE:
 			if duplicate_resource:
-				projectile.r_atk_change = new_resource.duplicate(true)
+				cur_projectile.r_atk_change = new_resource.duplicate(true)
 			else:
-				projectile.r_atk_change = new_resource
+				cur_projectile.r_atk_change = new_resource
 		ProjectileEnum.ProjectileModuleNames.SPEED_CHANGE:
 			if duplicate_resource:
-				projectile.r_speed_change = new_resource.duplicate(true)
+				cur_projectile.r_speed_change = new_resource.duplicate(true)
 			else:
-				projectile.r_speed_change = new_resource
+				cur_projectile.r_speed_change = new_resource
 		ProjectileEnum.ProjectileModuleNames.MOVE_EXTENDED:
 			if duplicate_resource:
-				projectile.r_move_extended = new_resource.duplicate(true)
+				cur_projectile.r_move_extended = new_resource.duplicate(true)
 			else:
-				projectile.r_move_extended = new_resource
+				cur_projectile.r_move_extended = new_resource
 		ProjectileEnum.ProjectileModuleNames.HIT_EXTENDED:
 			if duplicate_resource:
-				projectile.r_hit_extended = new_resource.duplicate(true)
+				cur_projectile.r_hit_extended = new_resource.duplicate(true)
 			else:
-				projectile.r_hit_extended = new_resource
+				cur_projectile.r_hit_extended = new_resource
 		ProjectileEnum.ProjectileModuleNames.REMOVE:
 			if duplicate_resource:
-				projectile.r_remove_projectile = new_resource.duplicate(true)
+				cur_projectile.r_remove_projectile = new_resource.duplicate(true)
 			else:
-				projectile.r_remove_projectile = new_resource
+				cur_projectile.r_remove_projectile = new_resource
 	if new_resource != null:
 		if new_resource.has_method("_ready"):
-			new_resource._ready(projectile)
-	if projectile.r_speed_change != null and projectile.r_speed_change == new_resource:
-		projectile.r_speed_change.activate()
+			new_resource._ready(cur_projectile)
+	if cur_projectile.r_speed_change != null and cur_projectile.r_speed_change == new_resource:
+		cur_projectile.r_speed_change.activate()

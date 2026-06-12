@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://4pkgrqw16gwm"]
 
-[ext_resource type="Script" path="res://addons/NZ_projectiles/Scripts/Projectile3D_extended.gd" id="1_4xruc"]
+[ext_resource type="Script" uid="uid://csk7e5ao2i25l" path="res://addons/NZ_projectiles/Scripts/Projectile3D_extended.gd" id="1_4xruc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pydvm"]
 
@@ -15,6 +15,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 script = ExtResource("1_4xruc")
 atk = 5
 speed = 14
+metadata/_custom_type_script = "uid://csk7e5ao2i25l"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_pydvm")

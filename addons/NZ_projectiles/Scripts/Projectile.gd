@@ -33,7 +33,7 @@ extends Area2D
 @export var name_hit : StringName = "hit" ## Name of the function that deals damage in body
 
 var life_timer : Timer
-var type : int ## projectile will hit bodies, only with a different type
+@export_storage var type : int ## Projectile will hit bodies, only with a different type
 
 func _ready() -> void:
 	_set_everything()

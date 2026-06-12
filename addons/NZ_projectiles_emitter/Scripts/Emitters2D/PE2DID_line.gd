@@ -22,10 +22,7 @@ func _add_projectile_instance_to_the_scene(projectile_instance:Projectile,type:i
 	projectile_instance.position = pos_and_points[NEW_POSITION]
 	if rotate_projectile_perpendicular:
 		projectile_instance.rotation = pos_and_points[FIRST_POINT].angle_to_point(pos_and_points[SECOND_POINT])-deg_to_rad(90)
-	if is_instance_valid(add_child_to_this_node):
-		add_child_to_this_node.call_deferred("add_child",projectile_instance)
-	else:
-		add_child(projectile_instance)
+	_add_projectile_as_child(projectile_instance,false)
 	projectile_was_emitted.emit(projectile_instance)
 
 static func _get_random_position_in_line_and_points(line:Line2D,look_reverse_local:bool=false,debug_local:bool=false) -> Array:

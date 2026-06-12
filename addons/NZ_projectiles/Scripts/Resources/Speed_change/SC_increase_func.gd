@@ -11,7 +11,7 @@ extends SC_increase
 ##[/codeblock]
 @export var resource_with_func : Resource
 @export var func_name : String
-@export var allow_bigger : bool = false
+@export var allow_bigger : bool = false ## If set to true then if speed is bigger than the needed value it will stay that way
 
 func increase_speed(projectile_speed:int) -> int:
 	if projectile_speed >= increase_to_this_amount:

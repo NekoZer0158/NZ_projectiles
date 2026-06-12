@@ -17,7 +17,7 @@ func _ready(parent_node:Node) -> void:
 	if ProjectileChecks.check_if_this_a_projectile(parent_node):
 		cur_parent_node = parent_node
 
-## Resets SC_condition and SC_condition_timer, creating an infinite loop (shouldn't be used as r_speed_change)
+## Resets [SC_condition] and SC_condition_timer, creating an infinite loop (shouldn't be used as r_speed_change)
 func change_speed(projectile_speed:int) -> int:
 	if reset_limit == 0:
 		if resource_after_limit == null:

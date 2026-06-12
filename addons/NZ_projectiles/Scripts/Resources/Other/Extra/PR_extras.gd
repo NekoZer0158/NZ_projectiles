@@ -4,8 +4,8 @@ extends Projectile_resource_extra
 
 @export var extras : Array[Projectile_resource_extra]
 
-func use_extra() -> void:
+func use_extra(cur_projectile:Node) -> void:
 	for i in extras:
 		if i != null:
-			i.projectile = projectile
-			i.use_extra()
+			#i.projectile = projectile
+			i.use_extra(cur_projectile)

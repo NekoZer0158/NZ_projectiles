@@ -41,10 +41,7 @@ func _add_projectile_instance_to_the_scene(projectile_instance:Projectile3D,type
 		projectile_instance.rotation = node_rotation.rotation
 	if debug:
 		print("projectile_instance.position: ",projectile_instance.position)
-	if is_instance_valid(add_child_to_this_node):
-		add_child_to_this_node.call_deferred("add_child",projectile_instance)
-	else:
-		add_child(projectile_instance)
+	_add_projectile_as_child(projectile_instance,false)
 	projectile_was_emitted.emit(projectile_instance)
 
 ## @experimental

@@ -13,6 +13,7 @@ script = ExtResource("1_56y4e")
 atk = 10
 speed = 225
 life_time = 10.0
+metadata/_custom_type_script = "uid://ca862jsq8jq5c"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i3xv1")

@@ -7,7 +7,7 @@ extends Move_extended_projectile
 
 @export var direction : Vector2: ## If you need to set this through code, use PorjectileSetter
 	set(value):
-		direction = Vector2(clamp(value.x,-1,1),clamp(value.y,-1,1))
+		direction = Vector2(clampf(value.x,-1,1),clampf(value.y,-1,1))
 @export var look_at_this_direction : bool = false
 @export_range(-360,360,0.5,"suffix:°") var add_this_degrees : float = 0
 

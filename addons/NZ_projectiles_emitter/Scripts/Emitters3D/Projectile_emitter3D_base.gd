@@ -16,6 +16,7 @@ extends Marker3D
 @export var rep_remove_projectile : Remove_projectile
 
 var can_emit : bool = true
+var add_projectile_instance_to_scene : bool = true ## If set to false then the projectile will be created and setted while being not added to the scene but signal projectile_was_emitted will still be emitted.
 var related_nodes : Dictionary
 # If all resources are null, then it will ignore checking them at all, remember that if you want to add module at a runtime
 var _check_replacers : bool = true
@@ -45,19 +46,22 @@ func _check_and_if_needed_replace_modules_in_projectiles(projectile_instance:Pro
 func emit(_type:int=0) -> void:
 	pass
 
-func use_related_node(node_name:String,func_name:String) -> void:
-	if node_name in related_nodes:
-		related_nodes[node_name].call(func_name)
+func use_related_node(node_key:String,func_name:String) -> void:
+	if node_key in related_nodes:
+		related_nodes[node_key].call(func_name)
+
+func _add_projectile_as_child(projectile_instance:Projectile3D,change_position:bool=true) -> void:
+	if is_instance_valid(add_child_to_this_node):
+		if change_position:
+			projectile_instance.position = global_position
+		if add_projectile_instance_to_scene:
+			add_child_to_this_node.call_deferred(&"add_child",projectile_instance)
+	elif add_projectile_instance_to_scene:
+		add_child(projectile_instance)
 
 func _add_projectile_instance_to_the_scene(projectile_instance:Projectile3D,type:int=0) -> void:
 	_set_variables_for_projectile(projectile_instance,type)
-	if is_instance_valid(add_child_to_this_node):
-		projectile_instance.position = global_position
-		if new_life_time > -1.0:
-			projectile_instance.life_time = new_life_time
-		add_child_to_this_node.call_deferred("add_child",projectile_instance)
-	else:
-		add_child(projectile_instance)
+	_add_projectile_as_child(projectile_instance)
 	projectile_was_emitted.emit(projectile_instance)
 
 func _set_variables_for_projectile(projectile_instance:Projectile3D,type:int=0) -> void:

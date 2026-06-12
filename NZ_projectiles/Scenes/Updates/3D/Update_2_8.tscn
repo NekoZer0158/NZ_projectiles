@@ -235,10 +235,5 @@ spot_range = 408.457
 spot_angle = 76.3426
 metadata/_edit_lock_ = true
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(0.59928906, 0, 0.8005327, 0.6516936, 0.5807598, -0.48786628, -0.46491718, 0.814075, 0.34804305, -5.697439, 3.9586535, 1.2921479)
-gizmo_extents = 0.69
-metadata/_edit_lock_ = true
-
 [connection signal="pressed" from="Buttons/Projectiles Symphony" to="Buttons/Projectiles Symphony" method="_on_pressed"]
 [connection signal="timeout" from="Characters/CharacterBody/Timer" to="Characters/CharacterBody" method="_reverse_speed"]

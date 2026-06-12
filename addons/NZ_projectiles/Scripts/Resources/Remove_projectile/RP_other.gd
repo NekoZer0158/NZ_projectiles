@@ -2,7 +2,7 @@
 class_name RP_other
 extends Remove_projectile
 
-## Calls other_function_name in a projectile_resource and then removes itself using queue_free()
+## Calls function with name other_function_name in a projectile_resource and then removes itself using queue_free()
 
 @export var other_function_name : String
 @export var projectile_resource : Projectile_resource

@@ -1,14 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://o735bio7pmd2"]
+[gd_scene load_steps=2 format=3 uid="uid://o735bio7pmd2"]
 
-[ext_resource type="Script" uid="uid://cxabokh4sab0u" path="res://NZ_projectiles/Scripts/Updates from 2.8/Projectiles_update_2_8.gd" id="1_0ek43"]
-[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_6uhjk"]
 [ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="3_q7bhx"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_0ek43")
-projectiles = Dictionary[String, PackedScene]({
-"default": ExtResource("2_6uhjk")
-})
 
 [node name="Buttons" type="Node" parent="."]
 

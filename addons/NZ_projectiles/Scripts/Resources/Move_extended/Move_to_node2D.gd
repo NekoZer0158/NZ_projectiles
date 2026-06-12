@@ -6,20 +6,23 @@ extends Move_extended_projectile
 
 @export var node2D_path : NodePath
 @export var look_at_this_node : bool = false
-@export var multiply_scale_when_dont_look : bool = false
+@export var multiply_scale_when_dont_look : bool = false ## Will multiply speed to scale when look_at_this_node is set to false
 @export var move_away : bool = false ## If true, the projecitle will move in the opposite way from the [Node2D]
-@export var default_movement_if_no_node2D : bool = false
+@export var default_movement_if_no_node2D : bool = false ## If set to true then default movement will be used when [Node2D] instance isn't valid anymore
 @export var after_reaching_node2D_movement : ProjectileEnum.AfterReachingNode
 @export var reach_distance : float = 0.0
-@export_range(-360,360,0.5,"suffix:°") var add_those_degrees : float = 0
+@export_range(-360,360,0.001,"suffix:°") var add_those_degrees : float = 0
+@export var instant_look : bool = true ##If set to true then the projectile will instantly look at the node, if false then it's angle will be changed by look_speed until it's looking at the node (look_at_this_node must be set to true)
+@export_range(0,360,0.001,"suffix:°") var look_speed : float = 0.0
 @export_group("Extra resource","extra_")
 @export var extra_resource : Projectile_resource_extra ## Will be used depending on extra_resource_usage
 @export var extra_resource_usage : ProjectileEnum.ExtraResourceUsageMovement = ProjectileEnum.ExtraResourceUsageMovement.AFTER_REACHING_OR_WHEN_NO_NODE
-@export var extra_timer_path : NodePath ## Must be a [Timer][br]Also set one_shot to true
+@export_node_path("Timer") var extra_timer_path : NodePath ## Recommend to set one_shot to true
 @export var extra_time : float = 0.0 ## If extra_timer_path is a path to a [Timer] and extra_time is bigger than 0 then extra_resource will be activated only after that amount of time
 
 var move_to_this_node2D : Node2D ## Set this through [ProjectileSetter] or node2D_path
 var added_degrees : bool = false
+
 var _stop_moving : bool = false
 var _extra_resource_was_used : bool = false
 var _default_movement : bool = false
@@ -47,7 +50,12 @@ func move_extended(projectile:Projectile,delta:float) -> void:
 				projectile.position += projectile.transform.x*projectile.speed*delta
 			else:
 				projectile.position -= projectile.transform.x*projectile.speed*delta
-			projectile.look_at(move_to_this_node2D.global_position)
+			if instant_look:
+				projectile.look_at(move_to_this_node2D.global_position)
+			else:
+				projectile.rotation = move_toward(projectile.rotation,find_shortest_way_to_angle(projectile,projectile.global_position.angle_to_point(move_to_this_node2D.global_position)),deg_to_rad(look_speed))
+				if abs(projectile.rotation-PI_2)<0.07 or projectile.rotation>=PI_2:
+					projectile.rotation = 0
 		else:
 			if !move_away:
 				if multiply_scale_when_dont_look:
@@ -76,8 +84,8 @@ func _check_timer_and_extra_resource(projectile:Projectile) -> void:
 
 func _use_extra_resource(projectile:Projectile,force_use:bool=false) -> void:
 	if extra_resource != null and (!_extra_resource_was_used or force_use):
-		extra_resource.projectile = projectile
-		extra_resource.use_extra()
+		#extra_resource.projectile = projectile
+		extra_resource.use_extra(projectile)
 		_extra_resource_was_used = true
 
 func _on_extra_timer_timeout(projectile:Projectile) -> void:
@@ -90,9 +98,9 @@ func _check_after_reaching_node2D(projectile:Projectile) -> void:
 				ProjectileEnum.ExtraResourceUsageMovement.AFTER_REACHING_NODE,ProjectileEnum.ExtraResourceUsageMovement.AFTER_REACHING_OR_WHEN_NO_NODE:
 					_check_timer_and_extra_resource(projectile)
 			match after_reaching_node2D_movement:
-				ProjectileEnum.AfterReachingNode.STOP:
-					_stop_moving = true
 				ProjectileEnum.AfterReachingNode.DEFAULT_MOVEMENT:
 					_default_movement = true
+				ProjectileEnum.AfterReachingNode.STOP:
+					_stop_moving = true
 				ProjectileEnum.AfterReachingNode.QUEUE_FREE:
 					projectile.queue_free()

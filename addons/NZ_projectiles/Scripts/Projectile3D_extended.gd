@@ -10,7 +10,7 @@ extends Projectile3D
 @export var r_speed_change : Speed_change_projectile ## Changes projectile speed
 @export var r_move_extended : Move_extended_projectile3D ## Changes projectile movement
 @export var r_hit_extended : Hit_extended_projectile ## Changes arguments for the "hit" function
-@export var r_remove_projectile : Remove_projectile ## Changes consequences for projectile when body enters it
+@export var r_remove_projectile : Remove_projectile ## Changes consequences for projectile when it enters a body
 #@export var r_custom : Resource
 
 enum {QUEUE_FREE,FREE,ACTIVATE_REMOVE_RESOURCE}

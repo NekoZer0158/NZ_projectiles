@@ -1,16 +1,19 @@
 Everything written below works for both 2D and 3D, with some exceptions, that will be mentioned
 
 Base:
-	Projectile - base class for projectiles, doesn't have module support.
-	Projectile_extended - a subclass of class Projectile, has module support, and also has an ID.
+	Projectile - base class for 2D projectiles, doesn't have module support, has ID.
+	Projectile3D - base class for 3D projectiles, doesn't have module support, has ID.
+	Projectile_extended - a subclass of class Projectile, has module support.
+	Projectile3D_extended - a subclass of class Projectile3D, has module support.
 	name_hit - the name for the function, that will be called, in a node in which the projectile entered.
 	(usually it's CharacterBody2D). By default it's "hit".
-	The plugin doesn't contain tools to spawn projectiles because it's assumed that you will do them
-	yourself (don't forget to set "type" for a projectile before spawning it).
+	type - if type of the projectile is the same as type of, e.g. custom subclass of CharacterBody2D, then the projectile will ignore the body, but if the type is different then the projectile will hit the body.
+	You can't change type through the inspector, it was done for you to make your own way to change the type. E.g. there are 3 factions in your game and they are all fighting each other, you create enum{FACTION_1,FACTION_2,FACTION_3} and use it to set type for the projectile through custom classes or just scripts.
+	Changing type through the inspector wouldn't be comfortable, because it's hard to understand what certain type means if it's a number, e.g. 0 - faction red, 1 - faction blue and 2- faction green.
+	The plugin doesn't contain tools to spawn projectiles, because they are in a different plugin - NZ_projectiles_emitter
 
 Modules:
-	Module - name for the resources, used by Projectile_extended/Projectile3D_extended.
-	You can use them only in Projectile_extended.
+	Module - name for the resources, used by Projectile_extended and Projectile3D_extended.
 	Atk_change_projectile - base for changing projectile damage.
 	Speed_change_projectile - base for changing projectile speed.
 	Move_extended_projectile - base for changing projectile movement (ONLY 2D).

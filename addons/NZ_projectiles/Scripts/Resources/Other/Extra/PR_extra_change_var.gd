@@ -4,7 +4,16 @@ extends Projectile_resource_extra
 
 @export var variable_name : String
 @export var new_value : Variant
+@export_enum("Repalce","Add","Subtract") var what_to_do_with_value : int
 
-func use_extra() -> void:
-	if variable_name in projectile:
-		projectile.set(variable_name,new_value)
+enum {REPLACE,ADD,SUBTRACT}
+
+func use_extra(cur_projectile:Node) -> void:
+	if variable_name in cur_projectile:
+		match what_to_do_with_value:
+			REPLACE:
+				cur_projectile.set(variable_name,new_value)
+			ADD:
+				cur_projectile.set(variable_name,cur_projectile.get(variable_name)+new_value)
+			SUBTRACT:
+				cur_projectile.set(variable_name,cur_projectile.get(variable_name)-new_value)

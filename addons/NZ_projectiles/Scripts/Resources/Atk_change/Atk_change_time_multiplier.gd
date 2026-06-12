@@ -12,5 +12,5 @@ func _on_timer_timeout(parent_node:Node) -> void:
 	if debug:
 		print_debug(parent_node.name,": ",parent_node.atk)
 	if parent_node.atk == increase_atk_to_this:
-		_check_and_use_extra_resource()
+		_check_and_use_extra_resource(parent_node)
 		timer.stop()

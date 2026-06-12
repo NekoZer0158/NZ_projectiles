@@ -3,7 +3,7 @@ class_name PE2DID_Vslider
 extends PE2DID_slider
 
 ## @experimental
-## Recommned to not change position or rotation during runtime
+## Recommend to not change position or rotation during runtime
 
 @export var vslider : VSlider
 

@@ -6,10 +6,10 @@ extends Atk_change_projectile
 ## Changes atk through time by adding to it atk_step
 
 @export var increase_atk_to_this : int = 5
-@export var atk_step : int = 1:
+@export var atk_step : int = 1: ## Can't be a negative value
 	set(value):
 		atk_step = clamp(value,0,abs(value))
-@export var time : float:
+@export var time : float: ## Can't be a negative value
 	set(value):
 		if value >= 0:
 			time = value
@@ -21,21 +21,19 @@ extends Atk_change_projectile
 var timer : Timer
 
 func _ready_step_2(parent_node:Node) -> void:
-	if extra_resource != null:
-		extra_resource.projectile = parent_node
 	timer = Timer.new()
 	parent_node.add_child(timer)
 	timer.timeout.connect(_on_timer_timeout.bind(parent_node))
 	timer.start(time)
 
-func _check_and_use_extra_resource() -> void:
+func _check_and_use_extra_resource(projectile:Node) -> void:
 	if extra_resource != null:
-		extra_resource.use_extra()
+		extra_resource.use_extra(projectile)
 
 func _on_timer_timeout(parent_node:Node) -> void:
 	parent_node.atk = move_toward(parent_node.atk,increase_atk_to_this,atk_step)
 	if debug:
 		print(parent_node.name,": ",parent_node.atk)
 	if parent_node.atk == increase_atk_to_this:
-		_check_and_use_extra_resource()
+		_check_and_use_extra_resource(parent_node)
 		timer.stop()

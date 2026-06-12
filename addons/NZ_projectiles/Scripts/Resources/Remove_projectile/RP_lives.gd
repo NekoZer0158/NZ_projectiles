@@ -7,15 +7,23 @@ extends Remove_projectile
 @export var hits_before_removing : int = 3
 @export var next_phase : Remove_projectile ## After hits_before_removing becomes 0, the projectile will start using next_phase (example: after hitting 3 objects, the projectile will spawn another projectile)
 @export var use_particle_every_hit : bool = false
+@export var extra_resource : Projectile_resource_extra
+@export var extra_resource_usage_amount : int = 1
 
 var _default_hits_before_removing : int
 
 const CREATE_DUPLICATE : bool = true
 
+func _use_extra_resource(projectile:Node) -> void:
+	if extra_resource != null and extra_resource_usage_amount > 0:
+		extra_resource_usage_amount -= 1
+		extra_resource.use_extra(projectile)
+
 func _remove_projectile_step_2(projectile:Node) -> void:
 	if _default_hits_before_removing == 0:
 		_default_hits_before_removing = hits_before_removing
 	hits_before_removing -= 1
+	_use_extra_resource(projectile)
 	if (use_particle_every_hit and hits_before_removing > 0) or (hits_before_removing == 0 and next_phase != null):
 		check_particle_resource(projectile)
 	if hits_before_removing <= 0:
