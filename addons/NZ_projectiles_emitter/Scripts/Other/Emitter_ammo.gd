@@ -2,7 +2,7 @@
 class_name Emitter_ammo
 extends Emitter_related_node
 
-## Parent node should be Projectile_emitter2D_base or Projectile_emitter3D_base.
+## Parent node should be [Projectile_emitter2D_base] or [Projectile_emitter3D_base].
 
 @export_range(-1,99999) var cur_ammo_in_magazine : int = 5: ## if -1 then no ammo will be spent
 	set(value):
@@ -26,7 +26,7 @@ func _ready() -> void:
 		max_ammo_in_magazine = cur_ammo_in_magazine
 	else:
 		cur_ammo_in_magazine = cur_ammo_in_magazine
-		_emitter.projectile_was_emitted.connect(_emitter_projectile_was_emitted)
+	_emitter.projectile_was_emitted.connect(_emitter_projectile_was_emitted)
 
 func spend_ammo() -> void:
 	cur_ammo_in_magazine -= ammo_per_shot
@@ -62,6 +62,6 @@ func reload() -> bool:
 	return false
 
 func _emitter_projectile_was_emitted(_projectile:Node) -> void:
-	cur_ammo_in_magazine -= ammo_per_shot
+	spend_ammo()
 	if debug:
 		print("cur_ammo_in_magazine: ",cur_ammo_in_magazine)

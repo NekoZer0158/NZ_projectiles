@@ -6,6 +6,11 @@ Every update adds a new scene in NZ_projectiles/Scenes/Updates where you can see
 
 ## Changelog
 
+### 2.10.1 (Small fix)
+	Move_projectile_on_line2D will now show error if it can't find a node with line_path.
+	If debug is set to true in Move_projectile_on_line2D then will be printed when _cur_line is set to null through _set_cur_line_to_null().
+	Fix calling _ready() in the wrong resource in PR_extra_changer.
+	Update NZ_projectiles_emitter to 1.6.1.
 ### 2.10 (Neo Projectiles)
 	Update Move_to_node3D_projectile, now includes reach_distance, extra_resource, and when extra_resource will be activated.
 	extra_timer_path can only be set to Timer in Move_to_node2D_projectile.

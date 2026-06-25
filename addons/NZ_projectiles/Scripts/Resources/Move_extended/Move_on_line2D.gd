@@ -32,6 +32,8 @@ const CREATE_DUPLICATE : bool = true
 func _ready(parent_node:Node) -> void:
 	if parent_node.has_node(line_path):
 		set_line(parent_node.get_node(line_path))
+	else:
+		push_error("Line2D with path ",line_path," wasn't found")
 	if teleport_projectile_to_default_point:
 		parent_node.position = _cur_line.points[default_point_index]*_cur_line.scale+_cur_line.global_position
 		_set_new_point()
@@ -46,6 +48,8 @@ func set_line(new_line:Line2D) -> void:
 
 func _set_cur_line_to_null() -> void:
 	_cur_line = null
+	if debug:
+		print("_cur_line is set to null")
 
 func start_moving() -> void:
 	_stop_moving = false

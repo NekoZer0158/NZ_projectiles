@@ -20,6 +20,8 @@ REQUIRES: NZ_projectiles.
 	Emitter_ammo - adds ammo and reloading systems to an emitter.
 
 ## Changelog
+## 1.6.1 (Small Fix)
+	Fix Emitter_ammo when max_ammo_in_magazine is set to -1 ammo didn't spend at all.
 ## 1.6 (Neo Projectiles)
 	Add Emitter_spread_shot_base, Emitter2D_spread_shot and Emitter3D_spread_shot - shoot multiple projectiles with one emit and different angles.
 	Add Emitter_toggle - allows you to shoot projectiles in a row with a time between shots
