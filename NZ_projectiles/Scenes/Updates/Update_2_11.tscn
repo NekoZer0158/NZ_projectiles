@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh15v82rd8yb0"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_rfgoa"]
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Main" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Main"
+script = ExtResource("1_rfgoa")
+change_to_this_scene = "uid://cgkd4refam0mw"
+
+[node name="2D" type="Button" parent="Buttons"]
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 512.0
+offset_bottom = 448.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2D"
+script = ExtResource("1_rfgoa")
+change_to_this_scene = "uid://rh0wpl5v66s6"
+
+[node name="3D" type="Button" parent="Buttons"]
+offset_left = 640.0
+offset_top = 192.0
+offset_right = 896.0
+offset_bottom = 448.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "3D"
+script = ExtResource("1_rfgoa")
+change_to_this_scene = "uid://dsqly8lsm7xqg"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/Main" to="Buttons/Main" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/2D" to="Buttons/2D" method="_on_pressed"]
+[connection signal="pressed" from="Buttons/3D" to="Buttons/3D" method="_on_pressed"]

@@ -1,4 +1,4 @@
-![Banner](/NZ_projectiles/Textures/Updates/Banners/Neo_projectiles.png)
+![Banner](/NZ_projectiles/Textures/Updates/Banners/Hard_projectiles.png)
 # NZ projectiles
 Plugin for Godot that adds a projectile system in 2D&3D. There are four projectile classes (2 each for 2D & 3D), base one and extended, to which you can add more stuff, like changing speed every second or making it disappear only after interacting with 3 objects. <br>
 Also includes two more plugins: NZ_projectiles_emitter (adds nodes with which you can emit projectiles) and NZ_projectiles_custom (adds a new projectile class that is much more customizable, but harder to work with). Both plugins require the main one - NZ_projectiles. <br>
@@ -6,6 +6,26 @@ Every update adds a new scene in NZ_projectiles/Scenes/Updates where you can see
 
 ## Changelog
 
+### 2.11 (Hard Projectiles)
+#### Move_extended_projectile resource is deprecated in favour of Move_extended_projectile_node
+	All Move_extended_projectile classes now have node alternatives while the base classes are deprecated.
+	Move_extended_projectile_node should be used instead of Move_extended_projectile.
+	ME_direction should be used instead of Move_direction_projectile.
+	ME_node2D should be used instead of Move_to_node2D_projectile.
+	ME_line2D should be used instead of Move_projectile_on_line2D.
+	Add ME_node2D_dynamic - allows projectile to dynamically switch the current target.
+	Move_extended_projectile3D will be moved from resources to nodes in one of the next updates.
+	This doesn't mean that all other resources will be replaced with nodes, I just find nodes to be more useful to be used as a base for extending projectiles movement instead of resources.
+#### Other
+	Add queue_free_if_cant_move_on_line to Move_projectile_on_line2D.
+	Add queue_free_if_cant_move_on_path3d to Move_projectile_on_path3D.
+	Add point_type to Move_projectile_on_line2D, now you can select, will the required point be a square or a circle.
+	Add PointType enum in ProjectileEnum.
+	Add use_min_value_the_same_as_atk to AC_random_range.
+	Add max_value_is_min_value_plus_max_value to AC_random_range.
+	Fix bug when the projectile move used a longer way to get to look at the point on the Line2D and Path3D.
+	Move_projectile_on_path3D will now show an error if it can't find a node with path3d_path.
+	!IMPORTANT! Some modules will be moved to another plugin to make the main one less bloated. I will do it in 2.12 or 2.13.
 ### 2.10.1 (Small fix)
 	Move_projectile_on_line2D will now show error if it can't find a node with line_path.
 	If debug is set to true in Move_projectile_on_line2D then will be printed when _cur_line is set to null through _set_cur_line_to_null().
@@ -33,20 +53,6 @@ Every update adds a new scene in NZ_projectiles/Scenes/Updates where you can see
 	Change Hit_extended_projectile and HE_other icons.
 	Now if Move_projectile_on_line2D is used then the projectile will use a duplicate of it.
 	Update NZ_projectiles_emitter to 1.5.
-### 2.8 (Projectiles Symphony)
-	Updates now have names.
-	There is now a separate showcase scene for emitters, 2D & 3D projectiles for 2.8 update (and will be for every future update).
-	Add Projectile_resource_extra - use to call it in other projectile modules.
-	Add PR_extra_changer - replace any module in Projectile_extended or Projectile3D_extended.
-	Add PR_extras - change multiple modules at once.
-	Update SC_condition and Hit_extended_projectile to include Projectile_resource_extra that will be activated after fulfilling the condition.
-	Update AC_time to include Projectile_resource_extra that will be activated after atk is reached the required value.
-	Update Hit_extended_projectile to include Projectile_resource_extra that will be activated after attacking anything.
-	Update Move_to_node2D and Move_to_node3D, now you can set it to move away from Node2D, multiply to scale when the projectile doesn't look at Node2D or if there is no Node2D to switch to default movement.
-	Add icons to SC_increase_func and ProjectileEnum.
-	Add changelog for updates 2.0-2.7 (only here).
-	Showcase scenes for updates 2.0-2.7 were moved to the separate scene.
-	Update NZ_projectiles_emitter to 1.4.
 
 ## Projectile
 ![Gif_1](/NZ_projectiles/gifs/gif_1.gif)

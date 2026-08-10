@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cj1thpmipp4kr" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters2D/PE2D_simple.gd" id="6_qhil3"]
 [ext_resource type="Script" uid="uid://d4i3cngvvryd7" path="res://addons/NZ_projectiles_emitter/Scripts/Other/Emitter_ammo.gd" id="7_pmdd6"]
 [ext_resource type="PackedScene" uid="uid://dp2r8kon8uuq7" path="res://NZ_projectiles/Characters/Updates/Character_update_2_9.tscn" id="7_vn1na"]
-[ext_resource type="Script" uid="uid://cykddj6gm6lqn" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_on_line2D.gd" id="8_hykel"]
+[ext_resource type="Script" uid="uid://cykddj6gm6lqn" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended_deprecated/Move_on_line2D.gd" id="8_hykel"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="8_r6kff"]
 [ext_resource type="Script" uid="uid://bptjt0og1tfel" path="res://addons/NZ_projectiles_emitter/Scripts/Emitters3D/PE3D_simple.gd" id="9_t36se"]
 [ext_resource type="PackedScene" uid="uid://1wfte0br410b" path="res://NZ_projectiles/Projectiles/3D/Projectile_3D.tscn" id="10_fc6w5"]

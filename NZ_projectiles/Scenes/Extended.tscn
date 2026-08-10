@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://r4k0f8gyejkl" path="res://NZ_projectiles/Scripts/Free_characters.gd" id="6_bqw48"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="7_3uxkj"]
 [ext_resource type="Script" uid="uid://ddqenaqulg2pm" path="res://NZ_projectiles/Scripts/Remove_projectiles_showcase.gd" id="7_77xup"]
-[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="8_ei452"]
+[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended_deprecated/Move_to_node2D.gd" id="8_ei452"]
 [ext_resource type="Texture2D" uid="uid://4qygjbrsdyte" path="res://NZ_projectiles/Textures/icon.png" id="9_8a3p0"]
 [ext_resource type="PackedScene" uid="uid://b4imirjj2ustx" path="res://NZ_projectiles/Other/Area_2d_remove_projectiles.tscn" id="11_xtq8r"]
 

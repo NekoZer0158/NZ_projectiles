@@ -4,24 +4,24 @@
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="2_2o8rq"]
 [ext_resource type="TileSet" uid="uid://bemnn70eey76b" path="res://NZ_projectiles/Resources/test_tile_set.tres" id="2_4rnjm"]
 [ext_resource type="PackedScene" uid="uid://bao0sfa1hw6g5" path="res://NZ_projectiles/Characters/Updates/Character_update_2_10.tscn" id="2_r1h0g"]
-[ext_resource type="Script" uid="uid://cykddj6gm6lqn" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_on_line2D.gd" id="3_6nnak"]
+[ext_resource type="Script" uid="uid://cykddj6gm6lqn" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended_deprecated/Move_on_line2D.gd" id="3_6nnak"]
 [ext_resource type="Script" uid="uid://cbkra8u1up5ia" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra.gd" id="4_e446x"]
 [ext_resource type="Script" uid="uid://dubok7st7or6p" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_spawn_projectile.gd" id="4_ktqw2"]
 [ext_resource type="Script" uid="uid://bdvvoxg8o2voy" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_change_var.gd" id="5_r1h0g"]
 [ext_resource type="Script" uid="uid://cedxloixedjnh" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extras.gd" id="5_u7y8i"]
 [ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="7_pbxre"]
 [ext_resource type="Script" uid="uid://ce6usakdbr7gw" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_changer.gd" id="8_eue0p"]
-[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="12_pbxre"]
+[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended_deprecated/Move_to_node2D.gd" id="12_pbxre"]
 
 [sub_resource type="Resource" id="Resource_ktqw2"]
 script = ExtResource("3_6nnak")
 line_path = NodePath("../../Lines/Line2D")
 find_cur_point_in_points = false
-point_zone = Vector2(15, 15)
 teleport_projectile_to_default_point = true
 cycle_movement = true
 instant_look = false
 look_speed = 8.0
+point_zone = Vector2(15, 15)
 metadata/_custom_type_script = "uid://cykddj6gm6lqn"
 
 [sub_resource type="Resource" id="Resource_c36ia"]

@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bjndhvlbl8lue" path="res://NZ_projectiles/Characters/TestCharacter.tscn" id="12_xtkpt"]
 [ext_resource type="Script" uid="uid://pva0gwyf8ta6" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_dont.gd" id="13_gaqke"]
 [ext_resource type="Script" uid="uid://1wqmrl3fc3w7" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/HE_position.gd" id="15_tj116"]
-[ext_resource type="Script" uid="uid://i78qqsy1s5m7" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_direction.gd" id="16_7v58y"]
+[ext_resource type="Script" uid="uid://i78qqsy1s5m7" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended_deprecated/Move_direction.gd" id="16_7v58y"]
 [ext_resource type="PackedScene" uid="uid://b81fpa7ultf22" path="res://NZ_projectiles/Characters/TestCharacter2.tscn" id="18_tghew"]
 
 [sub_resource type="Resource" id="Resource_e2n2m"]

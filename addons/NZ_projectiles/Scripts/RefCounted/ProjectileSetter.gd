@@ -2,6 +2,7 @@
 class_name ProjectileSetter
 extends RefCounted
 
+## @deprecated
 ## USE ONLY FOR 2D PROJECTILE
 static func set_node_to_which_projectile_moves_to(projectile:Projectile_extended,to_this_node:Node2D,set_resource:bool=false,look_at_this_node:bool=true) -> void:
 	if !is_instance_valid(to_this_node):

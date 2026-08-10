@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dp2r8kon8uuq7" path="res://NZ_projectiles/Characters/Updates/Character_update_2_9.tscn" id="2_vu634"]
 [ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="3_bufa1"]
 [ext_resource type="Script" uid="uid://bdvvoxg8o2voy" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_change_var.gd" id="3_iq0iq"]
-[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended/Move_to_node2D.gd" id="4_8i7j0"]
+[ext_resource type="Script" uid="uid://c44wrg5ysonbv" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended_deprecated/Move_to_node2D.gd" id="4_8i7j0"]
 [ext_resource type="Script" uid="uid://ce6usakdbr7gw" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_changer.gd" id="4_dui1d"]
 [ext_resource type="Script" uid="uid://cs5x44ycw8pc" path="res://addons/NZ_projectiles/Scripts/Resources/Hit_extended/Hit_extended.gd" id="4_vu634"]
 [ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="6_vu634"]

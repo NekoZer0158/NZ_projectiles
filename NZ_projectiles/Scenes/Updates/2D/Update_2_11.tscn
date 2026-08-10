@@ -1,0 +1,271 @@
+[gd_scene load_steps=31 format=3 uid="uid://rh0wpl5v66s6"]
+
+[ext_resource type="Script" uid="uid://b2jdryimw1v30" path="res://NZ_projectiles/Scripts/Button_change_scene.gd" id="1_5sf2m"]
+[ext_resource type="PackedScene" uid="uid://b5bhs25pano2" path="res://NZ_projectiles/Static/Static.tscn" id="2_uk318"]
+[ext_resource type="Script" uid="uid://3lsagrcnl1eq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_increase.gd" id="3_c464b"]
+[ext_resource type="Script" uid="uid://cykddj6gm6lqn" path="res://addons/NZ_projectiles/Scripts/Resources/Move_extended_deprecated/Move_on_line2D.gd" id="3_cbpyi"]
+[ext_resource type="Script" uid="uid://4oqjcel8phhq" path="res://addons/NZ_projectiles/Scripts/Resources/Speed_change/SC_condition_timer.gd" id="3_fxm0t"]
+[ext_resource type="Script" uid="uid://ce6usakdbr7gw" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_changer.gd" id="3_vsr7a"]
+[ext_resource type="PackedScene" uid="uid://doowcribc7isn" path="res://NZ_projectiles/Projectiles/Projectile_extended.tscn" id="4_xsjem"]
+[ext_resource type="PackedScene" uid="uid://ck5fuhci0k50s" path="res://NZ_projectiles/Characters/Updates/Character_update_2_11.tscn" id="8_uk318"]
+[ext_resource type="Script" uid="uid://d27gsqs0nivnc" path="res://addons/NZ_projectiles/Scripts/Other_nodes/Move_extended/ME_direction.gd" id="8_vnu6v"]
+[ext_resource type="Script" uid="uid://ba4edh5o6d02j" path="res://addons/NZ_projectiles/Scripts/Resources/Remove_projectile/RP_lives.gd" id="9_hnb84"]
+[ext_resource type="Script" uid="uid://dqffbprw2x7yy" path="res://addons/NZ_projectiles/Scripts/Other_nodes/Move_extended/ME_node2D.gd" id="9_o3hok"]
+[ext_resource type="Script" uid="uid://bb0e5iis6l2c3" path="res://addons/NZ_projectiles/Scripts/Other_nodes/Move_extended/ME_node2D_dynamic.gd" id="9_xsjem"]
+[ext_resource type="Script" uid="uid://cbkra8u1up5ia" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra.gd" id="11_5sf2m"]
+[ext_resource type="Script" uid="uid://b7qereiupmfib" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_change_movement.gd" id="11_p1oen"]
+[ext_resource type="Script" uid="uid://dorsfv7r2fmro" path="res://addons/NZ_projectiles/Scripts/Resources/Atk_change/Atk_change_random_range.gd" id="11_rh15r"]
+[ext_resource type="Script" uid="uid://cedxloixedjnh" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extras.gd" id="12_rcj0h"]
+[ext_resource type="Script" uid="uid://bdvvoxg8o2voy" path="res://addons/NZ_projectiles/Scripts/Resources/Other/Extra/PR_extra_change_var.gd" id="12_upial"]
+[ext_resource type="Script" uid="uid://ya80ysikdeka" path="res://addons/NZ_projectiles/Scripts/Other_nodes/Move_extended/ME_line2D.gd" id="18_lowfj"]
+
+[sub_resource type="GDScript" id="GDScript_42jhh"]
+resource_name = "Projectile_spawner"
+script/source = "extends Line2D
+
+@export var projectile_scene : PackedScene
+@export var speed_change_module : Speed_change_projectile
+@export var min_rotation_degrees : float = -5.0
+@export var max_rotation_degrees : float = 5.0
+
+@onready var timer: Timer = $Timer
+
+func _on_timer_timeout() -> void:
+	var projectile_instance : Projectile_extended = projectile_scene.instantiate()
+	projectile_instance.r_speed_change = speed_change_module.duplicate(true)
+	projectile_instance.life_time = 5.7
+	projectile_instance.rotation_degrees = randf_range(min_rotation_degrees,max_rotation_degrees)
+	add_child(projectile_instance)
+"
+
+[sub_resource type="Resource" id="Resource_vnu6v"]
+script = ExtResource("3_c464b")
+increase_to_this_amount = 120
+metadata/_custom_type_script = "uid://3lsagrcnl1eq"
+
+[sub_resource type="Resource" id="Resource_c464b"]
+script = ExtResource("3_cbpyi")
+line_path = NodePath("..")
+cycle_movement = true
+instant_look = false
+look_speed = 10.0
+metadata/_custom_type_script = "uid://cykddj6gm6lqn"
+
+[sub_resource type="Resource" id="Resource_cbpyi"]
+script = ExtResource("3_vsr7a")
+new_resource = SubResource("Resource_c464b")
+change_this = 2
+metadata/_custom_type_script = "uid://ce6usakdbr7gw"
+
+[sub_resource type="Resource" id="Resource_vsr7a"]
+script = ExtResource("3_fxm0t")
+time = 1.0
+after_condition_speed_change = SubResource("Resource_vnu6v")
+extra_resource = SubResource("Resource_cbpyi")
+metadata/_custom_type_script = "uid://4oqjcel8phhq"
+
+[sub_resource type="Resource" id="Resource_rh15r"]
+script = ExtResource("9_hnb84")
+hits_before_removing = 4
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsjem"]
+radius = 32.24903
+
+[sub_resource type="Resource" id="Resource_uk318"]
+script = ExtResource("11_rh15r")
+max_value = 12
+min_value_the_same_as_atk = true
+metadata/_custom_type_script = "uid://dorsfv7r2fmro"
+
+[sub_resource type="Resource" id="Resource_p1oen"]
+script = ExtResource("9_hnb84")
+hits_before_removing = 2
+metadata/_custom_type_script = "uid://ba4edh5o6d02j"
+
+[sub_resource type="Resource" id="Resource_xsjem"]
+script = ExtResource("12_upial")
+variable_name = "speed"
+new_value = 900
+metadata/_custom_type_script = "uid://bdvvoxg8o2voy"
+
+[sub_resource type="Resource" id="Resource_5sf2m"]
+script = ExtResource("11_p1oen")
+movement_node_path = NodePath("ME_direction")
+metadata/_custom_type_script = "uid://b7qereiupmfib"
+
+[sub_resource type="Resource" id="Resource_upial"]
+script = ExtResource("12_rcj0h")
+extras = Array[ExtResource("11_5sf2m")]([SubResource("Resource_xsjem"), SubResource("Resource_5sf2m")])
+metadata/_custom_type_script = "uid://cedxloixedjnh"
+
+[node name="Main" type="Node"]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="2_11" type="Button" parent="Buttons"]
+offset_left = 16.0
+offset_top = 568.0
+offset_right = 256.0
+offset_bottom = 632.0
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.11
+"
+script = ExtResource("1_5sf2m")
+change_to_this_scene = "uid://bh15v82rd8yb0"
+
+[node name="Static" type="Node" parent="."]
+
+[node name="Static" parent="Static" instance=ExtResource("2_uk318")]
+position = Vector2(544, 320)
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Lines"]
+position = Vector2(152, 320)
+points = PackedVector2Array(8, -104, 128, 8, 8, 104, -104, 8)
+closed = true
+script = SubResource("GDScript_42jhh")
+projectile_scene = ExtResource("4_xsjem")
+speed_change_module = SubResource("Resource_vsr7a")
+min_rotation_degrees = -30.0
+max_rotation_degrees = -10.0
+
+[node name="Timer" type="Timer" parent="Lines/Line2D"]
+wait_time = 0.5
+autostart = true
+
+[node name="Line2D2" type="Line2D" parent="Lines"]
+position = Vector2(984, 528)
+points = PackedVector2Array(8, -104, 128, 8, 8, 104, -104, 8)
+closed = true
+
+[node name="Timer" type="Timer" parent="Lines/Line2D2"]
+wait_time = 3.0
+autostart = true
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Character_2_11" parent="Characters" instance=ExtResource("8_uk318")]
+position = Vector2(312, 560)
+
+[node name="Character_2_12" parent="Characters" instance=ExtResource("8_uk318")]
+position = Vector2(440, 520)
+
+[node name="Character_2_13" parent="Characters" instance=ExtResource("8_uk318")]
+position = Vector2(592, 576)
+
+[node name="Character_2_14" parent="Characters" instance=ExtResource("8_uk318")]
+position = Vector2(992, 208)
+
+[node name="Character_2_15" parent="Characters" instance=ExtResource("8_uk318")]
+position = Vector2(768, 64)
+
+[node name="Character_2_16" parent="Characters" instance=ExtResource("8_uk318")]
+position = Vector2(824, 168)
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ProjectileExtended_on_line" parent="Projectiles" node_paths=PackedStringArray("n_move_extended") instance=ExtResource("4_xsjem")]
+position = Vector2(744, 360)
+n_move_extended = NodePath("ME_direction")
+speed = 200
+life_time = 1.0
+metadata/_edit_group_ = true
+
+[node name="ME_direction" type="Node2D" parent="Projectiles/ProjectileExtended_on_line"]
+script = ExtResource("8_vnu6v")
+direction = Vector2(-0.5, 0.5)
+add_degrees = 90.0
+metadata/_custom_type_script = "uid://d27gsqs0nivnc"
+
+[node name="ProjectileExtended_on_line3" parent="Projectiles" node_paths=PackedStringArray("n_move_extended") instance=ExtResource("4_xsjem")]
+position = Vector2(48, 448)
+n_move_extended = NodePath("ME_node2D_dynamic")
+r_remove_projectile = SubResource("Resource_rh15r")
+speed = 120
+life_time = 5.2
+metadata/_edit_group_ = true
+
+[node name="ME_node2D_dynamic" type="Node2D" parent="Projectiles/ProjectileExtended_on_line3"]
+script = ExtResource("9_xsjem")
+switch_targets_amount = 3
+look_at_this_node = true
+default_movement_if_no_node2D = true
+metadata/_custom_type_script = "uid://bb0e5iis6l2c3"
+
+[node name="Area2D" type="Area2D" parent="Projectiles/ProjectileExtended_on_line3/ME_node2D_dynamic"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectiles/ProjectileExtended_on_line3/ME_node2D_dynamic/Area2D"]
+shape = SubResource("CircleShape2D_xsjem")
+
+[node name="ProjectileExtended_on_line2" parent="Projectiles" node_paths=PackedStringArray("n_move_extended") instance=ExtResource("4_xsjem")]
+position = Vector2(783.99994, 320)
+rotation = 0.6981317
+n_move_extended = NodePath("ME_node2D")
+r_atk_change = SubResource("Resource_uk318")
+r_remove_projectile = SubResource("Resource_p1oen")
+speed = 200
+life_time = 0.0
+metadata/_edit_group_ = true
+
+[node name="ME_node2D" type="Node2D" parent="Projectiles/ProjectileExtended_on_line2" node_paths=PackedStringArray("move_to_this_node2D", "extra_timer")]
+scale = Vector2(1.0000001, 1.0000001)
+script = ExtResource("9_o3hok")
+move_to_this_node2D = NodePath("../../../Characters/Character_2_14")
+reach_distance = 16.0
+add_those_degrees = 60.0
+instant_look = false
+look_speed = 2.15
+extra_resource = SubResource("Resource_upial")
+extra_resource_usage = 2
+extra_timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://dqffbprw2x7yy"
+
+[node name="Timer" type="Timer" parent="Projectiles/ProjectileExtended_on_line2/ME_node2D"]
+wait_time = 0.75
+one_shot = true
+
+[node name="ME_direction" type="Node2D" parent="Projectiles/ProjectileExtended_on_line2"]
+script = ExtResource("8_vnu6v")
+direction = Vector2(-0.5, 0.4)
+look_at_this_direction = true
+metadata/_custom_type_script = "uid://d27gsqs0nivnc"
+
+[node name="ProjectileExtended_on_line4" parent="Projectiles" node_paths=PackedStringArray("n_move_extended") instance=ExtResource("4_xsjem")]
+position = Vector2(959.99994, 552)
+n_move_extended = NodePath("ME_line2D")
+speed = 200
+life_time = 0.0
+metadata/_edit_group_ = true
+
+[node name="ME_line2D" type="Node2D" parent="Projectiles/ProjectileExtended_on_line4"]
+script = ExtResource("18_lowfj")
+line_path = NodePath("../../../Lines/Line2D2")
+cycle_movement = true
+queue_free_if_cant_move_on_line = true
+find_line_through_parent_node = false
+point_type = 1
+point_zone = Vector2(0, 0)
+distance_value = 30.0
+metadata/_custom_type_script = "uid://ya80ysikdeka"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Buttons/2_11" to="Buttons/2_11" method="_on_pressed"]
+[connection signal="timeout" from="Lines/Line2D/Timer" to="Lines/Line2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Lines/Line2D2/Timer" to="Lines/Line2D2" method="queue_free"]

@@ -20,6 +20,7 @@ extends Move_extended_projectile3D
 		cycle_movement = value
 @export var instant_look : bool = true ## If set to true then the projectile will instantly look at the new point, if false then it's angle will be changed by look_speed until it's looking at the point
 @export_range(0,360,0.001,"suffix:°") var look_speed : float = 0.0
+@export var queue_free_if_cant_move_on_path3d : bool = false
 @export var debug : bool = false
 
 var _stop_moving : bool = false
@@ -34,6 +35,8 @@ const CREATE_DUPLICATE : bool = true
 func _ready(parent_node:Node) -> void:
 	if parent_node.has_node(path3d_path):
 		set_path3d(parent_node.get_node(path3d_path))
+	else:
+		push_error("Path3D with path ",path3d_path," wasn't found")
 	if teleport_projectile_to_default_point:
 		parent_node.position = _cur_path3d.curve.get_point_position(default_point_index)*_cur_path3d.scale+_cur_path3d.global_position
 		_set_new_point()
@@ -92,6 +95,9 @@ func _set_new_point() -> void:
 		_stop_moving = true
 
 func move_extended(projectile:Projectile3D,delta:float) -> void:
+	if queue_free_if_cant_move_on_path3d and !is_instance_valid(_cur_path3d):
+		projectile.queue_free()
+		return
 	if _stop_moving:
 		return
 	var _cur_point_global_position := _cur_point*_cur_path3d.scale+_cur_path3d.global_position

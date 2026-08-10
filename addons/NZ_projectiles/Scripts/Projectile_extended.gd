@@ -5,6 +5,8 @@ extends Projectile
 @export_enum("Queue_free","Free","Activate remove resource") var when_colliding_with_remove_when_collide : int = 0
 @export var duplicate_resources : bool = true ## RECOMMEND TO NOT DISABLE IT
 @export var check_ready_function_in_resources : bool = true ## RECOMMEND TO NOT DISABLE IT
+@export_group("Modules (Nodes)","n_")
+@export var n_move_extended : Move_extended_projectile_node ## Has a higher priority over r_move_extended.
 @export_group("Modules (Resources)","r_")
 @export var r_atk_change : Atk_change_projectile ## Changes projectile atk
 @export var r_speed_change : Speed_change_projectile ## Changes projectile speed
@@ -25,7 +27,9 @@ func _move(delta:float) -> void:
 	if can_move:
 		if r_speed_change != null:
 			speed = r_speed_change.change_speed(speed)
-		if r_move_extended == null:
+		if n_move_extended != null:
+			n_move_extended.move_extended(self,delta)
+		elif r_move_extended == null:
 			position += transform.x*speed*delta
 		else:
 			r_move_extended.move_extended(self,delta)

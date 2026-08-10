@@ -8,6 +8,8 @@ extends CharacterBody3D
 @export var speed : Vector3
 @export var change_color : bool = true
 @export_enum("Nothing","Friend","Enemy") var type : int
+@export_group("Debug","debug_")
+@export var debug_pring_atk : bool = false
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 
 enum {NOTHING,FRIEND,ENEMY}
@@ -27,9 +29,13 @@ func _reverse_speed() -> void:
 	speed = -speed
 
 func hit(atk:int) -> void:
+	if debug_pring_atk:
+		print(name,atk)
 	hp -= atk
 
 func hit_extended(atk:int) -> void:
+	if debug_pring_atk:
+		print(name,atk)
 	hp -= atk
 
 func hit_extended_speed(atk:int,_speed:int) -> void:

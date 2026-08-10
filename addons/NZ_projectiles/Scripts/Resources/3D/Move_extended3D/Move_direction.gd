@@ -6,7 +6,7 @@ extends Move_extended_projectile3D
 
 @export var direction : Vector3: ## If you need to set this through code, use Porjectile3DSetter
 	set(value):
-		direction = Vector3(clampf(value.x,-1,1),clampf(value.y,-1,1),clampf(value.z,-1,1))
+		direction = Vector3(clampf(value.x,-1.0,1.0),clampf(value.y,-1.0,1.0),clampf(value.z,-1.0,1.0))
 @export var look_at_this_direction : bool = false
 @export_custom(PROPERTY_HINT_NONE,"suffix:°") var add_those_degrees : Vector3
 

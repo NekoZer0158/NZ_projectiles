@@ -24,6 +24,18 @@ vertical_scroll_mode = 0
 layout_mode = 2
 metadata/_edit_lock_ = true
 
+[node name="Version_2_11" type="Button" parent="ScrollContainer/HBoxContainer" node_paths=PackedStringArray("main_node")]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "2.11 (Hard Projectiles)"
+script = ExtResource("3_lqrl0")
+scene = "res://NZ_projectiles/Scenes/Updates/Update_2_11.tscn"
+main_node = NodePath("../../..")
+metadata/_edit_lock_ = true
+
 [node name="Version_2_10" type="Button" parent="ScrollContainer/HBoxContainer" node_paths=PackedStringArray("main_node")]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
@@ -42,7 +54,7 @@ layout_mode = 2
 focus_mode = 0
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "2.9 Mega Projectiles"
+text = "2.9 (Mega Projectiles)"
 script = ExtResource("3_lqrl0")
 scene = "res://NZ_projectiles/Scenes/Updates/Update_2_9.tscn"
 main_node = NodePath("../../..")
@@ -54,7 +66,7 @@ layout_mode = 2
 focus_mode = 0
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "2.8 Projectiles Symphony"
+text = "2.8 (Projectiles Symphony)"
 script = ExtResource("3_lqrl0")
 scene = "res://NZ_projectiles/Scenes/Updates/Update_2_8.tscn"
 main_node = NodePath("../../..")
@@ -67,7 +79,7 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "2.1-2.7"
 script = ExtResource("3_lqrl0")
-scene = "res://NZ_projectiles/Scenes/Updates/2_1-2_7/Updates_2_1-2_7.tscn"
+scene = "res://NZ_projectiles/Scenes/Updates/z_2_1-2_7/Updates_2_1-2_7.tscn"
 main_node = NodePath("../../..")
 
 [node name="Buttons" type="Node" parent="."]
@@ -209,6 +221,7 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
+[connection signal="pressed" from="ScrollContainer/HBoxContainer/Version_2_11" to="ScrollContainer/HBoxContainer/Version_2_11" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/HBoxContainer/Version_2_10" to="ScrollContainer/HBoxContainer/Version_2_10" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/HBoxContainer/Version_2_9" to="ScrollContainer/HBoxContainer/Version_2_9" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/HBoxContainer/Version_2_8" to="ScrollContainer/HBoxContainer/Version_2_8" method="_on_pressed"]

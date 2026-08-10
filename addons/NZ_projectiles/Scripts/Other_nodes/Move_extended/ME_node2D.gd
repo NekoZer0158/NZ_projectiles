@@ -1,10 +1,10 @@
 @icon("res://addons/NZ_projectiles/Icons/Move_extended/Move_to_node2D.svg")
-class_name Move_to_node2D_projectile
-extends Move_extended_projectile
+class_name ME_node2D
+extends Move_extended_projectile_node
 
 ## Moves the projectile to [Node2D]
 
-@export var node2D_path : NodePath
+@export var move_to_this_node2D : Node2D
 @export var look_at_this_node : bool = false
 @export var multiply_scale_when_dont_look : bool = false ## Will multiply speed to scale when look_at_this_node is set to false
 @export var move_away : bool = false ## If true, the projecitle will move in the opposite way from the [Node2D]
@@ -17,33 +17,27 @@ extends Move_extended_projectile
 @export_group("Extra resource","extra_")
 @export var extra_resource : Projectile_resource_extra ## Will be used depending on extra_resource_usage
 @export var extra_resource_usage : ProjectileEnum.ExtraResourceUsageMovement = ProjectileEnum.ExtraResourceUsageMovement.AFTER_REACHING_OR_WHEN_NO_NODE
-@export_node_path("Timer") var extra_timer_path : NodePath ## Recommend to set one_shot to true
-@export var extra_time : float = 0.0 ## If extra_timer_path is a path to a [Timer] and extra_time is bigger than 0 then extra_resource will be activated only after that amount of time
+@export var extra_timer :Timer ## Recommend to set one_shot to true. timeout signal will be automatically connected.
 
-var move_to_this_node2D : Node2D ## Set this through [ProjectileSetter] or node2D_path
-var added_degrees : bool = false
-
-var _stop_moving : bool = false
+var _stopped_moving : bool = false
 var _extra_resource_was_used : bool = false
 var _default_movement : bool = false
-var _extra_timer : Timer
+var _degrees_were_added_to_projectile : bool = false
 
-const CREATE_DUPLICATE : bool = true
-
-func _ready(parent_node:Node) -> void:
-	if parent_node.has_node(node2D_path):
-		ProjectileSetter.set_node_to_which_projectile_moves_to(parent_node,parent_node.get_node(node2D_path),false,look_at_this_node)
-	if parent_node.has_node(extra_timer_path):
-		_extra_timer = parent_node.get_node(extra_timer_path)
-		_extra_timer.timeout.connect(_on_extra_timer_timeout.bind(parent_node))
+func _ready() -> void:
+	var parent_node : Projectile = get_parent()
+	if !is_instance_valid(move_to_this_node2D):
+		push_error("move_to_this_node2D isn't valid")
+	if is_instance_valid(extra_timer):
+		extra_timer.timeout.connect(_on_extra_timer_timeout.bind(parent_node))
 
 func move_extended(projectile:Projectile,delta:float) -> void:
-	if _stop_moving:
+	if _stopped_moving:
 		return
-	if !added_degrees:
+	if !_degrees_were_added_to_projectile:
 		if add_those_degrees != 0:
 			projectile.rotation_degrees += add_those_degrees
-		added_degrees = true
+		_degrees_were_added_to_projectile = true
 	if is_instance_valid(move_to_this_node2D) and !_default_movement:
 		if look_at_this_node:
 			if !move_away:
@@ -76,8 +70,8 @@ func move_extended(projectile:Projectile,delta:float) -> void:
 
 func _check_timer_and_extra_resource(projectile:Projectile) -> void:
 	if extra_resource != null and !_extra_resource_was_used:
-		if _extra_timer != null:
-			_extra_timer.start(extra_time)
+		if is_instance_valid(extra_timer):
+			extra_timer.start()
 			_extra_resource_was_used = true
 		else:
 			_use_extra_resource(projectile)
@@ -101,6 +95,6 @@ func _check_after_reaching_node2D(projectile:Projectile) -> void:
 				ProjectileEnum.AfterReachingNode.DEFAULT_MOVEMENT:
 					_default_movement = true
 				ProjectileEnum.AfterReachingNode.STOP:
-					_stop_moving = true
+					_stopped_moving = true
 				ProjectileEnum.AfterReachingNode.QUEUE_FREE:
 					projectile.queue_free()
